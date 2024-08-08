@@ -1,0 +1,37 @@
+[
+    {
+      "nombres": "Luis",
+      "apellidos": "Garcia Torres",
+      "fecha_de_nacimiento": "1990/03/10",
+      "correo": "luis.garcia@example.com",
+      "contraseña": "password321"
+    },
+    {
+      "nombres": "Ana",
+      "apellidos": "Martinez Ruiz",
+      "fecha_de_nacimiento": "1988/06/15",
+      "correo": "ana.martinez@example.com",
+      "contraseña": "securepass123"
+    },
+    {
+      "nombres": "Pedro",
+      "apellidos": "Gonzalez Perez",
+      "fecha_de_nacimiento": "1992/11/05",
+      "correo": "pedro.gonzalez@example.com",
+      "contraseña": "mypassword456"
+    },
+    {
+      "nombres": "Laura",
+      "apellidos": "Sanchez Diaz",
+      "fecha_de_nacimiento": "1987/07/21",
+      "correo": "laura.sanchez@example.com",
+      "contraseña": "laura789"
+    },
+    {
+      "nombres": "Javier",
+      "apellidos": "Ramirez Lopez",
+      "fecha_de_nacimiento": "1995/04/17",
+      "correo": "javier.ramirez@example.com",
+      "contraseña": "password987"
+    }
+  ]
