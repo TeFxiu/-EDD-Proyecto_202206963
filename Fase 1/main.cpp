@@ -9,11 +9,15 @@
 #include "nlohmann/json.hpp"
 #include "headers/Usuario.h"
 #include "Listas/EnlazadaSimple.cpp"
- 
+#include "Listas/EnlazadaDoble.cpp"
+#include "headers/Publicacion.h"
+#include "headers/ModuloUsuario.h"
+
 using namespace std;    
 
 bool inter = false;
 ListaSimple* listaUsuarios = new ListaSimple();
+DoublyLinkedList* listaPublicaciones = new DoublyLinkedList();
 Usuario admin("admin", "admin", "01/01/2000", "admin@gmail.com", "EDD2S2024");
 
 bool verificarFecha(string fecha){
@@ -61,6 +65,8 @@ int menu(){
     return op;
 }
 
+void moduloUsuario();
+
 void inicioSesion(){
     string email, pass;
     cout << "Ingrese su email: ";
@@ -69,9 +75,10 @@ void inicioSesion(){
         s = tolower(s);
     }   
     cout << "Ingrese su contraseña: ";
-    cin >> pass;
+    cin >> pass;    
     if (listaUsuarios->comprobarCredenciales(email, pass)){
-        cout << "Bienvenido" <<endl;
+        Usuario user = listaUsuarios->getCredenciales();
+        ModuloUsuario* moduloU = new ModuloUsuario(user);
     }else{
         if (admin.getEmail() == email && admin.getPass() == pass){
             cout << "Bienvenido Admin" <<endl;

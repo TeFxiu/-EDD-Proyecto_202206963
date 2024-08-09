@@ -7,8 +7,9 @@ using namespace std;
 class ListaSimple{
     private:
         Nodo *head;
+        Nodo* retorno;
     public:
-        ListaSimple():head(nullptr){};
+        ListaSimple():head(nullptr),retorno(nullptr){};
         
         bool estaVacia() {return head == nullptr;};
 
@@ -72,11 +73,18 @@ class ListaSimple{
                 return false;
             }else{
                 if (temp->dato.getPass() == pass){
+                    retorno = temp;
                     return true;
                 }else{
                     return false;
                 }
             }
+        }
+
+        Usuario getCredenciales(){
+                Nodo* temp = retorno;
+                retorno = nullptr;
+                return temp->dato;
         }
 
         void remove(string dato){

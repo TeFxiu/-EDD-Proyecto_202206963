@@ -70,9 +70,9 @@ class DoublyLinkedList{
             
             
         }
-
+        /*
         void graph(){
-            ofstream file(graph.dot);
+            ofstream file("graph.dot");
             file<< "digraph G {" <<endl;
             file<< "rankdir=LR;" <<endl;
             file<< "node [shape=record];" <<endl;
@@ -97,5 +97,6 @@ class DoublyLinkedList{
             system(command.c_str());
 
         }
+         */
 
-}
+};

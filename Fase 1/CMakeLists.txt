@@ -10,4 +10,6 @@ add_executable(Proyecto1
         Usuario.cpp
         headers/Usuario.h
         Listas/EnlazadaSimple.cpp
-        headers/Date.h)
+        Listas/EnlazadaDoble.cpp
+        headers/moduloUsuario.h
+        headers/ModuloUsuario.cpp)
