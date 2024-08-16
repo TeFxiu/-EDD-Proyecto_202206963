@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
-
+#ifndef PUBLICACION_H
+#define PUBLICACION_H
 using namespace std;
 
 class Publicacion{
@@ -10,6 +11,7 @@ class Publicacion{
         string fecha;
         string hora;
     public:
+        Publicacion():id(""), texto(""), fecha(""), hora(""){};
         Publicacion(string _id, string _texto ,string _fecha, string _hora):id(_id),texto(_texto), fecha(_fecha), hora(_hora) {};
         string getId(){return id;};
         string getTexto(){return texto;};
@@ -19,12 +21,7 @@ class Publicacion{
         void setTexto(string _texto){texto = _texto;};
         void setFecha(string _fecha){fecha = _fecha;};
         void setHora(string _hora){hora = _hora;};
-        void mostrarPublicacion(){
-            cout << "ID: " << id << endl;
-            cout << "Texto: " << texto << endl;
-            cout << "Fecha: " << fecha << endl;
-            cout << "Hora: " << hora << endl;
-        }
         ~Publicacion(){};
 
 };
+#endif

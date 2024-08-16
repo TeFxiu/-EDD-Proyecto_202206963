@@ -9,7 +9,14 @@ add_executable(Proyecto1
         main.cpp
         Usuario.cpp
         headers/Usuario.h
-        Listas/EnlazadaSimple.cpp
-        Listas/EnlazadaDoble.cpp
+        Estructuras/EnlazadaSimple.cpp
+        Estructuras/EnlazadaDoble.cpp
         headers/moduloUsuario.h
-        headers/ModuloUsuario.cpp)
+        headers/ModuloUsuario.cpp
+        headers/NodoUser.h
+        Estructuras/CircularDoble.cpp
+        headers/ModuloAdmin.h
+        headers/NodoStories.h
+        Estructuras/SimpleAmistad.cpp
+        Estructuras/Pila.cpp
+        headers/Amistad.h)

@@ -1,7 +1,10 @@
-#include <string>
 #ifndef USUARIO_H
 #define USUARIO_H
+#include <string>
 using namespace std;
+
+class Pila;
+class SimpleAmistad;
 
 class Usuario {
     private:
@@ -10,9 +13,16 @@ class Usuario {
         string fechaNacimiento;
         string email;
         string password;
+        Pila* recepcion;
+        SimpleAmistad* solicitudes;
+        void decidirSolicitudes(bool& decision);
     public:
         Usuario();
         Usuario(string nome, string apellido, string fechaNacimiento, string email, string pass);
+        void addSolicitud(Usuario* user);
+        void rechazarSolicitud();
+        void decidirSolicitudes();
+        bool findSolicitud(string email);
         string getNombre();
         string getApellido();
         string getFechaNac();

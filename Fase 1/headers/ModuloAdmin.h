@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 #include <string>
 
 using namespace std;
@@ -15,4 +15,4 @@ class ModuloUsuario{
         void bucleInterfaz();
         void crearPublicacion();    
 
-};
+};*/

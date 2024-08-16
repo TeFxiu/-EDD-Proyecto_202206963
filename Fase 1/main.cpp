@@ -2,14 +2,13 @@
 #include <string>
 #include <cctype>
 #include <fstream>
-#include <cstdlib>
 #include <regex>
 #include <windows.h> // Para SetConsoleOutputCP y CP_UTF8
 
 #include "nlohmann/json.hpp"
 #include "headers/Usuario.h"
-#include "Listas/EnlazadaSimple.cpp"
-#include "Listas/EnlazadaDoble.cpp"
+#include "Estructuras/EnlazadaSimple.cpp"
+#include "Estructuras/EnlazadaDoble.cpp"
 #include "headers/Publicacion.h"
 #include "headers/ModuloUsuario.h"
 
@@ -75,18 +74,18 @@ void inicioSesion(){
         s = tolower(s);
     }   
     cout << "Ingrese su contraseña: ";
-    cin >> pass;    
+    cin.ignore();
+    getline(cin, pass);   
     if (listaUsuarios->comprobarCredenciales(email, pass)){
-        Usuario user = listaUsuarios->getCredenciales();
-        ModuloUsuario* moduloU = new ModuloUsuario(user);
+        Usuario& user = listaUsuarios->getCredenciales();
+        ModuloUsuario* moduloU = new ModuloUsuario(user, listaPublicaciones, listaUsuarios);
+        moduloU->bucleInterfaz();
     }else{
         if (admin.getEmail() == email && admin.getPass() == pass){
             cout << "Bienvenido Admin" <<endl;
-            inter = false;
         }
         else{
             cout << "Credenciales incorrectas" <<endl;
-            inter = true;
         }
     }
 }
@@ -102,6 +101,7 @@ void registro(){
     while (!verificarFecha(fechaNacimiento)){
         cout << "Fecha invalida, ingrese nuevamente: ";
         cin >> fechaNacimiento;
+        cout << endl;
     }
     cout << "Ingrese su email: ";
     cin >> email;
@@ -117,11 +117,12 @@ void registro(){
         }
     }
     cout << "Ingrese su contraseña: ";
-    cin >> pass;
+    cin.ignore();
+    getline(cin, pass);
 
     Usuario user(nombre, apellido, fechaNacimiento, email, pass);
     listaUsuarios->append(user);
-    cout<<"Usuario creado exitosamente";
+    cout<<"Usuario creado exitosamente"<<endl;
     
 }
 
@@ -132,6 +133,7 @@ void interfaz(){
         case 1:
             cout << "Iniciar Sesion" << endl;
             inicioSesion();
+            inter = true;
             break;
         case 2:
             cout << "Registrarse" << endl;
