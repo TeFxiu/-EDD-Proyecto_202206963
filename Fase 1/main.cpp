@@ -1,22 +1,20 @@
 #include <iostream>
 #include <string>
 #include <cctype>
-#include <fstream>
 #include <regex>
-#include <windows.h> // Para SetConsoleOutputCP y CP_UTF8
-
-#include "nlohmann/json.hpp"
-#include "headers/Usuario.h"
+#include <windows.h>
+#include "Estructuras/Matriz.h"
 #include "Estructuras/EnlazadaSimple.cpp"
 #include "Estructuras/EnlazadaDoble.cpp"
-#include "headers/Publicacion.h"
 #include "headers/ModuloUsuario.h"
+#include "headers/ModuloAdmin.h"
 
 using namespace std;    
 
 bool inter = false;
 ListaSimple* listaUsuarios = new ListaSimple();
 DoublyLinkedList* listaPublicaciones = new DoublyLinkedList();
+Matriz* matrizRelaciones = new Matriz();
 Usuario admin("admin", "admin", "01/01/2000", "admin@gmail.com", "EDD2S2024");
 
 bool verificarFecha(string fecha){
@@ -59,12 +57,11 @@ int menu(){
     cout << "1. Iniciar Sesion" <<endl;
     cout << "2. Registrarse" <<endl;
     cout << "3. Informacion" << endl;
+    cout << "4. Salir" << endl;
     cout << "Elija una opcion: ";
     cin >> op;
     return op;
 }
-
-void moduloUsuario();
 
 void inicioSesion(){
     string email, pass;
@@ -78,11 +75,13 @@ void inicioSesion(){
     getline(cin, pass);   
     if (listaUsuarios->comprobarCredenciales(email, pass)){
         Usuario& user = listaUsuarios->getCredenciales();
-        ModuloUsuario* moduloU = new ModuloUsuario(user, listaPublicaciones, listaUsuarios);
+        ModuloUsuario* moduloU = new ModuloUsuario(user, listaPublicaciones, listaUsuarios, matrizRelaciones);
         moduloU->bucleInterfaz();
     }else{
         if (admin.getEmail() == email && admin.getPass() == pass){
             cout << "Bienvenido Admin" <<endl;
+            ModuloAdmin* moduloA = new ModuloAdmin(admin, listaPublicaciones, listaUsuarios, matrizRelaciones);
+            moduloA->bucleInterfaz();
         }
         else{
             cout << "Credenciales incorrectas" <<endl;
@@ -150,6 +149,7 @@ void interfaz(){
         default:
             cout << "Opcion invalida" << endl;
             inter = true;
+            cin.clear();
             break;
     }
 }

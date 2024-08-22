@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Usuario.h"
 #include "Publicacion.h"
+#include "../Estructuras/Matriz.h"
 #include <iomanip>
 #include <chrono>
 #include <ctime>
@@ -14,8 +15,9 @@ class ModuloUsuario{
         bool inter;
         DoublyLinkedList* listaPublicaciones;
         ListaSimple* listaUsuarios;
+        Matriz* matrizRelaciones;
     public:
-        ModuloUsuario(Usuario& entrada, DoublyLinkedList* listaEntrada, ListaSimple* usuarios);
+        ModuloUsuario(Usuario& entrada, DoublyLinkedList* listaEntrada, ListaSimple* usuarios, Matriz* relaciones);
         void encabezadoInterfaz();
         void menu();
         void bucleInterfaz();

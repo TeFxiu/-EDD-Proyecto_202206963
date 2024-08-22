@@ -45,6 +45,7 @@ class ListaSimple{
                 cout << temp->dato.getFechaNac() <<endl;
                 cout << temp->dato.getEmail() <<endl;
                 cout << temp->dato.getPass() <<endl;
+                cout << temp->dato.getId() <<endl;
                 temp = temp->siguiente;
             }
         };

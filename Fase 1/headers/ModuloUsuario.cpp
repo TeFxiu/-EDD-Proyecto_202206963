@@ -1,13 +1,15 @@
 #include "../Estructuras/EnlazadaDoble.cpp"
 #include "../Estructuras/EnlazadaSimple.cpp"
+
 #include "ModuloUsuario.h"
 #include <string>
 using namespace std;
 
-ModuloUsuario::ModuloUsuario(Usuario& entrada, DoublyLinkedList* listaEntrada, ListaSimple* usuarios){
+ModuloUsuario::ModuloUsuario(Usuario& entrada, DoublyLinkedList* listaEntrada, ListaSimple* usuarios, Matriz* relaciones){
     this->user = &entrada;
     this->listaPublicaciones = listaEntrada;
     this->listaUsuarios = usuarios;
+    this->matrizRelaciones = relaciones;
     this->inter = false;
 }
 
@@ -92,7 +94,7 @@ void ModuloUsuario::subModuloSolicitudes(int eleccion, bool bucle){
         {
         case 1:
             cout << "Solicitudes: " << endl;
-            this->user->decidirSolicitudes();
+            this->user->decidirSolicitudes(matrizRelaciones);
             break;
         case 2:
             cout << endl<< "Ingrese el email de la persona a la que desea enviar la solicitud: ";
@@ -103,8 +105,13 @@ void ModuloUsuario::subModuloSolicitudes(int eleccion, bool bucle){
             if (!this->listaUsuarios->findEmail(email)){
                 if (!this->user->findSolicitud(email)){
                     Usuario& solicitud = this->listaUsuarios->getCredenciales();
-                    solicitud.addSolicitud(this->user);
-                    cout << "Solicitud enviada" << endl;
+                    bool verificar = matrizRelaciones->insertarAmistad(*user, solicitud, true);
+                    if (verificar){
+                        solicitud.addSolicitud(this->user);
+                        cout << "Solicitud enviada" << endl;
+                    }else{
+                        cout << "Ya existe una relacion con este usuario" << endl;
+                    }
                 }else{
                     cout << "Hay una solicitud en proceso con este usuario" << endl;
                 }

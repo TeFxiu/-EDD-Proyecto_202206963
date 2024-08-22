@@ -1,0 +1,32 @@
+[
+    {
+        "correo": "luis.garcia@example.com",
+        "contenido": "¡Qué buen día para aprender C++!",
+        "fecha": "25/08/2024",
+        "hora": "09:15"
+    },
+    {
+        "correo": "ana.martinez@example.com",
+        "contenido": "Hoy tuve un día productivo :)",
+        "fecha": "25/08/2024",
+        "hora": "14:30"
+    },
+    {
+        "correo": "pedro.gonzalez@example.com",
+        "contenido": "¿Alguien recomienda algún libro de programación?",
+        "fecha": "25/08/2024",
+        "hora": "11:00"
+    },
+    {
+        "correo": "laura.sanchez@example.com",
+        "contenido": "Trabajando en un nuevo proyecto emocionante.",
+        "fecha": "25/08/2024",
+        "hora": "16:45"
+    },
+    {
+        "correo": "javier.ramirez@example.com",
+        "contenido": "Necesito una pausa, el código no compila :(",
+        "fecha": "25/08/2024",
+        "hora": "13:00"
+    }
+]

@@ -19,4 +19,10 @@ add_executable(Proyecto1
         headers/NodoStories.h
         Estructuras/SimpleAmistad.cpp
         Estructuras/Pila.cpp
-        headers/Amistad.h)
+        headers/Amistad.h
+        headers/ModuloAdmin.cpp
+        tinyfiledialogs/tinyfiledialogs.h
+        tinyfiledialogs/tinyfiledialogs.c
+        Estructuras/Matriz.h
+        Estructuras/Matriz.cpp
+)

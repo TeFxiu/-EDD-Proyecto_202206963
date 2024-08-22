@@ -2,8 +2,13 @@
 #include "./headers/Usuario.h"
 #include "./Estructuras/Pila.cpp"
 #include "./Estructuras/SimpleAmistad.cpp"
+#include "./Estructuras/Matriz.h"
+#include "../Estructuras/CircularDoble.cpp"
+#include "./Estructuras/EnlazadaDoble.cpp"
 
 using namespace std;
+
+int Usuario::idCounter = 0;
 
 Usuario::Usuario() {
     this->nombre = "";
@@ -13,6 +18,12 @@ Usuario::Usuario() {
     this->password = "";
     this->recepcion = new Pila();
     this->solicitudes = new SimpleAmistad();
+    this->publicaciones = new DoublyCircular();
+    this->relacionesGlobal = nullptr;
+    this->publicacionesPersonales = new DoublyLinkedList();
+    this->numRelaciones = 0;
+    this->numPublicaciones = 0;
+    this->id = 0;    
 }
 
 Usuario::Usuario(string nome, string apellido, string fechaNacimiento, string email, string pass) {
@@ -23,6 +34,17 @@ Usuario::Usuario(string nome, string apellido, string fechaNacimiento, string em
     this->password = pass;
     this->recepcion = new Pila();
     this->solicitudes = new SimpleAmistad();
+    this->publicacionesAmigos = new DoublyCircular();
+    this->publicacionesPersonales = new DoublyLinkedList();
+    this->relacionesGlobal = nullptr;
+    this->numRelaciones = 0;
+    this->numPublicaciones = 0;
+    this->id = idCounter++;
+}
+
+Usuario::Usuario(string nome, int id) {
+    this->nombre = nome;
+    this->id = id;
 }
 
 void Usuario::addSolicitud(Usuario* user) {
@@ -41,6 +63,17 @@ void Usuario::rechazarSolicitud(){
     cout << "Solicitud de amistad rechazada" << endl;
 }
 
+void Usuario::aceptarSolicitud(){
+        Usuario* user = this->recepcion->pop();
+        user->solicitudes->solicitudRechazada(this->email);
+        this->relacionesGlobal->insertarAmistad(*this, *user);
+        this->numRelaciones++;
+        user->numRelaciones++;
+        this->publicacionesAmigos->append(user->publicacionesPersonales);
+        user->publicacionesAmigos->append(this->publicacionesPersonales);
+        cout << "Solicitud de amistad aceptada" << endl;
+}
+
 void Usuario::decidirSolicitudes(bool& decision){
     int eleccion;
     if(!this->recepcion->estaVacia()){
@@ -51,7 +84,7 @@ void Usuario::decidirSolicitudes(bool& decision){
         return;
     }
 
-    cout << "\U0001F600";
+    cout << "\U0001F600 ";
     recepcion->mostrarTop();
     cout << " te ha enviado una solicitud de amistad" << endl;
 
@@ -63,8 +96,7 @@ void Usuario::decidirSolicitudes(bool& decision){
     switch (eleccion)
     {
     case 1:
-
-        cout << "Solicitud aceptada" << endl;
+        aceptarSolicitud();
         break;
     case 2:
         rechazarSolicitud();
@@ -76,13 +108,11 @@ void Usuario::decidirSolicitudes(bool& decision){
         cout << "Opcion no valida" << endl;
         break;
     }
-
-
-
 }
 
-void Usuario::decidirSolicitudes(){
+void Usuario::decidirSolicitudes(Matriz* matrizRelaciones){
     bool decision = true;
+    this->relacionesGlobal = matrizRelaciones;
     do{
         decidirSolicitudes(decision);
     }while(decision);
@@ -127,4 +157,12 @@ void Usuario::setEmail(string email) {
 
 void Usuario::setPass(string senha) {
     this->password = senha;
+}
+
+int Usuario::getId() {
+    return this->id;
+}
+
+void Usuario::setId(int id) {
+    this->id = id;
 }

@@ -1,28 +1,41 @@
 #ifndef USUARIO_H
 #define USUARIO_H
 #include <string>
+
 using namespace std;
 
 class Pila;
 class SimpleAmistad;
+class Matriz;
 
 class Usuario {
     private:
+        static int idCounter;
+        int id;
+        DoublyLinkedList* publicacionesPersonales;
+        DoublyCircular* publicacionesAmigos;
         string nombre;
         string apellido;
         string fechaNacimiento;
         string email;
         string password;
+        Matriz* relacionesGlobal;
         Pila* recepcion;
         SimpleAmistad* solicitudes;
+        int numRelaciones;
+        int numPublicaciones;
         void decidirSolicitudes(bool& decision);
     public:
         Usuario();
+        Usuario(string nombre, int id);
         Usuario(string nome, string apellido, string fechaNacimiento, string email, string pass);
         void addSolicitud(Usuario* user);
         void rechazarSolicitud();
-        void decidirSolicitudes();
+        void aceptarSolicitud();
+        void decidirSolicitudes(Matriz* relaciones);
         bool findSolicitud(string email);
+        int getId();
+        void setId(int id);
         string getNombre();
         string getApellido();
         string getFechaNac();

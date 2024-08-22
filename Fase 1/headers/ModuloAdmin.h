@@ -1,18 +1,32 @@
-/*#include <iostream>
+#include <fstream>
+#include "../tinyfiledialogs/tinyfiledialogs.h"
+#include "../nlohmann/json.hpp" 
+#include <iostream>
 #include <string>
+#include "../tinyfiledialogs/tinyfiledialogs.h"
+#include "../nlohmann/json.hpp"
+#include "Usuario.h"
+#include "../Estructuras/Matriz.h"
 
+
+using namespace nlohmann;
 using namespace std;
 
-class ModuloUsuario{
+class ModuloAdmin{
     private:
         Usuario *user;
         bool inter;
         DoublyLinkedList* listaPublicaciones;
+        ListaSimple* listaUsuarios;
+        Matriz* matrizRelaciones;
     public:
-        ModuloUsuario(Usuario& entrada, DoublyLinkedList* listaEntrada){user = &entrada; inter = false; listaPublicaciones = listaEntrada;};
+        ModuloAdmin(Usuario& entrada, DoublyLinkedList* listaEntrada, ListaSimple* usuarios, Matriz* relaciones);
         void encabezadoInterfaz();
-        void menu();
         void bucleInterfaz();
-        void crearPublicacion();    
+        char* buscarDireccion();
+        void cargaUsuarios();
+        void cargaRelaciones();
+        void cargarPublicaciones();
 
-};*/
+
+};
