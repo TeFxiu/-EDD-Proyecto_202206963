@@ -1,8 +1,11 @@
 #include "../Estructuras/EnlazadaDoble.cpp"
 #include "../Estructuras/EnlazadaSimple.cpp"
+#include "../Estructuras/CircularDoble.cpp"
 
 #include "ModuloUsuario.h"
 #include <string>
+#include <windows.h>
+
 using namespace std;
 
 ModuloUsuario::ModuloUsuario(Usuario& entrada, DoublyLinkedList* listaEntrada, ListaSimple* usuarios, Matriz* relaciones){
@@ -19,6 +22,38 @@ void ModuloUsuario::encabezadoInterfaz(){
     cout << "Hola " << this->user->getNombre() << " " << this->user->getApellido() << endl;
 }
 
+void ModuloUsuario::verPublicaciones(){
+    cout<< "Sus amigos y usted tienen estas publicaciones"<< endl;
+    while(true){
+        if(GetAsyncKeyState(VK_RIGHT)& 0x8000){
+            DoublyCircular* coleccion = user->publicacionesAmigos;
+            Publicacion* contenido = coleccion->mostrarPublicacionDer();
+            if (contenido != nullptr) {
+                cout << "Usuario: " << contenido->getId() << endl;
+                cout << "Publicacion: " << contenido->getTexto() << endl;
+                cout << "Fecha: " << contenido->getFecha() << endl;
+                cout << "Hora: " << contenido->getHora() << endl;
+            }
+            Sleep(300);
+        }
+        if(GetAsyncKeyState(VK_LEFT)& 0x8000){
+            DoublyCircular* coleccion = user->publicacionesAmigos;
+            Publicacion* contenido = coleccion->mostrarPublicacionIzq();
+            if (contenido != nullptr) {
+                cout << "Usuario" << contenido->getId() << endl;
+                cout << "Publicacion: " << contenido->getTexto() << endl;
+                cout << "Fecha: " << contenido->getFecha() << endl;
+                cout << "Hora: " << contenido->getHora() << endl;
+            }
+            Sleep(300);
+        }
+        if(GetAsyncKeyState(VK_ESCAPE)& 0x8000){
+            break;
+        }
+        Sleep(50);
+    }
+}
+
 void ModuloUsuario::subModuloStories(int eleccion, bool bucle){
         bucle = true;
         do {
@@ -30,8 +65,7 @@ void ModuloUsuario::subModuloStories(int eleccion, bool bucle){
             switch (eleccion)
             {
             case 1:
-                cout << "Publicaciones: " << endl;
-                this->listaPublicaciones->mostrar();
+                verPublicaciones();
                 break;
             case 2:
                 this->crearPublicacion();
@@ -175,6 +209,8 @@ void ModuloUsuario::crearPublicacion(){
     publicacion.setTexto(texto);
     this->obtenerFechaHora(publicacion);
     this->listaPublicaciones->append(publicacion);
+    this->user->numPublicaciones++;
+    this->user->publicacionesPersonales->append(publicacion);
     cout << "Publicacion creada" << endl;
 }
 

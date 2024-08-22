@@ -7,13 +7,13 @@ using namespace std;
 class Pila;
 class SimpleAmistad;
 class Matriz;
+class DoublyCircular;
+class DoublyLinkedList;
 
 class Usuario {
     private:
         static int idCounter;
         int id;
-        DoublyLinkedList* publicacionesPersonales;
-        DoublyCircular* publicacionesAmigos;
         string nombre;
         string apellido;
         string fechaNacimiento;
@@ -22,15 +22,17 @@ class Usuario {
         Matriz* relacionesGlobal;
         Pila* recepcion;
         SimpleAmistad* solicitudes;
-        int numRelaciones;
-        int numPublicaciones;
         void decidirSolicitudes(bool& decision);
     public:
         Usuario();
         Usuario(string nombre, int id);
         Usuario(string nome, string apellido, string fechaNacimiento, string email, string pass);
+        DoublyCircular* publicacionesAmigos;
+        int numRelaciones;
+        int numPublicaciones;
         void addSolicitud(Usuario* user);
         void rechazarSolicitud();
+        void addStoriesAmigos(DoublyLinkedList* entrada);
         void aceptarSolicitud();
         void decidirSolicitudes(Matriz* relaciones);
         bool findSolicitud(string email);
@@ -41,6 +43,7 @@ class Usuario {
         string getFechaNac();
         string getEmail();
         string getPass();
+        DoublyLinkedList* publicacionesPersonales;
         void setNombre(string nome);
         void setApellido(string apellido);
         void setFechaNac(string fecha);

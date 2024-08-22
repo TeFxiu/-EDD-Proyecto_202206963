@@ -23,6 +23,7 @@ class ModuloUsuario{
         void bucleInterfaz();
         void crearPublicacion();
         int menuPrincipal();
+        void verPublicaciones();
         void subModuloSolicitudes(int eleccion, bool bucle);
         void obtenerFechaHora(Publicacion& publicacion);  
         void subModuloStories(int eleccion, bool bucle);

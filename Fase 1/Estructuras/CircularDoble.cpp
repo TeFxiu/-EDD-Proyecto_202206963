@@ -10,8 +10,9 @@ class DoublyCircular {
 private:
     NodoListas *head;
     NodoListas *tail;
+    NodoListas *actual;
 public:
-    DoublyCircular() : head(nullptr), tail(nullptr) {};
+    DoublyCircular() : head(nullptr), tail(nullptr), actual(head) {};
 
     bool estaVacia() { return head == nullptr; };
 
@@ -51,6 +52,51 @@ public:
         }
     }
 
+    Publicacion* mostrarPublicacionDer(){
+        if (estaVacia()){
+            cout << "No hay publicaciones por mostrar"<< endl;
+            return nullptr;
+        }
+        if (actual == nullptr){
+            actual = head;
+        }
+        NodoListas* temp = head;
+        while(temp != actual){
+            temp = temp->siguiente;
+        }
 
+        Publicacion* contenido = temp->listaPublicaciones->mostrarPublicacionesDer();
+        if (contenido == nullptr){
+            return contenido;
+        }
+
+        if (contenido->final){
+            actual = actual->siguiente;
+        }
+        return contenido;
+    }
+    Publicacion* mostrarPublicacionIzq(){
+        if (estaVacia()){
+            cout << "No hay publicaciones por mostrar"<< endl;
+            return nullptr;
+        }
+        if (actual == nullptr){
+            actual = head;
+        }
+        NodoListas* temp = head;
+        while(temp != actual){
+            temp = temp->siguiente;
+        }
+
+        Publicacion* contenido = temp->listaPublicaciones->mostrarPublicacionesIzq();
+        if (contenido == nullptr){
+            return contenido;
+        }
+
+        if (contenido->final){
+            actual = actual->anterior;
+        }
+        return contenido;
+    }
 };
 #endif

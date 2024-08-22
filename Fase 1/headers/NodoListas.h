@@ -10,7 +10,7 @@ struct NodoListas
     DoublyLinkedList* listaPublicaciones;
     NodoListas* siguiente;
     NodoListas* anterior;
-    NodoListas(Publicacion entrada):dato(entrada), siguiente(nullptr), anterior(nullptr){};
+    NodoListas(DoublyLinkedList* entrada):listaPublicaciones(entrada), siguiente(nullptr), anterior(nullptr){};
 
 };
 #endif

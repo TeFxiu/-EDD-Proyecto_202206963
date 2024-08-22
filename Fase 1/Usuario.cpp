@@ -3,7 +3,7 @@
 #include "./Estructuras/Pila.cpp"
 #include "./Estructuras/SimpleAmistad.cpp"
 #include "./Estructuras/Matriz.h"
-#include "../Estructuras/CircularDoble.cpp"
+#include "./Estructuras/CircularDoble.cpp"
 #include "./Estructuras/EnlazadaDoble.cpp"
 
 using namespace std;
@@ -18,12 +18,13 @@ Usuario::Usuario() {
     this->password = "";
     this->recepcion = new Pila();
     this->solicitudes = new SimpleAmistad();
-    this->publicaciones = new DoublyCircular();
+    this->publicacionesAmigos = new DoublyCircular();
     this->relacionesGlobal = nullptr;
     this->publicacionesPersonales = new DoublyLinkedList();
     this->numRelaciones = 0;
     this->numPublicaciones = 0;
-    this->id = 0;    
+    this->id = 0;
+    publicacionesAmigos->append(publicacionesPersonales);
 }
 
 Usuario::Usuario(string nome, string apellido, string fechaNacimiento, string email, string pass) {
@@ -40,6 +41,7 @@ Usuario::Usuario(string nome, string apellido, string fechaNacimiento, string em
     this->numRelaciones = 0;
     this->numPublicaciones = 0;
     this->id = idCounter++;
+    publicacionesAmigos->append(publicacionesPersonales);
 }
 
 Usuario::Usuario(string nome, int id) {
@@ -72,6 +74,10 @@ void Usuario::aceptarSolicitud(){
         this->publicacionesAmigos->append(user->publicacionesPersonales);
         user->publicacionesAmigos->append(this->publicacionesPersonales);
         cout << "Solicitud de amistad aceptada" << endl;
+}
+
+void Usuario::addStoriesAmigos(DoublyLinkedList* entrada){
+    this->publicacionesAmigos->append(entrada);
 }
 
 void Usuario::decidirSolicitudes(bool& decision){

@@ -11,8 +11,9 @@ class DoublyLinkedList{
     private:
         NodoStories *head;
         NodoStories *tail;
+        NodoStories *actual;
     public:
-        DoublyLinkedList():head(nullptr), tail(nullptr){};
+        DoublyLinkedList():head(nullptr), tail(nullptr), actual(head){};
         bool estaVacia() {return head == nullptr;};
         void append(Publicacion dato){
             NodoStories* newNodo = new NodoStories(dato);
@@ -75,22 +76,52 @@ class DoublyLinkedList{
             
         }*/
 
-        void mostrar(){
+        Publicacion* mostrarPublicacionesDer(){
             NodoStories* current = head;
-            if (this->estaVacia()){
-                cout << "La lista esta vacia" <<endl;
-                return;
+            if (this->estaVacia()) {
+                cout << "La lista esta vacia" << endl;
+                return nullptr;
             }
-            while(current != nullptr) {
-                cout << "Email: " << current->dato.getId() << endl;
-                cout << "Texto: " << current->dato.getTexto() << endl;
-                cout << "Fecha: " << current->dato.getFecha() << endl;
-                cout << "Hora:  " << current->dato.getHora() << endl;
-                cout << "--------------------------------" << endl;
+            if (actual == nullptr){
+                actual = head;
+            }
+            while(current != actual){
                 current = current->siguiente;
             }
-        }
 
+            Publicacion& devolver = current->dato;
+
+            if (actual->siguiente != nullptr){
+                actual = actual->siguiente;
+            }else{
+                actual = head;
+                devolver.final = true;
+            }
+            return &devolver;
+        }
+        Publicacion* mostrarPublicacionesIzq(){
+            NodoStories* current = head;
+            if (this->estaVacia()) {
+                cout << "La lista esta vacia" << endl;
+                return nullptr;
+            }
+            if (actual == nullptr){
+                actual = head;
+            }
+            while(current != actual){
+                current = current->siguiente;
+            }
+
+            Publicacion& devolver = current->dato;
+
+            if (actual->siguiente != nullptr){
+                actual = actual->anterior;
+            }else{
+                actual = head;
+                devolver.final = true;
+            }
+            return &devolver;
+        }
 
         /*
         void graph(){

@@ -10,8 +10,7 @@ ModuloAdmin::ModuloAdmin(Usuario& entrada, DoublyLinkedList* listaEntrada, Lista
     inter = false;
 }
 
-void ModuloAdmin::encabezadoInterfaz(){
-    cout << "Bienvenido " << user->getNombre() << " " << endl;
+void ModuloAdmin::encabezadoInterfaz(){ 
     cout << "1. Carga de usuarios" << endl;
     cout << "2. Carga de relaciones" << endl;
     cout << "3. Carga de publicaciones" << endl;
@@ -80,8 +79,11 @@ void ModuloAdmin::cargarPublicaciones(){
             it.value()["fecha"],
             it.value()["hora"]
         );
+        listaUsuarios->findEmail(it.value()["correo"]);
+        Usuario& usuario = listaUsuarios->getCredenciales();
+        usuario.publicacionesPersonales->append(nuevaPublicacion);
+        usuario.numPublicaciones++;
         listaPublicaciones->append(nuevaPublicacion);
-
     }
 }
 
@@ -105,6 +107,10 @@ void ModuloAdmin::cargaRelaciones(){
 
         if(estado == "ACEPTADA"){
             matrizRelaciones->insertarAmistad(emisor, receptor);
+            emisor.numRelaciones++;
+            receptor.numRelaciones++;
+            emisor.addStoriesAmigos(receptor.publicacionesPersonales);
+            receptor.addStoriesAmigos(emisor.publicacionesPersonales);
         }else{
             receptor.addSolicitud(&emisor);
         }

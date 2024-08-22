@@ -11,8 +11,9 @@ class Publicacion{
         string fecha;
         string hora;
     public:
-        Publicacion():id(""), texto(""), fecha(""), hora(""){};
-        Publicacion(string _id, string _texto ,string _fecha, string _hora):id(_id),texto(_texto), fecha(_fecha), hora(_hora) {};
+        bool final;
+        Publicacion():id(""), texto(""), fecha(""), hora(""), final(false){};
+        Publicacion(string _id, string _texto ,string _fecha, string _hora):id(_id),texto(_texto), fecha(_fecha), hora(_hora), final(false) {};
         string getId(){return id;};
         string getTexto(){return texto;};
         string getFecha(){return fecha;};
