@@ -98,5 +98,45 @@ public:
         }
         return contenido;
     }
+
+    void eliminar(string email){
+        if (estaVacia()){
+            cout << "No hay publicaciones por eliminar" << endl;
+            return;
+        }
+        NodoListas* temp = head;
+        while(temp->listaPublicaciones->propietario != email){
+            temp = temp->siguiente;
+        }
+
+        if (temp == head && temp == tail){
+            head = nullptr;
+            tail = nullptr;
+            delete temp;
+            return;
+        }
+
+        if (temp == head){
+            head = head->siguiente;
+            head->anterior = tail;
+            tail->siguiente = head;
+            delete temp;
+            return;
+        }
+
+        if (temp == tail){
+            tail = tail->anterior;
+            tail->siguiente = head;
+            head->anterior = tail;
+            delete temp;
+            return;
+        }
+
+        temp->anterior->siguiente = temp->siguiente;
+        temp->siguiente->anterior = temp->anterior;
+        delete temp;
+        return;
+
+    }
 };
 #endif

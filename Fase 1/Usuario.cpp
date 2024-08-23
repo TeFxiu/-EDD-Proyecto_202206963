@@ -10,7 +10,8 @@ using namespace std;
 
 int Usuario::idCounter = 0;
 
-Usuario::Usuario() {
+Usuario::Usuario(Matriz* general) {
+    this->id = idCounter++;
     this->nombre = "";
     this->email = "";
     this->apellido = "";
@@ -19,15 +20,30 @@ Usuario::Usuario() {
     this->recepcion = new Pila();
     this->solicitudes = new SimpleAmistad();
     this->publicacionesAmigos = new DoublyCircular();
-    this->relacionesGlobal = nullptr;
-    this->publicacionesPersonales = new DoublyLinkedList();
+    this->relacionesGlobal = general;
+    this->publicacionesPersonales = new DoublyLinkedList(this->email);
     this->numRelaciones = 0;
     this->numPublicaciones = 0;
-    this->id = 0;
-    publicacionesAmigos->append(publicacionesPersonales);
+    this->publicacionesAmigos->append(this->publicacionesPersonales);
 }
 
-Usuario::Usuario(string nome, string apellido, string fechaNacimiento, string email, string pass) {
+Usuario::Usuario(string nome, int id) {
+    this->id = id;
+    this->nombre =nome;
+    this->email = "";
+    this->apellido = "";
+    this->fechaNacimiento = "";
+    this->password = "";
+    this->recepcion = nullptr;
+    this->solicitudes = nullptr;
+    this->publicacionesAmigos = nullptr;
+    this->relacionesGlobal = nullptr;
+    this->publicacionesPersonales = nullptr;
+    this->numRelaciones = 0;
+    this->numPublicaciones = 0;
+}
+
+Usuario::Usuario(string nome, string apellido, string fechaNacimiento, string email, string pass, Matriz* general) {
     this->nombre = nome;
     this->email = email;
     this->apellido = apellido;
@@ -36,23 +52,22 @@ Usuario::Usuario(string nome, string apellido, string fechaNacimiento, string em
     this->recepcion = new Pila();
     this->solicitudes = new SimpleAmistad();
     this->publicacionesAmigos = new DoublyCircular();
-    this->publicacionesPersonales = new DoublyLinkedList();
-    this->relacionesGlobal = nullptr;
+    this->publicacionesPersonales = new DoublyLinkedList(this->email);
+    this->relacionesGlobal = general;
     this->numRelaciones = 0;
     this->numPublicaciones = 0;
     this->id = idCounter++;
     publicacionesAmigos->append(publicacionesPersonales);
 }
 
-Usuario::Usuario(string nome, int id) {
-    this->nombre = nome;
-    this->id = id;
-}
-
 void Usuario::addSolicitud(Usuario* user) {
     Amistad nueva(user, this);
     this->recepcion->push(nueva);
     user->solicitudes->append(nueva);
+}
+
+void Usuario::restarRelaciones(){
+    numRelaciones--;
 }
 
 bool Usuario::findSolicitud(string email) {
@@ -68,13 +83,32 @@ void Usuario::rechazarSolicitud(){
 void Usuario::aceptarSolicitud(){
         Usuario* user = this->recepcion->pop();
         user->solicitudes->solicitudRechazada(this->email);
-        this->relacionesGlobal->insertarAmistad(*this, *user);
+        this->relacionesGlobal->insertarAmistad(this, user);
         this->numRelaciones++;
-        user->numRelaciones++;
+        user->setNumRelaciones();
         this->publicacionesAmigos->append(user->publicacionesPersonales);
         user->publicacionesAmigos->append(this->publicacionesPersonales);
         cout << "Solicitud de amistad aceptada" << endl;
 }
+
+void Usuario::eliminarSolicitud(string email){
+    this->recepcion->eliminarCola(email);
+}
+
+void Usuario::eliminarSolicitudes(){
+    while(!this->recepcion->estaVacia()){
+        Usuario* user = this->recepcion->pop();
+        user->solicitudes->solicitudRechazada(this->email);
+    }
+
+    Amistad temp = this->solicitudes->extraer();
+    while(temp.getReceptor() != nullptr){
+        temp.getReceptor()->eliminarSolicitud(this->email);
+        temp = this->solicitudes->extraer();
+    }
+}
+
+
 
 void Usuario::addStoriesAmigos(DoublyLinkedList* entrada){
     this->publicacionesAmigos->append(entrada);
@@ -116,14 +150,12 @@ void Usuario::decidirSolicitudes(bool& decision){
     }
 }
 
-void Usuario::decidirSolicitudes(Matriz* matrizRelaciones){
+void Usuario::decidirSolicitudes(){
     bool decision = true;
-    this->relacionesGlobal = matrizRelaciones;
     do{
         decidirSolicitudes(decision);
     }while(decision);
 }
-
 
 string Usuario::getNombre() {
     return this->nombre;
@@ -171,4 +203,67 @@ int Usuario::getId() {
 
 void Usuario::setId(int id) {
     this->id = id;
+}
+
+void Usuario::setRelacionesGlobal(Matriz* relaciones) {
+    this->relacionesGlobal = relaciones;
+}
+
+void Usuario::setRecepcion(Pila* recepcion) {
+    this->recepcion = recepcion;
+}
+
+void Usuario::setSolicitudes(SimpleAmistad* solicitudes) {
+    this->solicitudes = solicitudes;
+}
+
+void Usuario::setPublicacionesAmigos(DoublyCircular* publicacionesAmigos) {
+    this->publicacionesAmigos = publicacionesAmigos;
+}
+
+void Usuario::setPublicacionesPersonales(DoublyLinkedList* publicacionesPersonales) {
+    this->publicacionesPersonales = publicacionesPersonales;
+}
+
+void Usuario::setNumRelaciones() {
+    this->numRelaciones = 1+ numRelaciones;
+}
+
+void Usuario::setNumPublicaciones() {
+    this->numPublicaciones = 1+numPublicaciones;
+}
+
+Matriz* Usuario::getRelacionesGlobal() {
+    return this->relacionesGlobal;
+}
+
+Pila* Usuario::getRecepcion() {
+    return this->recepcion;
+}
+
+SimpleAmistad* Usuario::getSolicitudes() {
+    return this->solicitudes;
+}
+
+DoublyCircular* Usuario::getPublicacionesAmigos() {
+    return this->publicacionesAmigos;
+}
+
+DoublyLinkedList* Usuario::getPublicacionesPersonales() {
+    return this->publicacionesPersonales;
+}
+
+int Usuario::getNumRelaciones() {
+    return this->numRelaciones;
+}
+
+int Usuario::getNumPublicaciones() {
+    return this->numPublicaciones;
+}
+
+Usuario::~Usuario() {
+    delete this->recepcion;
+    delete this->solicitudes;
+    delete this->publicacionesAmigos;
+    delete this->publicacionesPersonales;
 }

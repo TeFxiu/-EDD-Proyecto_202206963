@@ -13,9 +13,10 @@ class DoublyLinkedList{
         NodoStories *tail;
         NodoStories *actual;
     public:
-        DoublyLinkedList():head(nullptr), tail(nullptr), actual(head){};
+        string propietario;
+        DoublyLinkedList(string propietario):head(nullptr), tail(nullptr), actual(head), propietario(propietario){};
         bool estaVacia() {return head == nullptr;};
-        void append(Publicacion dato){
+        void append(Publicacion* dato){
             NodoStories* newNodo = new NodoStories(dato);
             if (this->estaVacia()) {
                 head = newNodo;
@@ -27,7 +28,7 @@ class DoublyLinkedList{
             }
         }
 
-        void push(Publicacion dato){
+        void push(Publicacion* dato){
             NodoStories* newNodo = new NodoStories(dato);
             if (this->estaVacia()) {
                 head = newNodo;
@@ -39,42 +40,41 @@ class DoublyLinkedList{
             }
         }
 
-        /*
-        void remove(string dato){
+        void removeAll(string dato){
             NodoStories* temp = head;
-            if (this->estaVacia()){
-                cout << "La lista esta vacia" <<endl;
-                return;
+            while(temp != nullptr){
+                if (this->estaVacia()){
+                    cout << "La lista esta vacia" <<endl;
+                    return;
 
-            }
-            while(temp != nullptr && temp->dato.getEmail() != dato){
-                temp = temp->siguiente;
-            }
-            if (temp == nullptr){
-                cout << "El dato no se encuentra en la lista" <<endl;
-                return;
-            }
+                }
+                while(temp != nullptr && temp->dato->getId() != dato){
+                    temp = temp->siguiente;
+                }
+                if (temp == nullptr){
+                    cout << "El dato no se encuentra en la lista" <<endl;
+                    return;
+                }
 
-            if (temp == head){
-                NodoStories* del = head;
-                head = head->siguiente;
-                head->anterior = nullptr;
-                delete del;
-            }else if (temp == tail){
-                NodoStories* del = tail;
-                tail = tail->anterior;
-                tail->siguiente = nullptr;
-                delete del;
-            }else{
-                NodoStories* del = temp;
-                temp->anterior->siguiente = temp->siguiente;
-                temp->siguiente->anterior = temp->anterior;
-                delete del;
+                if (temp == head){
+                    NodoStories* del = head;
+                    head = head->siguiente;
+                    head->anterior = nullptr;
+                    delete del;
+                }else if (temp == tail){
+                    NodoStories* del = tail;
+                    tail = tail->anterior;
+                    tail->siguiente = nullptr;
+                    delete del;
+                }else{
+                    NodoStories* del = temp;
+                    temp->anterior->siguiente = temp->siguiente;
+                    temp->siguiente->anterior = temp->anterior;
+                    temp = temp->siguiente;
+                    delete del;
+                }   
             }
-
-            
-            
-        }*/
+        }
 
         Publicacion* mostrarPublicacionesDer(){
             NodoStories* current = head;
@@ -89,15 +89,15 @@ class DoublyLinkedList{
                 current = current->siguiente;
             }
 
-            Publicacion& devolver = current->dato;
+            Publicacion* devolver = current->dato;
 
             if (actual->siguiente != nullptr){
                 actual = actual->siguiente;
             }else{
                 actual = head;
-                devolver.final = true;
+                devolver->final = true;
             }
-            return &devolver;
+            return devolver;
         }
         Publicacion* mostrarPublicacionesIzq(){
             NodoStories* current = head;
@@ -106,21 +106,21 @@ class DoublyLinkedList{
                 return nullptr;
             }
             if (actual == nullptr){
-                actual = head;
+                actual = tail;
             }
             while(current != actual){
                 current = current->siguiente;
             }
 
-            Publicacion& devolver = current->dato;
+            Publicacion* devolver = current->dato;
 
-            if (actual->siguiente != nullptr){
+            if (actual->anterior != nullptr){
                 actual = actual->anterior;
             }else{
-                actual = head;
-                devolver.final = true;
+                actual = tail;
+                devolver->final = true;
             }
-            return &devolver;
+            return devolver;
         }
 
         /*

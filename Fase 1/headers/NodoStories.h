@@ -7,10 +7,10 @@ using namespace std;
 
 struct NodoStories
 {
-    Publicacion dato;
+    Publicacion* dato;
     NodoStories* siguiente;
     NodoStories* anterior;
-    NodoStories(Publicacion entrada):dato(entrada), siguiente(nullptr), anterior(nullptr){};
+    NodoStories(Publicacion* entrada):dato(entrada), siguiente(nullptr), anterior(nullptr){};
 
 };
 #endif

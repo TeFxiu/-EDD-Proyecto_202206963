@@ -8,8 +8,8 @@
 
 using namespace std;
 
-ModuloUsuario::ModuloUsuario(Usuario& entrada, DoublyLinkedList* listaEntrada, ListaSimple* usuarios, Matriz* relaciones){
-    this->user = &entrada;
+ModuloUsuario::ModuloUsuario(Usuario* entrada, DoublyLinkedList* listaEntrada, ListaSimple* usuarios, Matriz* relaciones){
+    this->user = entrada;
     this->listaPublicaciones = listaEntrada;
     this->listaUsuarios = usuarios;
     this->matrizRelaciones = relaciones;
@@ -26,7 +26,7 @@ void ModuloUsuario::verPublicaciones(){
     cout<< "Sus amigos y usted tienen estas publicaciones"<< endl;
     while(true){
         if(GetAsyncKeyState(VK_RIGHT)& 0x8000){
-            DoublyCircular* coleccion = user->publicacionesAmigos;
+            DoublyCircular* coleccion = user->getPublicacionesAmigos();
             Publicacion* contenido = coleccion->mostrarPublicacionDer();
             if (contenido != nullptr) {
                 cout << "Usuario: " << contenido->getId() << endl;
@@ -37,7 +37,7 @@ void ModuloUsuario::verPublicaciones(){
             Sleep(300);
         }
         if(GetAsyncKeyState(VK_LEFT)& 0x8000){
-            DoublyCircular* coleccion = user->publicacionesAmigos;
+            DoublyCircular* coleccion = user->getPublicacionesAmigos();
             Publicacion* contenido = coleccion->mostrarPublicacionIzq();
             if (contenido != nullptr) {
                 cout << "Usuario" << contenido->getId() << endl;
@@ -59,8 +59,7 @@ void ModuloUsuario::subModuloStories(int eleccion, bool bucle){
         do {
             cout<< "1. Ver publicaciones"<<endl;
             cout<< "2. Crear publicacion"<<endl;
-            cout<< "3. Eliminar publicacion"<<endl;
-            cout << "4. Salir" << endl;
+            cout << "3. Salir" << endl;
             cin >> eleccion;
             switch (eleccion)
             {
@@ -71,8 +70,6 @@ void ModuloUsuario::subModuloStories(int eleccion, bool bucle){
                 this->crearPublicacion();
                 break;
             case 3:
-                break;
-            case 4:
                 bucle = false;
                 break;
             default:
@@ -83,6 +80,26 @@ void ModuloUsuario::subModuloStories(int eleccion, bool bucle){
         }while (bucle);
         
         
+}
+
+void ModuloUsuario::eliminarMiCuenta(string email){
+    cout << "Ingrese el email del usuario a eliminar: ";
+    cin >> email;
+    for(char &s:email){
+        s = tolower(s);
+    }
+    if(listaUsuarios->findEmail(email)){
+        cout << "Email no encontrado" << endl;
+        return;
+    }
+    Usuario* usuario = listaUsuarios->getCredenciales();
+    if (usuario->getNumRelaciones() != 0) {
+        matrizRelaciones->eliminarAmistad(usuario);
+        delete usuario->getPublicacionesPersonales();
+        this->listaPublicaciones->removeAll(usuario->getEmail());
+        usuario->eliminarSolicitudes();
+        listaUsuarios->remove(usuario->getEmail());
+    }
 }
 
 void ModuloUsuario::subModuloPerfil(int eleccion, bool bucle){
@@ -101,7 +118,7 @@ void ModuloUsuario::subModuloPerfil(int eleccion, bool bucle){
             cout << "Email: " << this->user->getEmail() << endl;
             break;
         case 2:
-            cout << "Cuenta eliminada" << endl;
+            eliminarMiCuenta(this->user->getEmail());
             bucle = false;
             break;
         case 3:
@@ -128,7 +145,7 @@ void ModuloUsuario::subModuloSolicitudes(int eleccion, bool bucle){
         {
         case 1:
             cout << "Solicitudes: " << endl;
-            this->user->decidirSolicitudes(matrizRelaciones);
+            this->user->decidirSolicitudes();
             break;
         case 2:
             cout << endl<< "Ingrese el email de la persona a la que desea enviar la solicitud: ";
@@ -138,10 +155,10 @@ void ModuloUsuario::subModuloSolicitudes(int eleccion, bool bucle){
             }
             if (!this->listaUsuarios->findEmail(email)){
                 if (!this->user->findSolicitud(email)){
-                    Usuario& solicitud = this->listaUsuarios->getCredenciales();
-                    bool verificar = matrizRelaciones->insertarAmistad(*user, solicitud, true);
+                    Usuario* solicitud = this->listaUsuarios->getCredenciales();
+                    bool verificar = matrizRelaciones->insertarAmistad(user, solicitud, true);
                     if (verificar){
-                        solicitud.addSolicitud(this->user);
+                        solicitud->addSolicitud(this->user);
                         cout << "Solicitud enviada" << endl;
                     }else{
                         cout << "Ya existe una relacion con este usuario" << endl;
@@ -189,6 +206,7 @@ void ModuloUsuario::menu(){
         this->subModuloStories(opInterna, bucleInterno);
         break;
     case 4:
+        this->inter = false;
         break;
     case 5:
         this->inter = false;
@@ -201,16 +219,16 @@ void ModuloUsuario::menu(){
 
 void ModuloUsuario::crearPublicacion(){
     string texto;
-    Publicacion publicacion;
-    publicacion.setId(this->user->getEmail());
+    Publicacion* publica = new Publicacion();
+    publica->setId(this->user->getEmail());
     cout << "Escriba su publicacion: ";
     cin.ignore();
     getline(cin, texto);
-    publicacion.setTexto(texto);
-    this->obtenerFechaHora(publicacion);
-    this->listaPublicaciones->append(publicacion);
-    this->user->numPublicaciones++;
-    this->user->publicacionesPersonales->append(publicacion);
+    publica->setTexto(texto);
+    this->obtenerFechaHora(publica);
+    this->listaPublicaciones->append(publica);
+    this->user->setNumPublicaciones();
+    this->user->getPublicacionesPersonales()->append(publica);
     cout << "Publicacion creada" << endl;
 }
 
@@ -222,17 +240,17 @@ void ModuloUsuario::bucleInterfaz(){
 
 }
 
-void ModuloUsuario::obtenerFechaHora(Publicacion& publicacion){
+void ModuloUsuario::obtenerFechaHora(Publicacion* publica){
     auto tiempoActual = chrono::system_clock::now();
     time_t fecha = chrono::system_clock::to_time_t(tiempoActual);
     tm* tiempo = localtime(&fecha);
 
     stringstream fechaStream;
     fechaStream << put_time(tiempo, "%d/%m/%Y");
-    publicacion.setFecha(fechaStream.str());
+    publica->setFecha(fechaStream.str());
 
     
     stringstream horaStream;
     horaStream << put_time(tiempo, "%H:%M");
-    publicacion.setHora(horaStream.str());
+    publica->setHora(horaStream.str());
 }

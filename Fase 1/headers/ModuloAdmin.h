@@ -27,6 +27,8 @@ class ModuloAdmin{
         void cargaUsuarios();
         void cargaRelaciones();
         void cargarPublicaciones();
+        void eliminarUsuario();
+        Usuario* buscarUsuario();
 
 
 };

@@ -13,9 +13,9 @@ using namespace std;
 
 bool inter = false;
 ListaSimple* listaUsuarios = new ListaSimple();
-DoublyLinkedList* listaPublicaciones = new DoublyLinkedList();
+DoublyLinkedList* listaPublicaciones = new DoublyLinkedList("general");
 Matriz* matrizRelaciones = new Matriz();
-Usuario admin("admin", "admin", "01/01/2000", "admin@gmail.com", "EDD2S2024");
+Usuario admin("admin", "admin", "01/01/2000", "admin@gmail.com", "EDD2S2024", matrizRelaciones);
 
 bool verificarFecha(string fecha){
     regex fechaRegex(R"(^([1-2][0-9]{3})/(0[1-9]|1[0-2])/(0[1-9]|[1-2][0-9]|3[0-1])$)");
@@ -74,14 +74,15 @@ void inicioSesion(){
     cin.ignore();
     getline(cin, pass);   
     if (listaUsuarios->comprobarCredenciales(email, pass)){
-        Usuario& user = listaUsuarios->getCredenciales();
+        Usuario* user = listaUsuarios->getCredenciales();
         ModuloUsuario* moduloU = new ModuloUsuario(user, listaPublicaciones, listaUsuarios, matrizRelaciones);
         moduloU->bucleInterfaz();
+        delete moduloU;
     }else{
         if (admin.getEmail() == email && admin.getPass() == pass){
-            cout << "Bienvenido Admin" <<endl;
             ModuloAdmin* moduloA = new ModuloAdmin(admin, listaPublicaciones, listaUsuarios, matrizRelaciones);
             moduloA->bucleInterfaz();
+            delete moduloA;
         }
         else{
             cout << "Credenciales incorrectas" <<endl;
@@ -119,7 +120,7 @@ void registro(){
     cin.ignore();
     getline(cin, pass);
 
-    Usuario user(nombre, apellido, fechaNacimiento, email, pass);
+    Usuario* user = new Usuario(nombre, apellido, fechaNacimiento, email, pass, matrizRelaciones);
     listaUsuarios->append(user);
     cout<<"Usuario creado exitosamente"<<endl;
     

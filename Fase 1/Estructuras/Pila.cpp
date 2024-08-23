@@ -11,6 +11,7 @@ class Pila{
     public:
         Pila(): top(nullptr) {};
         bool estaVacia() {return top == nullptr;};
+        
         void push(Amistad dato){
             NodoAmistad* newNodo = new NodoAmistad(dato);
             if (this->estaVacia()) {
@@ -40,7 +41,7 @@ class Pila{
         }
 
         void mostrarTop(){
-            cout << top->dato.getEmisor()->getEmail() ;
+            cout << top->dato.getEmisor()->getNombre() << top->dato.getEmisor()->getApellido();
         }
 
         Usuario* pop(){
@@ -50,8 +51,28 @@ class Pila{
                 NodoAmistad* temp = top;
                 top = top->siguiente;
                 Usuario* user = temp->dato.getEmisor();
-                delete temp;
                 return user;
             }
+        }
+
+        void eliminarCola(string eliminando){
+            NodoAmistad* temp = top;
+            NodoAmistad* prev = nullptr;
+            while (temp != nullptr && temp->dato.getEmisor()->getEmail() != eliminando)
+            {
+                prev = temp;
+                temp = temp->siguiente;
+            }
+            if (temp == nullptr){
+                cout << "El dato no se encuentra en la lista" <<endl;
+                return;
+            }
+            if (prev == nullptr){
+                top = top->siguiente;
+                delete temp;
+                return;
+            }
+            prev->siguiente = temp->siguiente;
+            delete temp;
         }
 };

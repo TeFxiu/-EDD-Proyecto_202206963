@@ -27,6 +27,19 @@ class SimpleAmistad{
             }
         };
 
+        Amistad extraer(){
+            if (this->estaVacia()){
+                cout << "La lista esta vacia" << endl;
+                return Amistad(nullptr, nullptr);
+            }else{
+                NodoAmistad* temp = head;
+                head = head->siguiente;
+                Amistad dato = temp->dato;
+                delete temp;
+                return dato;
+            }
+        }
+
         void push(Amistad dato){
             NodoAmistad* newNodo = new NodoAmistad(dato);
             if (this->estaVacia()) {

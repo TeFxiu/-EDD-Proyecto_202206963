@@ -17,15 +17,16 @@ class ModuloUsuario{
         ListaSimple* listaUsuarios;
         Matriz* matrizRelaciones;
     public:
-        ModuloUsuario(Usuario& entrada, DoublyLinkedList* listaEntrada, ListaSimple* usuarios, Matriz* relaciones);
+        ModuloUsuario(Usuario* entrada, DoublyLinkedList* listaEntrada, ListaSimple* usuarios, Matriz* relaciones);
         void encabezadoInterfaz();
         void menu();
         void bucleInterfaz();
         void crearPublicacion();
         int menuPrincipal();
         void verPublicaciones();
+        void eliminarMiCuenta(string email);
         void subModuloSolicitudes(int eleccion, bool bucle);
-        void obtenerFechaHora(Publicacion& publicacion);  
+        void obtenerFechaHora(Publicacion* publicacion);
         void subModuloStories(int eleccion, bool bucle);
         void subModuloPerfil(int eleccion, bool bucle);
 

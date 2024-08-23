@@ -14,7 +14,8 @@ void ModuloAdmin::encabezadoInterfaz(){
     cout << "1. Carga de usuarios" << endl;
     cout << "2. Carga de relaciones" << endl;
     cout << "3. Carga de publicaciones" << endl;
-    cout << "4. Salir" << endl;
+    cout << "4. Gestionar Usuarios" << endl;
+    cout << "5. Salir" << endl;
 }
 
 char* ModuloAdmin::buscarDireccion(){
@@ -35,7 +36,6 @@ char* ModuloAdmin::buscarDireccion(){
     return strdup(filepath);
 }
 
-
 void ModuloAdmin::cargaUsuarios(){
     char* direccion = buscarDireccion();
 
@@ -49,12 +49,13 @@ void ModuloAdmin::cargaUsuarios(){
     arch >> jsonData;
 
     for (const auto& it : jsonData.items()){
-        Usuario nuevoUsuario(
+        Usuario* nuevoUsuario = new Usuario(
             it.value()["nombres"],
             it.value()["apellidos"],
             it.value()["fecha_de_nacimiento"],
             it.value()["correo"],
-            it.value()["contraseña"]
+            it.value()["contraseña"],
+            matrizRelaciones
         );
         listaUsuarios->append(nuevoUsuario);
     }
@@ -73,16 +74,16 @@ void ModuloAdmin::cargarPublicaciones(){
     arch >> jsonData;
 
     for(const auto& it : jsonData.items()){
-        Publicacion nuevaPublicacion(
+        Publicacion* nuevaPublicacion = new Publicacion(
             it.value()["correo"],
             it.value()["contenido"],
             it.value()["fecha"],
             it.value()["hora"]
         );
         listaUsuarios->findEmail(it.value()["correo"]);
-        Usuario& usuario = listaUsuarios->getCredenciales();
-        usuario.publicacionesPersonales->append(nuevaPublicacion);
-        usuario.numPublicaciones++;
+        Usuario* usuario = listaUsuarios->getCredenciales();
+        usuario->getPublicacionesPersonales()->append(nuevaPublicacion);
+        usuario->setNumPublicaciones();
         listaPublicaciones->append(nuevaPublicacion);
     }
 }
@@ -101,23 +102,71 @@ void ModuloAdmin::cargaRelaciones(){
     for(const auto& it : jsonData.items()){
         string estado = it.value()["estado"];
         listaUsuarios->findEmail(it.value()["emisor"]);
-        Usuario& emisor = listaUsuarios->getCredenciales();
+        Usuario* emisor = listaUsuarios->getCredenciales();
         listaUsuarios->findEmail(it.value()["receptor"]);
-        Usuario& receptor = listaUsuarios->getCredenciales();
+        Usuario* receptor = listaUsuarios->getCredenciales();
 
         if(estado == "ACEPTADA"){
             matrizRelaciones->insertarAmistad(emisor, receptor);
-            emisor.numRelaciones++;
-            receptor.numRelaciones++;
-            emisor.addStoriesAmigos(receptor.publicacionesPersonales);
-            receptor.addStoriesAmigos(emisor.publicacionesPersonales);
+            emisor->setNumRelaciones();
+            receptor->setNumRelaciones();
+            emisor->addStoriesAmigos(receptor->getPublicacionesPersonales());
+            receptor->addStoriesAmigos(emisor->getPublicacionesPersonales());
         }else{
-            receptor.addSolicitud(&emisor);
+            receptor->addSolicitud(emisor);
         }
     }
 }
 
+Usuario* ModuloAdmin::buscarUsuario(){
+    Usuario* usuario = listaUsuarios->getCredenciales();
+    return usuario;
+}
 
+void ModuloAdmin::eliminarUsuario(){
+    int opcion = 0;    
+    while (opcion == 0)
+    {
+        cout << "Gestionar usuarios" << endl;
+        cout << "1. Eliminar usuario" << endl;
+        cout << "2. salir" << endl;
+        string email;
+        Usuario* usuario = nullptr;
+        cin >> opcion;
+        switch (opcion)
+        {
+        case 1:
+            cout << "Ingrese el email del usuario a eliminar: ";
+            cin >> email;
+            for(char &s:email){
+                s = tolower(s);
+            }
+            if(listaUsuarios->findEmail(email)){
+                cout << "Email no encontrado" << endl;
+                return;
+            }
+            usuario = buscarUsuario();
+            if (usuario->getNumRelaciones() != 0) {
+                matrizRelaciones->eliminarAmistad(usuario);
+                delete usuario->getPublicacionesPersonales();
+                this->listaPublicaciones->removeAll(usuario->getEmail());
+                usuario->eliminarSolicitudes();
+                listaUsuarios->remove(usuario->getEmail());
+
+            }
+            cout << "Usuario eliminado" << endl;
+            opcion = 0;
+            break;
+        case 2:
+            opcion = 1;
+            cout << "Saliendo..." << endl;
+            break;
+            default:
+                break;
+        }
+    }
+    
+}
 
 void ModuloAdmin::bucleInterfaz(){
     int opcion;
@@ -140,6 +189,9 @@ void ModuloAdmin::bucleInterfaz(){
             cargarPublicaciones();
             break;
         case 4:
+            eliminarUsuario();
+            break;
+        case 5:
             cout << "Saliendo..." << endl;
             opcion = 0;
             break;

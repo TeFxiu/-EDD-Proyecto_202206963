@@ -22,19 +22,24 @@ class Usuario {
         Matriz* relacionesGlobal;
         Pila* recepcion;
         SimpleAmistad* solicitudes;
-        void decidirSolicitudes(bool& decision);
-    public:
-        Usuario();
-        Usuario(string nombre, int id);
-        Usuario(string nome, string apellido, string fechaNacimiento, string email, string pass);
         DoublyCircular* publicacionesAmigos;
+        DoublyLinkedList* publicacionesPersonales;
         int numRelaciones;
         int numPublicaciones;
-        void addSolicitud(Usuario* user);
-        void rechazarSolicitud();
-        void addStoriesAmigos(DoublyLinkedList* entrada);
+        void decidirSolicitudes(bool& decision);
         void aceptarSolicitud();
-        void decidirSolicitudes(Matriz* relaciones);
+        void rechazarSolicitud();
+    public:
+        Usuario(Matriz* general);
+        Usuario(string nombre, int id);
+        Usuario(string nome, string apellido, string fechaNacimiento, string email, string pass, Matriz* general);
+        void addSolicitud(Usuario* user);
+        void eliminarSolicitudes();
+        void eliminarSolicitud(string email);
+        
+        void restarRelaciones();
+        void addStoriesAmigos(DoublyLinkedList* entrada);
+        void decidirSolicitudes();
         bool findSolicitud(string email);
         int getId();
         void setId(int id);
@@ -43,11 +48,25 @@ class Usuario {
         string getFechaNac();
         string getEmail();
         string getPass();
-        DoublyLinkedList* publicacionesPersonales;
         void setNombre(string nome);
         void setApellido(string apellido);
         void setFechaNac(string fecha);
         void setEmail(string email);
         void setPass(string pass);
+        void setRelacionesGlobal(Matriz* relaciones);
+        void setRecepcion(Pila* recepcion);
+        void setSolicitudes(SimpleAmistad* solicitudes);
+        void setPublicacionesAmigos(DoublyCircular* publicacionesAmigos);
+        void setPublicacionesPersonales(DoublyLinkedList* publicacionesPersonales);
+        void setNumRelaciones();
+        void setNumPublicaciones();
+        Matriz* getRelacionesGlobal();
+        Pila* getRecepcion();
+        SimpleAmistad* getSolicitudes();
+        DoublyCircular* getPublicacionesAmigos();
+        DoublyLinkedList* getPublicacionesPersonales();
+        int getNumRelaciones();
+        int getNumPublicaciones();
+        ~Usuario();
 };
 #endif

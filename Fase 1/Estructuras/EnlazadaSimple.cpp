@@ -6,14 +6,14 @@ using namespace std;
 
 class ListaSimple{
     private:
-        NodoUser *head;
+        NodoUser* head;
         NodoUser* retorno;
     public:
         ListaSimple():head(nullptr),retorno(nullptr){};
         
         bool estaVacia() {return head == nullptr;};
 
-        void append(Usuario dato){
+        void append(Usuario* dato){
             NodoUser* newNodo = new NodoUser(dato);
             if (this->estaVacia()) {
                 head = newNodo;
@@ -27,7 +27,7 @@ class ListaSimple{
             }
         };
 
-        void push(Usuario dato){
+        void push(Usuario* dato){
             NodoUser* newNodo = new NodoUser(dato);
             if (this->estaVacia()) {
                 head = newNodo;
@@ -37,22 +37,9 @@ class ListaSimple{
             }
         }
 
-        void mostrarDatos(){
-            NodoUser* temp = head;
-            while (temp != nullptr){
-                cout << temp->dato.getNombre() <<endl;
-                cout << temp->dato.getApellido() <<endl;
-                cout << temp->dato.getFechaNac() <<endl;
-                cout << temp->dato.getEmail() <<endl;
-                cout << temp->dato.getPass() <<endl;
-                cout << temp->dato.getId() <<endl;
-                temp = temp->siguiente;
-            }
-        };
-
         bool findEmail(string email){
             NodoUser* temp = head;
-            while (temp != nullptr && temp->dato.getEmail() != email)
+            while (temp != nullptr && temp->dato->getEmail() != email)
             {
                 temp = temp->siguiente;
             }
@@ -66,14 +53,14 @@ class ListaSimple{
 
         bool comprobarCredenciales(string email, string pass){
             NodoUser* temp = head;
-            while (temp != nullptr && temp->dato.getEmail() != email)
+            while (temp != nullptr && temp->dato->getEmail() != email)
             {
                 temp = temp->siguiente;
             }
             if (temp == nullptr){
                 return false;
             }else{
-                if (temp->dato.getPass() == pass){
+                if (temp->dato->getPass() == pass){
                     retorno = temp;
                     return true;
                 }else{
@@ -82,7 +69,7 @@ class ListaSimple{
             }
         }
 
-        Usuario& getCredenciales(){
+        Usuario* getCredenciales(){
                 NodoUser* temp = retorno;
                 retorno = nullptr;
                 return temp->dato;
@@ -91,14 +78,15 @@ class ListaSimple{
         void remove(string dato){
             if (estaVacia()){
                 cout << "La lista esta vacia" <<endl;
-            }else if (head->dato.getEmail() == dato){
+            }else if (head->dato->getEmail() == dato){
                 NodoUser* temp = head;
                 head = head->siguiente;
+                delete temp->dato;
                 delete temp;
             }else{
                 NodoUser* temp = head;
                 NodoUser* previo = nullptr;
-                while (temp != nullptr && temp->dato.getEmail() != dato)
+                while (temp != nullptr && temp->dato->getEmail() != dato)
                 {
                     previo = temp;
                     temp = temp->siguiente;
@@ -112,10 +100,5 @@ class ListaSimple{
                 }
             }
             return;
-
-        }
-
-        Usuario getDatoHead(){
-            return head->dato;
         }
 };

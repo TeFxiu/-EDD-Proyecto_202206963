@@ -1,22 +1,24 @@
 #include "Matriz.h"
+#include "CircularDoble.cpp"
+
 using namespace std;
 
 Matriz::Matriz() {
-    raiz = new NodoUser(Usuario("raiz", -1));
+    raiz = new NodoUser(new Usuario("raiz", -1));
 }
 
 bool Matriz::estaVacio() {
     return raiz->siguiente == nullptr ;
 }
 
-void Matriz::buscarColumna(Usuario entrada, NodoUser*& auxColumna) {
+void Matriz::buscarColumna(Usuario* entrada, NodoUser*& auxColumna) {
     NodoUser* aux = raiz;
     while(aux->abajo != nullptr){
-        if(aux->abajo->dato.getId() == entrada.getId()){
+        if(aux->abajo->dato->getId() == entrada->getId()){
             delete auxColumna;
             auxColumna = aux->abajo;
             return;
-        }else if(aux->abajo->dato.getId() > entrada.getId()){
+        }else if(aux->abajo->dato->getId() > entrada->getId()){
             auxColumna->abajo = aux->abajo;
             aux->abajo->arriba = auxColumna;
             aux->abajo = auxColumna;
@@ -29,15 +31,15 @@ void Matriz::buscarColumna(Usuario entrada, NodoUser*& auxColumna) {
     auxColumna->arriba = aux;
 }
 
-void Matriz::buscarFila(Usuario entrada, NodoUser*& auxFila, NodoUser*& auxColumna) {
+void Matriz::buscarFila(Usuario* entrada, NodoUser*& auxFila, NodoUser*& auxColumna) {
     NodoUser* aux = raiz;
     while(aux->siguiente != nullptr){
-        if(aux->siguiente->dato.getId() == entrada.getId()){
+        if(aux->siguiente->dato->getId() == entrada->getId()){
             delete auxFila;
             auxFila = aux->siguiente;
             buscarColumna(entrada, auxColumna);
             return;
-        }else if(aux->siguiente->dato.getId() > entrada.getId()){
+        }else if(aux->siguiente->dato->getId() > entrada->getId()){
             auxFila->siguiente = aux->siguiente;
             aux->siguiente->anterior = auxFila;
             aux->siguiente = auxFila;
@@ -56,10 +58,13 @@ void Matriz::buscarFila(Usuario entrada, NodoUser*& auxFila, NodoUser*& auxColum
 NodoUser* Matriz::buscarRelacionFila(NodoUser* fila, NodoUser* columna) {
     NodoUser* aux = fila;
     while(aux->abajo != nullptr){
-        if(aux->abajo->amigo.getId() == columna->dato.getId() || aux->abajo->dato.getId() == columna->dato.getId()){
+        if(aux->abajo->amigo->getId() == columna->dato->getId() || aux->abajo->dato->getId() == columna->dato->getId()){
             return nullptr;
-        }else if (aux->abajo->amigo.getId() > columna->dato.getId() || aux->abajo->dato.getId() > columna->dato.getId()){
-            return aux;
+        }
+        if (aux->abajo->amigo->getId() == fila->dato->getId() && aux->abajo->dato->getId() > columna->dato->getId()){
+            return aux->abajo;
+        }else if(aux->abajo->dato->getId() == fila->dato->getId() && aux->abajo->amigo->getId() > columna->dato->getId()){
+            return aux->abajo;
         }
         aux = aux->abajo;
     }
@@ -69,11 +74,15 @@ NodoUser* Matriz::buscarRelacionFila(NodoUser* fila, NodoUser* columna) {
 NodoUser* Matriz::buscarRelacionColumna(NodoUser* columna, NodoUser* fila) {
     NodoUser* aux = columna;
     while(aux->siguiente != nullptr){
-        if(aux->siguiente->amigo.getId() == fila->dato.getId() || aux->siguiente->dato.getId() == fila->dato.getId()){
+        if(aux->siguiente->amigo->getId() == fila->dato->getId() || aux->siguiente->dato->getId() == fila->dato->getId()){
             return nullptr;
-        }else if (aux->siguiente->amigo.getId() > fila->dato.getId() || aux->siguiente->dato.getId() > fila->dato.getId()){
-            return aux;
         }
+        if(aux->siguiente->amigo->getId() == columna->dato->getId() && aux->siguiente->dato->getId() > fila->dato->getId()){
+            return aux->siguiente;
+        }else if(aux->siguiente->dato->getId() == columna->dato->getId() && aux->siguiente->amigo->getId() > fila->dato->getId()){
+            return aux->siguiente;
+        }
+
         aux = aux->siguiente;
     }
     return aux;
@@ -84,10 +93,10 @@ void Matriz::conectarFila(NodoUser* pivote, NodoUser* nuevo) {
         pivote->abajo = nuevo;
         nuevo->arriba = pivote;
     }else{
-        nuevo->abajo = pivote->abajo;
-        pivote->abajo->arriba = nuevo;
-        pivote->abajo = nuevo;
-        nuevo->arriba = pivote;
+        pivote->arriba->abajo = nuevo;
+        nuevo->arriba = pivote->arriba;
+        pivote->arriba = nuevo;
+        nuevo->abajo = pivote;
     }
 
 }
@@ -97,10 +106,10 @@ void Matriz::conectarColumna(NodoUser* pivote, NodoUser* nuevo) {
         pivote->siguiente = nuevo;
         nuevo->anterior = pivote;
     }else{
-        nuevo->siguiente = pivote->siguiente;
-        pivote->siguiente->anterior = nuevo;
-        pivote->siguiente = nuevo;
-        nuevo->anterior = pivote;
+        pivote->anterior->siguiente = nuevo;
+        nuevo->anterior = pivote->anterior;
+        pivote->anterior = nuevo;
+        nuevo->siguiente = pivote;
     }
 }
 
@@ -116,13 +125,13 @@ void Matriz::insertarInicio(NodoUser* raiz , NodoUser* primeroFila, NodoUser* se
 
 }
 
-void Matriz::insertarAmistad(Usuario& entrada, Usuario& amigo) {
+void Matriz::insertarAmistad(Usuario* entrada, Usuario* amigo) {
     NodoUser* nuevoFila = new NodoUser(entrada);
     NodoUser* nuevoColumna = new NodoUser(entrada);
     NodoUser* amigoFila = new NodoUser(amigo);
     NodoUser* amigoColumna = new NodoUser(amigo);
     if(estaVacio()){
-        if (entrada.getId() < amigo.getId() ){
+        if (entrada->getId() < amigo->getId() ){
             insertarInicio(raiz, nuevoFila, amigoFila, nuevoColumna, amigoColumna);
         }
         else{
@@ -135,7 +144,7 @@ void Matriz::insertarAmistad(Usuario& entrada, Usuario& amigo) {
     NodoUser* nuevaRelacion1;
     NodoUser* nuevaRelacion2;
 
-    if (entrada.getId() < amigo.getId()){
+    if (entrada->getId() < amigo->getId()){
         nuevaRelacion1 = new NodoUser(entrada, amigo);
         nuevaRelacion2 = new NodoUser(entrada, amigo);
     }else{
@@ -159,31 +168,104 @@ void Matriz::insertarAmistad(Usuario& entrada, Usuario& amigo) {
     cout << "Se acepto la solicitud" << endl;    
 }
 
-bool Matriz::insertarAmistad(Usuario& entrada, Usuario& amigo, bool bandera) {
-    NodoUser* nuevoFila = new NodoUser(entrada);
-    NodoUser* nuevoColumna = new NodoUser(entrada);
-    NodoUser* amigoFila = new NodoUser(amigo);
-    NodoUser* amigoColumna = new NodoUser(amigo);
-    if(estaVacio()){
-        if (entrada.getId() < amigo.getId() ){
-            insertarInicio(raiz, nuevoFila, amigoFila, nuevoColumna, amigoColumna);
-        }
-        else{
-            insertarInicio(raiz, amigoFila, nuevoFila, amigoColumna, nuevoColumna);
-        }
-    }else{
-        buscarFila(entrada, nuevoFila, nuevoColumna);
-        buscarFila(amigo, amigoFila, amigoColumna);
-    }
-    NodoUser* nuevaRelacion1;
-    NodoUser* nuevaRelacion2;
+void Matriz::eliminarAmistad(Usuario* usuario){
+    NodoUser* auxFila = raiz;
+    NodoUser* auxColumna = raiz;
+    NodoUser* aux = nullptr;
+    Usuario* amigo = nullptr;
 
-    if (entrada.getId() < amigo.getId()){
-        nuevaRelacion1 = new NodoUser(entrada, amigo);
-        nuevaRelacion2 = new NodoUser(entrada, amigo);
-    }else{
-        nuevaRelacion1 = new NodoUser(amigo, entrada);
-        nuevaRelacion2 = new NodoUser(amigo, entrada);
+    while (auxColumna->dato->getId() != usuario->getId()){
+            auxColumna = auxColumna->abajo;
+        }
+
+    auxColumna->arriba->abajo = auxColumna->abajo;
+    auxColumna->abajo->arriba = auxColumna->arriba;
+    aux = auxColumna->siguiente;
+    delete auxColumna;
+    if (aux != nullptr){
+        do{
+            auxColumna = aux->siguiente;
+            if (aux->dato->getId() < usuario->getId()){
+                amigo = aux->dato;
+            }else if(aux->amigo->getId() > usuario->getId()){
+                amigo = aux->amigo;
+            }
+            aux->arriba->abajo = aux->abajo;
+            if(aux->abajo != nullptr){
+                aux->abajo->arriba = aux->arriba;
+            }
+            amigo->restarRelaciones();
+            amigo->getPublicacionesAmigos()->eliminar(usuario->getEmail());
+            delete aux;
+            aux = auxColumna;
+        }while (auxColumna != nullptr);
+        amigo = nullptr;
+        aux = nullptr;
+    }
+
+
+    while (auxFila->dato->getId() != usuario->getId()){
+        auxFila = auxFila->siguiente;
+    }
+    auxFila->anterior->siguiente = auxFila->siguiente;
+    auxFila->siguiente->anterior = auxFila->anterior;
+    aux = auxFila->abajo;
+    delete auxFila;
+
+    if (aux != nullptr){
+        do{
+            auxFila = aux->abajo;
+            aux->anterior->siguiente = aux->siguiente;
+            if (aux->siguiente != nullptr) {
+                aux->siguiente->anterior = aux->anterior;
+            }
+            delete aux;
+            aux = auxFila;
+        }while (auxFila != nullptr);
+        amigo = nullptr;
+        aux = nullptr;
+    }
+
+}
+
+void Matriz::buscarColumnaTemp(Usuario *entrada, NodoUser *&auxColumna) {
+    NodoUser* aux = raiz;
+    while(aux->abajo != nullptr) {
+        if (aux->abajo->dato->getId() == entrada->getId()) {
+            delete auxColumna;
+            auxColumna = aux->abajo;
+            return;
+        }
+        aux = aux->abajo;
+    }
+}
+
+void Matriz::buscarFilaTemp(Usuario* entrada, NodoUser*& auxFila, NodoUser*& auxColumna){
+    NodoUser* aux = raiz;
+    while(aux->siguiente != nullptr) {
+        if (aux->siguiente->dato->getId() == entrada->getId()) {
+            delete auxFila;
+            auxFila = aux->siguiente;
+            buscarColumnaTemp(entrada, auxColumna);
+            return;
+        }
+        aux = aux->siguiente;
+    }
+}
+
+bool Matriz::insertarAmistad(Usuario* entrada, Usuario* amigo, bool bandera) {
+    NodoUser* nuevoFila = nullptr;
+    NodoUser* amigoFila = nullptr;
+    NodoUser* amigoColumna = nullptr;
+    NodoUser* nuevoColumna = nullptr;
+    if (estaVacio()){
+        return true;
+    }
+
+    buscarFilaTemp(entrada, nuevoFila, nuevoColumna);
+    buscarFilaTemp(amigo, amigoFila, amigoColumna);
+    if(nuevoFila == nullptr || amigoFila == nullptr){
+        return true;
     }
 
     nuevoFila = buscarRelacionFila(nuevoFila, amigoColumna);
