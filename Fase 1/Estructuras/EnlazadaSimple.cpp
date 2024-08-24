@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include "../headers/NodoUser.h"
+#include <iomanip>
+#include <fstream>
 
 using namespace std;
 
@@ -98,6 +100,18 @@ class ListaSimple{
                     delete temp;
                     cout<< "Dato eliminado" <<endl;
                 }
+            }
+            return;
+        }
+
+        void reporte(){
+            ofstream archDot("Matriz de relaciones.dot");
+            archDot << "digraph Relaciones{"<< endl;
+            archDot << "node[shape = \"box\"];"<< endl;
+
+            NodoUser* rowAux = head;
+            while(rowAux){
+                string rank = "{rank = same";
             }
             return;
         }

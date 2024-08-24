@@ -77,7 +77,7 @@ bool Usuario::findSolicitud(string email) {
 void Usuario::rechazarSolicitud(){
     Usuario* user = this->recepcion->pop();
     user->solicitudes->solicitudRechazada(this->email);
-    cout << "Solicitud de amistad rechazada" << endl;
+    cout << "Solicitud de amistad rechazada \n" << endl;
 }
 
 void Usuario::aceptarSolicitud(){
@@ -88,7 +88,7 @@ void Usuario::aceptarSolicitud(){
         user->setNumRelaciones();
         this->publicacionesAmigos->append(user->publicacionesPersonales);
         user->publicacionesAmigos->append(this->publicacionesPersonales);
-        cout << "Solicitud de amistad aceptada" << endl;
+        cout << "Solicitud de amistad aceptada\n" << endl;
 }
 
 void Usuario::eliminarSolicitud(string email){

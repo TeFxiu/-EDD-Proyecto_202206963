@@ -21,5 +21,6 @@ class Matriz{
         bool insertarAmistad(Usuario* entrada, Usuario* amigo, bool bandera);
         void eliminarAmistad(Usuario* entrada);
         bool estaVacio();
+        void reporte();
 };
 #endif

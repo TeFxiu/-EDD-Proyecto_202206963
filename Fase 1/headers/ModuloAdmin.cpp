@@ -15,7 +15,8 @@ void ModuloAdmin::encabezadoInterfaz(){
     cout << "2. Carga de relaciones" << endl;
     cout << "3. Carga de publicaciones" << endl;
     cout << "4. Gestionar Usuarios" << endl;
-    cout << "5. Salir" << endl;
+    cout<< "5. Reportes" << endl;
+    cout << "6. Salir" << endl;
 }
 
 char* ModuloAdmin::buscarDireccion(){
@@ -168,6 +169,37 @@ void ModuloAdmin::eliminarUsuario(){
     
 }
 
+void ModuloAdmin::reportes(){
+    int op = 0;
+    while (op == 0){
+        cout << "1. Grafico de la lista de usuarios"<<endl;
+        cout << "2. Grafico de la matriz dispersa" <<  endl;
+        cout << "3. Grafico de la lista doblemente enlazada"<<endl;
+        cout << "4. Tops" << endl;
+        cout << "5. Salir"<< endl;
+        cin >> op;
+        switch (op) {
+            case 1:
+                matrizRelaciones->reporte();
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            default:{
+                cout << "Opcion Invalida" << endl;
+                break;
+            }
+
+        }
+
+    }
+}
+
 void ModuloAdmin::bucleInterfaz(){
     int opcion;
     do{
@@ -191,7 +223,11 @@ void ModuloAdmin::bucleInterfaz(){
         case 4:
             eliminarUsuario();
             break;
-        case 5:
+
+            case 5:
+                reportes();
+                break;
+        case 6:
             cout << "Saliendo..." << endl;
             opcion = 0;
             break;

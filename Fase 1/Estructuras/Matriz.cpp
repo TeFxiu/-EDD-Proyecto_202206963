@@ -1,5 +1,8 @@
 #include "Matriz.h"
 #include "CircularDoble.cpp"
+#include <iomanip>
+#include <fstream>
+#include <iostream>
 
 using namespace std;
 
@@ -144,14 +147,17 @@ void Matriz::insertarAmistad(Usuario* entrada, Usuario* amigo) {
     NodoUser* nuevaRelacion1;
     NodoUser* nuevaRelacion2;
 
+
     if (entrada->getId() < amigo->getId()){
         nuevaRelacion1 = new NodoUser(entrada, amigo);
-        nuevaRelacion2 = new NodoUser(entrada, amigo);
+        nuevaRelacion2 = new NodoUser(entrada, amigo, false);
     }else{
         nuevaRelacion1 = new NodoUser(amigo, entrada);
-        nuevaRelacion2 = new NodoUser(amigo, entrada);
+        nuevaRelacion2 = new NodoUser(amigo, entrada, false);
     }
 
+    nuevoColumna->bandera = true;
+    amigoColumna->bandera = true;
     nuevoFila = buscarRelacionFila(nuevoFila, amigoColumna);
     if (nuevoFila == nullptr){
         cout << "Ya existe una relacion entre estos usuarios" << endl;
@@ -160,6 +166,8 @@ void Matriz::insertarAmistad(Usuario* entrada, Usuario* amigo) {
     amigoFila = buscarRelacionFila(amigoFila, nuevoColumna);
     nuevoColumna = buscarRelacionColumna(nuevoColumna, amigoFila);
     amigoColumna = buscarRelacionColumna(amigoColumna, nuevoFila);
+
+
 
     conectarFila(nuevoFila, nuevaRelacion1);
     conectarFila(amigoFila, nuevaRelacion2);
@@ -273,4 +281,99 @@ bool Matriz::insertarAmistad(Usuario* entrada, Usuario* amigo, bool bandera) {
         return false;
     }
     return true;
+}
+
+void Matriz::reporte() {
+    ofstream archDot("Matriz_de_relaciones.dot");
+    archDot << "digraph Relaciones{"<< endl;
+    archDot << "node[shape = \"box\"];"<< endl;
+    int fila =0;
+
+    NodoUser* rowAux = raiz;
+    while(rowAux){
+        string rank = "{rank = same";
+        NodoUser* columnAux = rowAux;
+        while(columnAux){
+            string titulo = columnAux->dato->getNombre();
+            string name;
+            if (columnAux->amigo == nullptr && fila == 0) {
+                name = "\"Nodo" + titulo + "\"";
+            }else if (columnAux-> amigo == nullptr){
+                name = "\"Nodo" + titulo + "1" + "\"";
+                titulo = titulo + "1";
+            }else{
+                titulo = titulo + to_string(columnAux->dato->getId()) +"," + to_string(columnAux->amigo->getId())+","+
+                                                                                                                  to_string(columnAux->id);
+                name = "\"Nodo" + titulo + "\"";
+            }
+            string nodeDec;
+
+            if (columnAux->dato->getId() == -1) {
+                nodeDec = name + "[label = \"root\", group =\"" + to_string(fila) + "\"];";
+            }else if (columnAux->amigo == nullptr && columnAux->bandera){
+                nodeDec = name + "[label = \""+ columnAux->dato->getNombre()+"1" +"\", group =\"" + to_string(fila) + "\"];";
+            }else if(columnAux->amigo == nullptr){
+                nodeDec = name + "[label = \""+ columnAux->dato->getNombre() +"\", group =\"" + to_string(fila) + "\"];";
+            }else{
+                nodeDec = name + "[label = \" Relacionados\", group =\"" + to_string(fila) + "\"];";
+            }
+
+            archDot << nodeDec << endl;
+
+
+            if (columnAux->siguiente && columnAux->siguiente->amigo == nullptr){
+                string nombre = columnAux->siguiente->dato->getNombre();
+
+                string conexion = "\"Nodo" + titulo + "\"->\"Nodo"+ nombre +"\"";
+                string conexionBack = conexion + "[dir = back];";
+
+                archDot << conexion << endl;
+                archDot << conexionBack << endl;
+            }else if (columnAux->siguiente){
+
+                string nombre = columnAux->siguiente->dato->getNombre();
+                string conexion = "\"Nodo" + titulo + "\"->\"Nodo"+ nombre+ to_string(columnAux->siguiente->dato->getId()) +"," + to_string(columnAux->siguiente->amigo->getId()) +","+
+                to_string(columnAux->id)+ "\"";
+                string conexionBack = conexion + "[dir = back];";
+
+                archDot << conexion << endl;
+                archDot << conexionBack << endl;
+            }
+
+             if (columnAux->abajo && columnAux->abajo->amigo == nullptr){
+                string nombre = columnAux->abajo->dato->getNombre();
+
+                string conexion = "\"Nodo" + titulo + "\"->\"Nodo"+ nombre+ "1" + "\"";
+                string conexionBack = conexion + "[dir = back];";
+
+                archDot << conexion << endl;
+                archDot << conexionBack << endl;
+            }else if (columnAux->abajo){
+                string nombre = columnAux->abajo->dato->getNombre();
+                string conexion = "\"Nodo" + titulo + "\"->\"Nodo"+ nombre+ to_string(columnAux->abajo->dato->getId()) +"," + to_string(columnAux->abajo->amigo->getId()) +","+
+                                                                                                                                                                            to_string(columnAux->id)+ "\"";
+                string conexionBack = conexion + "[dir = back];";
+                archDot << conexion << endl;
+                archDot << conexionBack << endl;
+            }
+            rank += ";\"Nodo"+ titulo + "\"";
+            columnAux = columnAux->siguiente;
+
+        }
+        fila ++;
+        rank += "}";
+        archDot << rank << endl;
+        rowAux = rowAux->abajo;
+    }
+    archDot << "}"<< endl;
+    archDot.close();
+
+    int result = system("dot -Tpng ./Matriz_de_relaciones.dot -o ./matriz_relaciones.png");
+    if (result != 0) {
+        cout << "Ocurrió un error al momento de crear la imagen" << endl;
+    } else {
+        cout << "La imagen fue generada exitosamente" << endl;
+    }
+
+
 }

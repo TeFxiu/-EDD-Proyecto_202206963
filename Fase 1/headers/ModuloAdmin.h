@@ -24,6 +24,7 @@ class ModuloAdmin{
         void encabezadoInterfaz();
         void bucleInterfaz();
         char* buscarDireccion();
+        void reportes();
         void cargaUsuarios();
         void cargaRelaciones();
         void cargarPublicaciones();
