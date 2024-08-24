@@ -10,7 +10,7 @@ ModuloAdmin::ModuloAdmin(Usuario& entrada, DoublyLinkedList* listaEntrada, Lista
     inter = false;
 }
 
-void ModuloAdmin::encabezadoInterfaz(){ 
+void ModuloAdmin::encabezadoInterfaz(){
     cout << "1. Carga de usuarios" << endl;
     cout << "2. Carga de relaciones" << endl;
     cout << "3. Carga de publicaciones" << endl;
@@ -22,12 +22,12 @@ void ModuloAdmin::encabezadoInterfaz(){
 char* ModuloAdmin::buscarDireccion(){
     const char* filter[]= {"*.json"};
     const char* filepath = tinyfd_openFileDialog(
-        "Seleccione un archivo",
-        "",
-        1,
-        filter,
-        "Archivo JSON",
-        0
+            "Seleccione un archivo",
+            "",
+            1,
+            filter,
+            "Archivo JSON",
+            0
     );
 
     if(!filepath){
@@ -51,12 +51,12 @@ void ModuloAdmin::cargaUsuarios(){
 
     for (const auto& it : jsonData.items()){
         Usuario* nuevoUsuario = new Usuario(
-            it.value()["nombres"],
-            it.value()["apellidos"],
-            it.value()["fecha_de_nacimiento"],
-            it.value()["correo"],
-            it.value()["contraseña"],
-            matrizRelaciones
+                it.value()["nombres"],
+                it.value()["apellidos"],
+                it.value()["fecha_de_nacimiento"],
+                it.value()["correo"],
+                it.value()["contraseña"],
+                matrizRelaciones
         );
         listaUsuarios->append(nuevoUsuario);
     }
@@ -76,10 +76,10 @@ void ModuloAdmin::cargarPublicaciones(){
 
     for(const auto& it : jsonData.items()){
         Publicacion* nuevaPublicacion = new Publicacion(
-            it.value()["correo"],
-            it.value()["contenido"],
-            it.value()["fecha"],
-            it.value()["hora"]
+                it.value()["correo"],
+                it.value()["contenido"],
+                it.value()["fecha"],
+                it.value()["hora"]
         );
         listaUsuarios->findEmail(it.value()["correo"]);
         Usuario* usuario = listaUsuarios->getCredenciales();
@@ -125,7 +125,7 @@ Usuario* ModuloAdmin::buscarUsuario(){
 }
 
 void ModuloAdmin::eliminarUsuario(){
-    int opcion = 0;    
+    int opcion = 0;
     while (opcion == 0)
     {
         cout << "Gestionar usuarios" << endl;
@@ -136,37 +136,37 @@ void ModuloAdmin::eliminarUsuario(){
         cin >> opcion;
         switch (opcion)
         {
-        case 1:
-            cout << "Ingrese el email del usuario a eliminar: ";
-            cin >> email;
-            for(char &s:email){
-                s = tolower(s);
-            }
-            if(listaUsuarios->findEmail(email)){
-                cout << "Email no encontrado" << endl;
-                return;
-            }
-            usuario = buscarUsuario();
-            if (usuario->getNumRelaciones() != 0) {
-                matrizRelaciones->eliminarAmistad(usuario);
-                delete usuario->getPublicacionesPersonales();
-                this->listaPublicaciones->removeAll(usuario->getEmail());
-                usuario->eliminarSolicitudes();
-                listaUsuarios->remove(usuario->getEmail());
+            case 1:
+                cout << "Ingrese el email del usuario a eliminar: ";
+                cin >> email;
+                for(char &s:email){
+                    s = tolower(s);
+                }
+                if(listaUsuarios->findEmail(email)){
+                    cout << "Email no encontrado" << endl;
+                    return;
+                }
+                usuario = buscarUsuario();
+                if (usuario->getNumRelaciones() != 0) {
+                    matrizRelaciones->eliminarAmistad(usuario);
+                    delete usuario->getPublicacionesPersonales();
+                    this->listaPublicaciones->removeAll(usuario->getEmail());
+                    usuario->eliminarSolicitudes();
+                    listaUsuarios->remove(usuario->getEmail());
 
-            }
-            cout << "Usuario eliminado" << endl;
-            opcion = 0;
-            break;
-        case 2:
-            opcion = 1;
-            cout << "Saliendo..." << endl;
-            break;
+                }
+                cout << "Usuario eliminado" << endl;
+                opcion = 0;
+                break;
+            case 2:
+                opcion = 1;
+                cout << "Saliendo..." << endl;
+                break;
             default:
                 break;
         }
     }
-    
+
 }
 
 void ModuloAdmin::reportes(){
@@ -180,11 +180,13 @@ void ModuloAdmin::reportes(){
         cin >> op;
         switch (op) {
             case 1:
-                matrizRelaciones->reporte();
+                listaUsuarios->reporte();
                 break;
             case 2:
+                matrizRelaciones->reporte();
                 break;
             case 3:
+                listaPublicaciones->reporte();
                 break;
             case 4:
                 break;
@@ -208,36 +210,32 @@ void ModuloAdmin::bucleInterfaz(){
         cin >> opcion;
         switch (opcion)
         {
-        case 1:
-            cout << "Carga de usuario..." << endl;
-            cargaUsuarios();
-            break;
-        case 2:
-            cargaRelaciones();
-            cout << "Carga de relaciones" << endl;
-            break;
-        case 3:
-            cout << "Carga de publicaciones" << endl;
-            cargarPublicaciones();
-            break;
-        case 4:
-            eliminarUsuario();
-            break;
+            case 1:
+                cout << "Carga de usuario..." << endl;
+                cargaUsuarios();
+                break;
+            case 2:
+                cargaRelaciones();
+                cout << "Carga de relaciones" << endl;
+                break;
+            case 3:
+                cout << "Carga de publicaciones" << endl;
+                cargarPublicaciones();
+                break;
+            case 4:
+                eliminarUsuario();
+                break;
 
             case 5:
                 reportes();
                 break;
-        case 6:
-            cout << "Saliendo..." << endl;
-            opcion = 0;
-            break;
-        default:
-            cout << "Opcion no valida" << endl;
-            break;
+            case 6:
+                cout << "Saliendo..." << endl;
+                opcion = 0;
+                break;
+            default:
+                cout << "Opcion no valida" << endl;
+                break;
         }
     }while(opcion != 0);
 }
-
-
-
-

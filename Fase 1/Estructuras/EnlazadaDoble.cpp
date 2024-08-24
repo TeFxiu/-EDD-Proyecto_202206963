@@ -2,6 +2,9 @@
 #include <string>
 #include "../headers/NodoStories.h"
 
+#include <iomanip>
+#include <fstream>
+
 #ifndef ENLAZADADOBLE_CPP
 #define ENLAZADADOBLE_CPP
 
@@ -122,6 +125,47 @@ class DoublyLinkedList{
             }
             return devolver;
         }
+
+    void reporte(){
+        ofstream archDot("Publicaciones.dot");
+        archDot << "digraph Usuarios{"<< endl;
+        archDot << "node[shape = \"box\"];"<< endl;
+        archDot<< "rankdir=LR" << endl;
+
+        NodoStories* actual = head;
+        while(actual) {
+            string nodo;
+            string agregarParametros;
+            if (actual == head) {
+                nodo = "\"Nodo " + actual->dato->getTexto() + "\"";
+                agregarParametros = nodo + "[label = \"" + actual->dato->getTexto() + " " + actual->dato->getId() +"\"];";
+            }else {
+
+                nodo = "\"Nodo " + actual->dato->getTexto() + "\"";
+                string doble = nodo + "[dir=both];";
+                archDot << doble << endl;
+                agregarParametros = nodo + "[label = \"" + actual->dato->getTexto()+" "+ actual->dato->getId() +"\"];";
+            }
+            archDot << agregarParametros << endl;
+            archDot << nodo;
+            if (actual->siguiente) {
+                string conexion  = "->";
+                archDot << conexion;
+            }
+            actual = actual->siguiente;
+
+        }
+        archDot << "}"<< endl;
+        archDot.close();
+
+        int result = system("dot -Tpng ./Publicaciones.dot -o ./Publicaciones.png");
+        if (result != 0) {
+            cout << "Ocurrió un error al momento de crear la imagen" << endl;
+        } else {
+            cout << "La imagen fue generada exitosamente" << endl;
+        }
+
+    }
 
         /*
         void graph(){

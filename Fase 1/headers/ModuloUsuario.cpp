@@ -1,6 +1,8 @@
 #include "../Estructuras/EnlazadaDoble.cpp"
 #include "../Estructuras/EnlazadaSimple.cpp"
 #include "../Estructuras/CircularDoble.cpp"
+#include "../Estructuras/Pila.cpp"
+#include "../Estructuras/SimpleAmistad.cpp"
 
 #include "ModuloUsuario.h"
 #include <string>
@@ -55,14 +57,14 @@ void ModuloUsuario::verPublicaciones(){
 }
 
 void ModuloUsuario::subModuloStories(int eleccion, bool bucle){
-        bucle = true;
-        do {
-            cout<< "1. Ver publicaciones"<<endl;
-            cout<< "2. Crear publicacion"<<endl;
-            cout << "3. Salir" << endl;
-            cin >> eleccion;
-            switch (eleccion)
-            {
+    bucle = true;
+    do {
+        cout<< "1. Ver publicaciones"<<endl;
+        cout<< "2. Crear publicacion"<<endl;
+        cout << "3. Salir" << endl;
+        cin >> eleccion;
+        switch (eleccion)
+        {
             case 1:
                 verPublicaciones();
                 break;
@@ -75,11 +77,11 @@ void ModuloUsuario::subModuloStories(int eleccion, bool bucle){
             default:
                 cout << "Opcion no valida" << endl;
                 break;
-            
-            }
-        }while (bucle);
-        
-        
+
+        }
+    }while (bucle);
+
+
 }
 
 void ModuloUsuario::eliminarMiCuenta(string email){
@@ -111,22 +113,22 @@ void ModuloUsuario::subModuloPerfil(int eleccion, bool bucle){
         cin >> eleccion;
         switch (eleccion)
         {
-        case 1:
-            cout << "Nombre: " << this->user->getNombre() << endl;
-            cout << "Apellido: " << this->user->getApellido() << endl;
-            cout << "Fecha de nacimiento: " << this->user->getFechaNac() << endl;
-            cout << "Email: " << this->user->getEmail() << endl;
-            break;
-        case 2:
-            eliminarMiCuenta(this->user->getEmail());
-            bucle = false;
-            break;
-        case 3:
-            bucle = false;
-            break;
-        default:
-            cout << "Opcion no valida" << endl;
-            break;
+            case 1:
+                cout << "Nombre: " << this->user->getNombre() << endl;
+                cout << "Apellido: " << this->user->getApellido() << endl;
+                cout << "Fecha de nacimiento: " << this->user->getFechaNac() << endl;
+                cout << "Email: " << this->user->getEmail() << endl;
+                break;
+            case 2:
+                eliminarMiCuenta(this->user->getEmail());
+                bucle = false;
+                break;
+            case 3:
+                bucle = false;
+                break;
+            default:
+                cout << "Opcion no valida" << endl;
+                break;
         }
 
     }while(bucle);
@@ -143,42 +145,81 @@ void ModuloUsuario::subModuloSolicitudes(int eleccion, bool bucle){
         cin >> eleccion;
         switch (eleccion)
         {
-        case 1:
-            cout << "Solicitudes: " << endl;
-            this->user->decidirSolicitudes();
-            break;
-        case 2:
-            cout << endl<< "Ingrese el email de la persona a la que desea enviar la solicitud: ";
-            cin >> email;
-            for(char &s:email){
-                s = tolower(s);
-            }
-            if (!this->listaUsuarios->findEmail(email)){
-                if (!this->user->findSolicitud(email)){
-                    Usuario* solicitud = this->listaUsuarios->getCredenciales();
-                    bool verificar = matrizRelaciones->insertarAmistad(user, solicitud, true);
-                    if (verificar){
-                        solicitud->addSolicitud(this->user);
-                        cout << "Solicitud enviada" << endl;
+            case 1:
+                cout << "Solicitudes: " << endl;
+                this->user->decidirSolicitudes();
+                break;
+            case 2:
+                cout << endl<< "Ingrese el email de la persona a la que desea enviar la solicitud: ";
+                cin >> email;
+                for(char &s:email){
+                    s = tolower(s);
+                }
+                if (!this->listaUsuarios->findEmail(email)){
+                    if (!this->user->findSolicitud(email)){
+                        Usuario* solicitud = this->listaUsuarios->getCredenciales();
+                        bool verificar = matrizRelaciones->insertarAmistad(user, solicitud, true);
+                        if (verificar){
+                            solicitud->addSolicitud(this->user);
+                            cout << "Solicitud enviada" << endl;
+                        }else{
+                            cout << "Ya existe una relacion con este usuario" << endl;
+                        }
                     }else{
-                        cout << "Ya existe una relacion con este usuario" << endl;
+                        cout << "Hay una solicitud en proceso con este usuario" << endl;
                     }
                 }else{
-                    cout << "Hay una solicitud en proceso con este usuario" << endl;
+                    cout  << "Email no encontrado" << endl;
                 }
-            }else{
-                cout  << "Email no encontrado" << endl;
-            }
-            break;
-        case 3:
-            bucle = false;
-            break;
-        default:
-            cout << "Opcion no valida" << endl;
-            break;
+                break;
+            case 3:
+                bucle = false;
+                break;
+            default:
+                cout << "Opcion no valida" << endl;
+                break;
         }
     }while(bucle);
 }
+
+void ModuloUsuario::reportes() {
+    int op = 0;
+    while (op == 0){
+        cout << "1. Solicitudes enviadas y recibidas"<<endl;
+        cout << "2. Relaciones de Amistad" <<  endl;
+        cout << "3. Publicaciones"<<endl;
+        cout << "4. Mis amigos" << endl;
+        cout << "5. Salir"<< endl;
+        Pila* analizando;
+        SimpleAmistad* amistad;
+        cin >> op;
+        switch (op) {
+            case 1:
+                analizando = this->user->getRecepcion();
+                analizando->reporte();
+                amistad = user->getSolicitudes();
+                amistad->reporte();
+                break;
+            case 2:
+                matrizRelaciones->reporte();
+                break;
+            case 3:
+                break;
+            case 4:
+                user->getPublicacionesAmigos()->reporte();
+                break;
+            case 5:
+                break;
+            default:{
+                cout << "Opcion Invalida" << endl;
+                break;
+            }
+
+        }
+
+    }
+}
+
 
 void ModuloUsuario::menu(){
     bool bucleInterno = false;
@@ -194,26 +235,26 @@ void ModuloUsuario::menu(){
     cin >> op;
     switch (op)
     {
-    case 1:
-        this->subModuloPerfil(opInterna, bucleInterno);
-        break;
+        case 1:
+            this->subModuloPerfil(opInterna, bucleInterno);
+            break;
 
-    case 2:
-        this->subModuloSolicitudes(opInterna, bucleInterno);
-        break;
+        case 2:
+            this->subModuloSolicitudes(opInterna, bucleInterno);
+            break;
 
-    case 3:
-        this->subModuloStories(opInterna, bucleInterno);
-        break;
-    case 4:
-        this->inter = false;
-        break;
-    case 5:
-        this->inter = false;
-        break;
-    default:
-        cout << "Opcion no valida" << endl;
-        break;
+        case 3:
+            this->subModuloStories(opInterna, bucleInterno);
+            break;
+        case 4:
+            this->reportes();
+            break;
+        case 5:
+            this->inter = false;
+            break;
+        default:
+            cout << "Opcion no valida" << endl;
+            break;
     }
 }
 
@@ -249,7 +290,7 @@ void ModuloUsuario::obtenerFechaHora(Publicacion* publica){
     fechaStream << put_time(tiempo, "%d/%m/%Y");
     publica->setFecha(fechaStream.str());
 
-    
+
     stringstream horaStream;
     horaStream << put_time(tiempo, "%H:%M");
     publica->setHora(horaStream.str());

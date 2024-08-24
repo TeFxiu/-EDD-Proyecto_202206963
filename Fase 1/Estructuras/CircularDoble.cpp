@@ -138,5 +138,45 @@ public:
         return;
 
     }
+    void reporte(){
+        ofstream archDot("Amigos.dot");
+        archDot << "digraph Amigos{"<< endl;
+        archDot << "node[shape = \"box\"];"<< endl;
+        archDot<< "rankdir=LR" << endl;
+
+        NodoListas* actual = head;
+        while(actual) {
+            string nodo;
+            string agregarParametros;
+            if (actual == head) {
+                nodo = "\"Nodo " + actual->listaPublicaciones->propietario + "\"";
+                agregarParametros = nodo + "[label = \"" + actual->listaPublicaciones->propietario  +"\"];";
+            }else {
+
+                nodo = "\"Nodo " + actual->listaPublicaciones->propietario + "\"";
+                string doble = nodo + "[dir=both];";
+                archDot << doble << endl;
+                agregarParametros = nodo + "[label = \"" + actual->listaPublicaciones->propietario +"\"];";
+            }
+            archDot << agregarParametros << endl;
+            archDot << nodo;
+            if (actual->siguiente) {
+                string conexion  = "->";
+                archDot << conexion;
+            }
+            actual = actual->siguiente;
+
+        }
+        archDot << "}"<< endl;
+        archDot.close();
+
+        int result = system("dot -Tpng ./Amigos.dot -o ./Amigos.png");
+        if (result != 0) {
+            cout << "Ocurrió un error al momento de crear la imagen" << endl;
+        } else {
+            cout << "La imagen fue generada exitosamente" << endl;
+        }
+
+    }
 };
 #endif

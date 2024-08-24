@@ -1,0 +1,23 @@
+digraph Usuarios{
+node[shape = "box"];
+rankdir=LR
+"Nodo1"[label = "Carlos"];
+"Nodo1"->"Nodo2"
+"Nodo2"[label = "Maria"];
+"Nodo2"->"Nodo3"
+"Nodo3"[label = "Juan"];
+"Nodo3"->"Nodo4"
+"Nodo4"[label = "Ana"];
+"Nodo4"->"Nodo5"
+"Nodo5"[label = "Luis"];
+"Nodo5"->"Nodo6"
+"Nodo6"[label = "Laura"];
+"Nodo6"->"Nodo7"
+"Nodo7"[label = "Jose"];
+"Nodo7"->"Nodo8"
+"Nodo8"[label = "Elena"];
+"Nodo8"->"Nodo9"
+"Nodo9"[label = "Miguel"];
+"Nodo9"->"Nodo10"
+"Nodo10"[label = "Sofia"];
+"Nodo10"}

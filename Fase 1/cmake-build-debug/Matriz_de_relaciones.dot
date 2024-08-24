@@ -49,15 +49,15 @@ node[shape = "box"];
 "NodoCarlos1"->"NodoCarlos1,2,1"[dir = back];
 "NodoCarlos1"->"NodoMaria1"
 "NodoCarlos1"->"NodoMaria1"[dir = back];
-"NodoCarlos1,2,1"[label = " Relacionados", group ="1"];
-{rank = same;"NodoCarlos1";"NodoCarlos1,2,1"}
+"NodoCarlos1,2,0"[label = " Relacionados", group ="1"];
+{rank = same;"NodoCarlos1";"NodoCarlos1,2,0"}
 "NodoMaria1"[label = "Maria1", group ="2"];
-"NodoMaria1"->"NodoCarlos1,2,0"
-"NodoMaria1"->"NodoCarlos1,2,0"[dir = back];
+"NodoMaria1"->"NodoCarlos1,2,1"
+"NodoMaria1"->"NodoCarlos1,2,1"[dir = back];
 "NodoMaria1"->"NodoJuan1"
 "NodoMaria1"->"NodoJuan1"[dir = back];
-"NodoCarlos1,2,0"[label = " Relacionados", group ="2"];
-{rank = same;"NodoMaria1";"NodoCarlos1,2,0"}
+"NodoCarlos1,2,1"[label = " Relacionados", group ="2"];
+{rank = same;"NodoMaria1";"NodoCarlos1,2,1"}
 "NodoJuan1"[label = "Juan1", group ="3"];
 "NodoJuan1"->"NodoJuan3,4,1"
 "NodoJuan1"->"NodoJuan3,4,1"[dir = back];

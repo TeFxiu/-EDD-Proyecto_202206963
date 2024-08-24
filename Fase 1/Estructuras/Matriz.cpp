@@ -117,14 +117,14 @@ void Matriz::conectarColumna(NodoUser* pivote, NodoUser* nuevo) {
 }
 
 void Matriz::insertarInicio(NodoUser* raiz , NodoUser* primeroFila, NodoUser* segundoFila, NodoUser* primeroColumna, NodoUser* segundoColumna) {
-        raiz->siguiente = primeroFila;
-        primeroFila->anterior = raiz;
-        raiz->abajo = primeroColumna;
-        primeroColumna->arriba = raiz;
-        primeroFila->siguiente = segundoFila;
-        segundoFila->anterior = primeroFila;
-        primeroColumna->abajo = segundoColumna;
-        segundoColumna->arriba = primeroColumna;
+    raiz->siguiente = primeroFila;
+    primeroFila->anterior = raiz;
+    raiz->abajo = primeroColumna;
+    primeroColumna->arriba = raiz;
+    primeroFila->siguiente = segundoFila;
+    segundoFila->anterior = primeroFila;
+    primeroColumna->abajo = segundoColumna;
+    segundoColumna->arriba = primeroColumna;
 
 }
 
@@ -173,7 +173,7 @@ void Matriz::insertarAmistad(Usuario* entrada, Usuario* amigo) {
     conectarFila(amigoFila, nuevaRelacion2);
     conectarColumna(nuevoColumna, nuevaRelacion2);
     conectarColumna(amigoColumna, nuevaRelacion1);
-    cout << "Se acepto la solicitud" << endl;    
+    cout << "Se acepto la solicitud" << endl;
 }
 
 void Matriz::eliminarAmistad(Usuario* usuario){
@@ -183,8 +183,8 @@ void Matriz::eliminarAmistad(Usuario* usuario){
     Usuario* amigo = nullptr;
 
     while (auxColumna->dato->getId() != usuario->getId()){
-            auxColumna = auxColumna->abajo;
-        }
+        auxColumna = auxColumna->abajo;
+    }
 
     auxColumna->arriba->abajo = auxColumna->abajo;
     auxColumna->abajo->arriba = auxColumna->arriba;
@@ -303,7 +303,7 @@ void Matriz::reporte() {
                 titulo = titulo + "1";
             }else{
                 titulo = titulo + to_string(columnAux->dato->getId()) +"," + to_string(columnAux->amigo->getId())+","+
-                                                                                                                  to_string(columnAux->id);
+                         to_string(columnAux->id);
                 name = "\"Nodo" + titulo + "\"";
             }
             string nodeDec;
@@ -333,14 +333,14 @@ void Matriz::reporte() {
 
                 string nombre = columnAux->siguiente->dato->getNombre();
                 string conexion = "\"Nodo" + titulo + "\"->\"Nodo"+ nombre+ to_string(columnAux->siguiente->dato->getId()) +"," + to_string(columnAux->siguiente->amigo->getId()) +","+
-                to_string(columnAux->id)+ "\"";
+                                  to_string(columnAux->id)+ "\"";
                 string conexionBack = conexion + "[dir = back];";
 
                 archDot << conexion << endl;
                 archDot << conexionBack << endl;
             }
 
-             if (columnAux->abajo && columnAux->abajo->amigo == nullptr){
+            if (columnAux->abajo && columnAux->abajo->amigo == nullptr){
                 string nombre = columnAux->abajo->dato->getNombre();
 
                 string conexion = "\"Nodo" + titulo + "\"->\"Nodo"+ nombre+ "1" + "\"";
@@ -351,7 +351,7 @@ void Matriz::reporte() {
             }else if (columnAux->abajo){
                 string nombre = columnAux->abajo->dato->getNombre();
                 string conexion = "\"Nodo" + titulo + "\"->\"Nodo"+ nombre+ to_string(columnAux->abajo->dato->getId()) +"," + to_string(columnAux->abajo->amigo->getId()) +","+
-                                                                                                                                                                            to_string(columnAux->id)+ "\"";
+                                  to_string(columnAux->id)+ "\"";
                 string conexionBack = conexion + "[dir = back];";
                 archDot << conexion << endl;
                 archDot << conexionBack << endl;

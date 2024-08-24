@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include "../headers/NodoAmistad.h"
+#include <iomanip>
+#include <fstream>
 
 using namespace std;
 
@@ -83,5 +85,42 @@ class SimpleAmistad{
                 }
             }
         };
+    void reporte(){
+        ofstream archDot("Lista_espera.dot");
+        archDot << "digraph Espera{"<< endl;
+        archDot << "node[shape = \"box\"];"<< endl;
+
+        NodoAmistad* actual = head;
+        while(actual) {
+            string nodo;
+            string agregarParametros;
+            if (actual == head) {
+                nodo = "\"Nodo" + to_string(actual->dato.getReceptor()->getId()) + "\"";
+                agregarParametros = nodo + "[label = \"" + actual->dato.getReceptor()->getNombre() +"\"];";
+            }else {
+                nodo = "\"Nodo" + to_string(actual->dato.getReceptor()->getId()) + "\"";
+                archDot << nodo << endl;
+                agregarParametros = nodo + "[label = \"" + actual->dato.getReceptor()->getNombre() +"\"];";
+            }
+            archDot << agregarParametros << endl;
+            archDot << nodo;
+            if (actual->siguiente) {
+                string conexion  = "->";
+                archDot << conexion;
+            }
+            actual = actual->siguiente;
+
+        }
+        archDot << "}"<< endl;
+        archDot.close();
+
+        int result = system("dot -Tpng ./Lista_espera.dot -o ./Lista_espera.png");
+        if (result != 0) {
+            cout << "Ocurrió un error al momento de crear la imagen" << endl;
+        } else {
+            cout << "La imagen fue generada exitosamente" << endl;
+        }
+
+    }
 
 };
