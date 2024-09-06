@@ -1,101 +1,80 @@
 digraph Relaciones{
 node[shape = "box"];
 "Nodoraiz"[label = "root", group ="0"];
-"Nodoraiz"->"NodoCarlos"
-"Nodoraiz"->"NodoCarlos"[dir = back];
-"Nodoraiz"->"NodoCarlos1"
-"Nodoraiz"->"NodoCarlos1"[dir = back];
-"NodoCarlos"[label = "Carlos", group ="0"];
-"NodoCarlos"->"NodoMaria"
-"NodoCarlos"->"NodoMaria"[dir = back];
-"NodoCarlos"->"NodoCarlos1,2,1"
-"NodoCarlos"->"NodoCarlos1,2,1"[dir = back];
-"NodoMaria"[label = "Maria", group ="0"];
-"NodoMaria"->"NodoJuan"
-"NodoMaria"->"NodoJuan"[dir = back];
-"NodoMaria"->"NodoCarlos1,2,1"
-"NodoMaria"->"NodoCarlos1,2,1"[dir = back];
+"Nodoraiz"->"NodoJuan"
+"Nodoraiz"->"NodoJuan"[dir = back];
+"Nodoraiz"->"NodoJuan1"
+"Nodoraiz"->"NodoJuan1"[dir = back];
 "NodoJuan"[label = "Juan", group ="0"];
-"NodoJuan"->"NodoAna"
-"NodoJuan"->"NodoAna"[dir = back];
-"NodoJuan"->"NodoJuan3,4,1"
-"NodoJuan"->"NodoJuan3,4,1"[dir = back];
-"NodoAna"[label = "Ana", group ="0"];
-"NodoAna"->"NodoLuis"
-"NodoAna"->"NodoLuis"[dir = back];
-"NodoAna"->"NodoJuan3,4,1"
-"NodoAna"->"NodoJuan3,4,1"[dir = back];
-"NodoLuis"[label = "Luis", group ="0"];
-"NodoLuis"->"NodoLaura"
-"NodoLuis"->"NodoLaura"[dir = back];
-"NodoLuis"->"NodoLuis5,6,1"
-"NodoLuis"->"NodoLuis5,6,1"[dir = back];
-"NodoLaura"[label = "Laura", group ="0"];
-"NodoLaura"->"NodoMiguel"
-"NodoLaura"->"NodoMiguel"[dir = back];
-"NodoLaura"->"NodoLuis5,6,1"
-"NodoLaura"->"NodoLuis5,6,1"[dir = back];
+"NodoJuan"->"NodoJose"
+"NodoJuan"->"NodoJose"[dir = back];
+"NodoJuan"->"NodoJuan3,11,1"
+"NodoJuan"->"NodoJuan3,11,1"[dir = back];
+"NodoJose"[label = "Jose", group ="0"];
+"NodoJose"->"NodoMiguel"
+"NodoJose"->"NodoMiguel"[dir = back];
+"NodoJose"->"NodoJose7,11,1"
+"NodoJose"->"NodoJose7,11,1"[dir = back];
 "NodoMiguel"[label = "Miguel", group ="0"];
 "NodoMiguel"->"NodoSofia"
 "NodoMiguel"->"NodoSofia"[dir = back];
-"NodoMiguel"->"NodoMiguel9,10,1"
-"NodoMiguel"->"NodoMiguel9,10,1"[dir = back];
+"NodoMiguel"->"NodoMiguel9,11,1"
+"NodoMiguel"->"NodoMiguel9,11,1"[dir = back];
 "NodoSofia"[label = "Sofia", group ="0"];
-"NodoSofia"->"NodoMiguel9,10,1"
-"NodoSofia"->"NodoMiguel9,10,1"[dir = back];
-{rank = same;"Nodoraiz";"NodoCarlos";"NodoMaria";"NodoJuan";"NodoAna";"NodoLuis";"NodoLaura";"NodoMiguel";"NodoSofia"}
-"NodoCarlos1"[label = "Carlos1", group ="1"];
-"NodoCarlos1"->"NodoCarlos1,2,1"
-"NodoCarlos1"->"NodoCarlos1,2,1"[dir = back];
-"NodoCarlos1"->"NodoMaria1"
-"NodoCarlos1"->"NodoMaria1"[dir = back];
-"NodoCarlos1,2,0"[label = " Relacionados", group ="1"];
-{rank = same;"NodoCarlos1";"NodoCarlos1,2,0"}
-"NodoMaria1"[label = "Maria1", group ="2"];
-"NodoMaria1"->"NodoCarlos1,2,1"
-"NodoMaria1"->"NodoCarlos1,2,1"[dir = back];
-"NodoMaria1"->"NodoJuan1"
-"NodoMaria1"->"NodoJuan1"[dir = back];
-"NodoCarlos1,2,1"[label = " Relacionados", group ="2"];
-{rank = same;"NodoMaria1";"NodoCarlos1,2,1"}
-"NodoJuan1"[label = "Juan1", group ="3"];
-"NodoJuan1"->"NodoJuan3,4,1"
-"NodoJuan1"->"NodoJuan3,4,1"[dir = back];
-"NodoJuan1"->"NodoAna1"
-"NodoJuan1"->"NodoAna1"[dir = back];
-"NodoJuan3,4,1"[label = " Relacionados", group ="3"];
-{rank = same;"NodoJuan1";"NodoJuan3,4,1"}
-"NodoAna1"[label = "Ana1", group ="4"];
-"NodoAna1"->"NodoJuan3,4,1"
-"NodoAna1"->"NodoJuan3,4,1"[dir = back];
-"NodoAna1"->"NodoLuis1"
-"NodoAna1"->"NodoLuis1"[dir = back];
-"NodoJuan3,4,0"[label = " Relacionados", group ="4"];
-{rank = same;"NodoAna1";"NodoJuan3,4,0"}
-"NodoLuis1"[label = "Luis1", group ="5"];
-"NodoLuis1"->"NodoLuis5,6,1"
-"NodoLuis1"->"NodoLuis5,6,1"[dir = back];
-"NodoLuis1"->"NodoLaura1"
-"NodoLuis1"->"NodoLaura1"[dir = back];
-"NodoLuis5,6,0"[label = " Relacionados", group ="5"];
-{rank = same;"NodoLuis1";"NodoLuis5,6,0"}
-"NodoLaura1"[label = "Laura1", group ="6"];
-"NodoLaura1"->"NodoLuis5,6,1"
-"NodoLaura1"->"NodoLuis5,6,1"[dir = back];
-"NodoLaura1"->"NodoMiguel1"
-"NodoLaura1"->"NodoMiguel1"[dir = back];
-"NodoLuis5,6,1"[label = " Relacionados", group ="6"];
-{rank = same;"NodoLaura1";"NodoLuis5,6,1"}
-"NodoMiguel1"[label = "Miguel1", group ="7"];
-"NodoMiguel1"->"NodoMiguel9,10,1"
-"NodoMiguel1"->"NodoMiguel9,10,1"[dir = back];
+"NodoSofia"->"NodoCalificacion"
+"NodoSofia"->"NodoCalificacion"[dir = back];
+"NodoSofia"->"NodoSofia10,11,1"
+"NodoSofia"->"NodoSofia10,11,1"[dir = back];
+"NodoCalificacion"[label = "Calificacion", group ="0"];
+"NodoCalificacion"->"NodoJuan3,11,1"
+"NodoCalificacion"->"NodoJuan3,11,1"[dir = back];
+{rank = same;"Nodoraiz";"NodoJuan";"NodoJose";"NodoMiguel";"NodoSofia";"NodoCalificacion"}
+"NodoJuan1"[label = "Juan1", group ="1"];
+"NodoJuan1"->"NodoJuan3,11,1"
+"NodoJuan1"->"NodoJuan3,11,1"[dir = back];
+"NodoJuan1"->"NodoJose1"
+"NodoJuan1"->"NodoJose1"[dir = back];
+"NodoJuan3,11,0"[label = " Relacionados", group ="1"];
+"NodoJuan3,11,0"->"NodoJose7,11,0"
+"NodoJuan3,11,0"->"NodoJose7,11,0"[dir = back];
+{rank = same;"NodoJuan1";"NodoJuan3,11,0"}
+"NodoJose1"[label = "Jose1", group ="2"];
+"NodoJose1"->"NodoJose7,11,1"
+"NodoJose1"->"NodoJose7,11,1"[dir = back];
+"NodoJose1"->"NodoMiguel1"
+"NodoJose1"->"NodoMiguel1"[dir = back];
+"NodoJose7,11,1"[label = " Relacionados", group ="2"];
+"NodoJose7,11,1"->"NodoMiguel9,11,1"
+"NodoJose7,11,1"->"NodoMiguel9,11,1"[dir = back];
+{rank = same;"NodoJose1";"NodoJose7,11,1"}
+"NodoMiguel1"[label = "Miguel1", group ="3"];
+"NodoMiguel1"->"NodoMiguel9,11,1"
+"NodoMiguel1"->"NodoMiguel9,11,1"[dir = back];
 "NodoMiguel1"->"NodoSofia1"
 "NodoMiguel1"->"NodoSofia1"[dir = back];
-"NodoMiguel9,10,0"[label = " Relacionados", group ="7"];
-{rank = same;"NodoMiguel1";"NodoMiguel9,10,0"}
-"NodoSofia1"[label = "Sofia1", group ="8"];
-"NodoSofia1"->"NodoMiguel9,10,1"
-"NodoSofia1"->"NodoMiguel9,10,1"[dir = back];
-"NodoMiguel9,10,1"[label = " Relacionados", group ="8"];
-{rank = same;"NodoSofia1";"NodoMiguel9,10,1"}
+"NodoMiguel9,11,0"[label = " Relacionados", group ="3"];
+"NodoMiguel9,11,0"->"NodoSofia10,11,0"
+"NodoMiguel9,11,0"->"NodoSofia10,11,0"[dir = back];
+{rank = same;"NodoMiguel1";"NodoMiguel9,11,0"}
+"NodoSofia1"[label = "Sofia1", group ="4"];
+"NodoSofia1"->"NodoSofia10,11,1"
+"NodoSofia1"->"NodoSofia10,11,1"[dir = back];
+"NodoSofia1"->"NodoCalificacion1"
+"NodoSofia1"->"NodoCalificacion1"[dir = back];
+"NodoSofia10,11,0"[label = " Relacionados", group ="4"];
+{rank = same;"NodoSofia1";"NodoSofia10,11,0"}
+"NodoCalificacion1"[label = "Calificacion1", group ="5"];
+"NodoCalificacion1"->"NodoJuan3,11,1"
+"NodoCalificacion1"->"NodoJuan3,11,1"[dir = back];
+"NodoJuan3,11,1"[label = " Relacionados", group ="5"];
+"NodoJuan3,11,1"->"NodoJose7,11,1"
+"NodoJuan3,11,1"->"NodoJose7,11,1"[dir = back];
+"NodoJose7,11,0"[label = " Relacionados", group ="5"];
+"NodoJose7,11,0"->"NodoMiguel9,11,0"
+"NodoJose7,11,0"->"NodoMiguel9,11,0"[dir = back];
+"NodoMiguel9,11,1"[label = " Relacionados", group ="5"];
+"NodoMiguel9,11,1"->"NodoSofia10,11,1"
+"NodoMiguel9,11,1"->"NodoSofia10,11,1"[dir = back];
+"NodoSofia10,11,1"[label = " Relacionados", group ="5"];
+{rank = same;"NodoCalificacion1";"NodoJuan3,11,1";"NodoJose7,11,0";"NodoMiguel9,11,1";"NodoSofia10,11,1"}
 }

@@ -1,0 +1,5 @@
+digraph Amigos{
+node[shape = "box"];
+rankdir=LR
+"Nodo calificacion.fase1@example.com"[label = "calificacion.fase1@example.com"];
+"Nodo calificacion.fase1@example.com"->}

@@ -1,3 +1,10 @@
 digraph Espera{
 node[shape = "box"];
-}
+"Nodo12"[label = "Fase"];
+"Nodo12"->"Nodo2"
+"Nodo2"[label = "Maria"];
+"Nodo2"->"Nodo5"
+"Nodo5"[label = "Luis"];
+"Nodo5"->"Nodo1"
+"Nodo1"[label = "Carlos"];
+"Nodo1"}

@@ -145,7 +145,7 @@ public:
         archDot<< "rankdir=LR" << endl;
 
         NodoListas* actual = head;
-        while(actual) {
+        do{
             string nodo;
             string agregarParametros;
             if (actual == head) {
@@ -166,7 +166,7 @@ public:
             }
             actual = actual->siguiente;
 
-        }
+        }while(actual == head);
         archDot << "}"<< endl;
         archDot.close();
 

@@ -126,6 +126,20 @@ build CMakeFiles/Proyecto1.dir/Estructuras/Matriz.cpp.obj: CXX_COMPILER__Proyect
   OBJECT_DIR = CMakeFiles\Proyecto1.dir
   OBJECT_FILE_DIR = CMakeFiles\Proyecto1.dir\Estructuras
 
+build CMakeFiles/Proyecto1.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/untitled/main.cpp.obj: CXX_COMPILER__Proyecto1_unscanned_Debug C$:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/untitled/main.cpp || cmake_object_order_depends_target_Proyecto1
+  DEP_FILE = CMakeFiles\Proyecto1.dir\C_\Users\TeFxiu\Documents\EDD\[EDD]Proyecto_202206963\untitled\main.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/."
+  OBJECT_DIR = CMakeFiles\Proyecto1.dir
+  OBJECT_FILE_DIR = CMakeFiles\Proyecto1.dir\C_\Users\TeFxiu\Documents\EDD\[EDD]Proyecto_202206963\untitled
+
+build CMakeFiles/Proyecto1.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/untitled/mainwindow.cpp.obj: CXX_COMPILER__Proyecto1_unscanned_Debug C$:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/untitled/mainwindow.cpp || cmake_object_order_depends_target_Proyecto1
+  DEP_FILE = CMakeFiles\Proyecto1.dir\C_\Users\TeFxiu\Documents\EDD\[EDD]Proyecto_202206963\untitled\mainwindow.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/."
+  OBJECT_DIR = CMakeFiles\Proyecto1.dir
+  OBJECT_FILE_DIR = CMakeFiles\Proyecto1.dir\C_\Users\TeFxiu\Documents\EDD\[EDD]Proyecto_202206963\untitled
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Proyecto1
@@ -134,7 +148,7 @@ build CMakeFiles/Proyecto1.dir/Estructuras/Matriz.cpp.obj: CXX_COMPILER__Proyect
 #############################################
 # Link the executable Proyecto1.exe
 
-build Proyecto1.exe: CXX_EXECUTABLE_LINKER__Proyecto1_Debug CMakeFiles/Proyecto1.dir/main.cpp.obj CMakeFiles/Proyecto1.dir/Usuario.cpp.obj CMakeFiles/Proyecto1.dir/Estructuras/EnlazadaSimple.cpp.obj CMakeFiles/Proyecto1.dir/Estructuras/EnlazadaDoble.cpp.obj CMakeFiles/Proyecto1.dir/headers/ModuloUsuario.cpp.obj CMakeFiles/Proyecto1.dir/Estructuras/CircularDoble.cpp.obj CMakeFiles/Proyecto1.dir/Estructuras/SimpleAmistad.cpp.obj CMakeFiles/Proyecto1.dir/Estructuras/Pila.cpp.obj CMakeFiles/Proyecto1.dir/headers/ModuloAdmin.cpp.obj CMakeFiles/Proyecto1.dir/tinyfiledialogs/tinyfiledialogs.c.obj CMakeFiles/Proyecto1.dir/Estructuras/Matriz.cpp.obj
+build Proyecto1.exe: CXX_EXECUTABLE_LINKER__Proyecto1_Debug CMakeFiles/Proyecto1.dir/main.cpp.obj CMakeFiles/Proyecto1.dir/Usuario.cpp.obj CMakeFiles/Proyecto1.dir/Estructuras/EnlazadaSimple.cpp.obj CMakeFiles/Proyecto1.dir/Estructuras/EnlazadaDoble.cpp.obj CMakeFiles/Proyecto1.dir/headers/ModuloUsuario.cpp.obj CMakeFiles/Proyecto1.dir/Estructuras/CircularDoble.cpp.obj CMakeFiles/Proyecto1.dir/Estructuras/SimpleAmistad.cpp.obj CMakeFiles/Proyecto1.dir/Estructuras/Pila.cpp.obj CMakeFiles/Proyecto1.dir/headers/ModuloAdmin.cpp.obj CMakeFiles/Proyecto1.dir/tinyfiledialogs/tinyfiledialogs.c.obj CMakeFiles/Proyecto1.dir/Estructuras/Matriz.cpp.obj CMakeFiles/Proyecto1.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/untitled/main.cpp.obj CMakeFiles/Proyecto1.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/untitled/mainwindow.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Proyecto1.dir

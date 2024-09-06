@@ -1,0 +1,10 @@
+digraph Espera{
+node[shape = "box"];
+"Nodo2"[label = "Maria"];
+"Nodo2"->"Nodo4"
+"Nodo4"[label = "Ana"];
+"Nodo4"->"Nodo8"
+"Nodo8"[label = "Elena"];
+"Nodo8"->"Nodo10"
+"Nodo10"[label = "Sofia"];
+"Nodo10"}

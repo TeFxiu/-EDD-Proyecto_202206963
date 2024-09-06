@@ -25,4 +25,8 @@ add_executable(Proyecto1
         tinyfiledialogs/tinyfiledialogs.c
         Estructuras/Matriz.h
         Estructuras/Matriz.cpp
+        ../untitled/main.cpp
+        ../untitled/mainwindow.cpp
+        ../untitled/mainwindow.h
+        "../Fase 2/NodoTree.h"
 )

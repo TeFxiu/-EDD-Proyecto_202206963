@@ -20,4 +20,6 @@ rankdir=LR
 "Nodo9"[label = "Miguel"];
 "Nodo9"->"Nodo10"
 "Nodo10"[label = "Sofia"];
-"Nodo10"}
+"Nodo10"->"Nodo11"
+"Nodo11"[label = "Calificacion"];
+"Nodo11"}

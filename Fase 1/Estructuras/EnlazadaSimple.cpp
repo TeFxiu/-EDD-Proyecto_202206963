@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include "../headers/NodoUser.h"
-#include <iomanip>
 #include <fstream>
 
 using namespace std;
