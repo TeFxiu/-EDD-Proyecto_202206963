@@ -257,6 +257,24 @@
 	"HEADERS" : 
 	[
 		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/Usuario.h",
+			"MU",
+			"DBWYB7BEB2/moc_Usuario.cpp",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/AVLtree.h",
+			"MU",
+			"PLNSU7CHGX/moc_AVLtree.cpp",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/TreeUsuario.h",
+			"MU",
+			"PLNSU7CHGX/moc_TreeUsuario.cpp",
+			null
+		],
+		[
 			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/mainwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
@@ -334,6 +352,21 @@
 	"SETTINGS_FILE" : "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/GUI_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Usuario.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/AVLtree.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/TreeUsuario.cpp",
+			"MU",
+			null
+		],
 		[
 			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/main.cpp",
 			"MU",

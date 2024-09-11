@@ -1,0 +1,3 @@
+C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/cmake-build-debug/CMakeFiles/Estructuras.dir
+C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/cmake-build-debug/CMakeFiles/rebuild_cache.dir

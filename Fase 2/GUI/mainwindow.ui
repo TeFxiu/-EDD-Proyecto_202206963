@@ -48,7 +48,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="InicioSesion">
      <widget class="QFrame" name="frameIS">
@@ -214,6 +214,35 @@
        <property name="flat">
         <bool>true</bool>
        </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="ModuloAdmin">
+     <widget class="QTabWidget" name="admin">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>801</width>
+        <height>611</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Cascadia Code</family>
+        <pointsize>11</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <widget class="QWidget" name="buscarAdmin">
+       <attribute name="title">
+        <string>Buscar</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Tab 2</string>
+       </attribute>
       </widget>
      </widget>
     </widget>
@@ -775,7 +804,7 @@ color: rgb(255, 255, 255);</string>
                <set>Qt::AlignmentFlag::AlignCenter</set>
               </property>
               <property name="readOnly">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
              </widget>
             </item>
@@ -810,7 +839,7 @@ color: rgb(255, 255, 255);</string>
                <set>Qt::AlignmentFlag::AlignCenter</set>
               </property>
               <property name="readOnly">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
              </widget>
             </item>
@@ -845,7 +874,7 @@ color: rgb(255, 255, 255);</string>
                <set>Qt::AlignmentFlag::AlignCenter</set>
               </property>
               <property name="readOnly">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
              </widget>
             </item>
@@ -880,7 +909,7 @@ color: rgb(255, 255, 255);</string>
                <set>Qt::AlignmentFlag::AlignCenter</set>
               </property>
               <property name="readOnly">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
              </widget>
             </item>
@@ -1304,7 +1333,7 @@ background-color: rgb(0, 0, 0);</string>
         <string>Fecha de Nacimiento</string>
        </property>
       </widget>
-      <widget class="QDateEdit" name="dateEdit">
+      <widget class="QDateEdit" name="newFecha">
        <property name="geometry">
         <rect>
          <x>420</x>

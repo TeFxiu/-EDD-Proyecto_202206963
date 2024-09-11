@@ -1,10 +1,15 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "../Estructuras/AVLtree.h"
+
 #include <QMainWindow>
 #include <QLabel>
 #include <QPixmap>
 #include <QFrame>
+#include <QMessageBox>
+#include <QDate>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -31,10 +36,19 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+
+    QMessageBox* mensajeIS = nullptr;
     QLabel* logo = nullptr;
+
+    Usuario* perfil = nullptr;
+    Usuario* admin = nullptr;
+    AVLtree* avl = nullptr;
 
     void iniciarLogo();
     void frameMain();
+    void cargarPerfil();
+
+    void limpiarFormCC();
     void limpiarForm();
 
 };

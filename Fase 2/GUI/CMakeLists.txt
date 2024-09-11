@@ -17,6 +17,12 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
+        ../Estructuras/AVLtree.h
+        ../Estructuras/AVLtree.cpp
+        ../Estructuras/TreeUsuario.cpp
+        ../Estructuras/TreeUsuario.h
+        "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Usuario.cpp"
+        "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/Usuario.h"
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

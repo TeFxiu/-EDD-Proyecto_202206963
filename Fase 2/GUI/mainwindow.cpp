@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
+using namespace std;
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -8,7 +10,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     iniciarLogo();
     frameMain();
-
+    admin = new Usuario("admin", "admin", 0, "admin@gmail.com", "EDD2S2024");
+    avl = new AVLtree();
+    mensajeIS = new QMessageBox();
 }
 
 MainWindow::~MainWindow()
@@ -38,37 +42,97 @@ void MainWindow::frameMain(){
 
 void MainWindow::on_botonCC_clicked()
 {
-    ui->dataCorreo->clear();
-    ui->dataPass->clear();
-    ui->ventanas->setCurrentIndex(2);
+    limpiarForm();
+    ui->ventanas->setCurrentIndex(3);
 }
 
 
 void MainWindow::on_back0_clicked()
 {
-    limpiarForm();
+    limpiarFormCC();
     ui->ventanas->setCurrentIndex(0);
 }
 
 
 void MainWindow::on_newUsuario_clicked()
 {
-    limpiarForm();
-    ui->ventanas->setCurrentIndex(0);
+    string nombre = ui->newNombre->text().toStdString();
+    string apellido = ui->newApellido->text().toStdString();
+    string correo = ui->newCorreo->text().toStdString();
+    QDateTime fecha = QDateTime(ui->newFecha->date(), QTime(0,0));
+    time_t fechaNac = fecha.toSecsSinceEpoch();
+
+    string pass = ui->newPass->text().toStdString();
+
+    Usuario* userNew = new Usuario(nombre, apellido, fechaNac, correo, pass);
+
+    Usuario* userFound = avl->buscarUsuario(correo);
+
+    limpiarFormCC();
+
+    if (userFound == nullptr){
+        avl->insertar(userNew);
+        ui->ventanas->setCurrentIndex(0);
+    }else{
+        mensajeIS->setText("Correo invalido");
+        mensajeIS->show();
+    }
 }
 
-void MainWindow::limpiarForm(){
+
+void MainWindow::on_botonIS_clicked()
+{
+    string stdCorreo = ui->dataCorreo->text().toStdString();
+    string stdPass = ui->dataPass->text().toStdString();
+
+    if (stdCorreo == admin->getEmail() && stdPass == admin->getPass()){
+        ui->ventanas->setCurrentIndex(1);
+    }
+
+    perfil = avl->buscarUsuario(stdCorreo);
+
+    if (perfil != nullptr){
+        if (perfil->getPass() == stdPass){
+            cargarPerfil();
+            limpiarForm();
+            return ;
+        }
+    }
+
+    mensajeIS->setText("Datos invalido");
+    mensajeIS->show();
+
+}
+
+void MainWindow::cargarPerfil(){
+    const char* nombre = perfil->getNombre().c_str();
+    ui->nombrePerfil->setText(QString(nombre));
+
+    const char* apellido = perfil->getApellido().c_str();
+    ui->apellidoPerfil->setText(QString(apellido));
+
+    const char* correo = perfil->getEmail().c_str();
+    ui->correoPerfil->setText(QString(correo));
+
+    const char* pass = perfil->getPass().c_str();
+    ui->passPerfil->setText(QString(pass));
+
+    time_t fecha = perfil->getFechaNac();
+    QDateTime parseo = QDateTime();
+    parseo.setSecsSinceEpoch(fecha);
+    ui->nacPerfil->setDateTime(parseo);
+
+    ui->ventanas->setCurrentIndex(2);
+}
+
+void MainWindow::limpiarFormCC(){
     ui->newNombre->clear();
     ui->newApellido->clear();
     ui->newCorreo->clear();
     ui->newPass->clear();
 }
 
-
-void MainWindow::on_botonIS_clicked()
-{
+void MainWindow::limpiarForm(){
     ui->dataCorreo->clear();
     ui->dataPass->clear();
-    ui->ventanas->setCurrentIndex(1);
 }
-
