@@ -9,7 +9,11 @@ add_executable(Estructuras
         AVLtree.cpp
         AVLtree.h
         TreeUsuario.cpp
-        TreeUsuario.h
+        TreeUsuario.
+        ABBtree.cpp
+        ABBtree.h
         "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/Usuario.h"
         "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Usuario.cpp"
+        "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/Publicacion.h"
+        "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/NodoStories.h"
 )

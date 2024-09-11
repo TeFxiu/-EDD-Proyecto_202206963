@@ -20,6 +20,8 @@ Usuario* AVLtree::buscarUsuario(string email, TreeUsuario* actual) {
     } else if (actual->getData()->getEmail() > email){
         return buscarUsuario(email, actual->getIzq());
     }
+
+    return nullptr;
 }
 
 Usuario* AVLtree::buscarUsuario(string mail){

@@ -1,58 +1,64 @@
 # ninja log v6
-37	263	7477328591974728	GUI_autogen/timestamp	f76e4f616b9b0f54
-37	263	7477328591974728	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
-3458	8702	7477296365792800	CMakeFiles/GUI.dir/GUI_autogen/mocs_compilation.cpp.obj	cc7e62abad7ef759
+72	4127	7477743715120833	GUI_autogen/timestamp	f76e4f616b9b0f54
+72	4127	7477743715120833	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
+4130	11654	7477743716836645	CMakeFiles/GUI.dir/GUI_autogen/mocs_compilation.cpp.obj	cc7e62abad7ef759
 259	3379	7472941022593081	CMakeFiles/GUI.dir/modulocrear.cpp.obj	763efbab65bc4f5f
-37	263	7477328591974728	GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
-37	263	7477328591974728	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/timestamp	f76e4f616b9b0f54
-5930	6286	7477328650899642	GUI.exe	905bd56bc65141e4
-3464	8476	7477296365857832	CMakeFiles/GUI.dir/main.cpp.obj	e9b890c93140d8e6
+72	4127	7477743715120833	GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
+72	4127	7477743715120833	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/timestamp	f76e4f616b9b0f54
+2029	2621	7477746531779725	GUI.exe	e60bf8e73ff196b1
+4137	11541	7477743716911948	CMakeFiles/GUI.dir/main.cpp.obj	e9b890c93140d8e6
 959	3714	7472752820394044	CMakeFiles/GUI.dir/crearusuario.cpp.obj	3679c7ad24c87f8b
-265	5929	7477328594244731	CMakeFiles/GUI.dir/mainwindow.cpp.obj	55c75e6fc982e2a8
-3475	6381	7477296365953214	CMakeFiles/GUI.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase_2/Estructuras/AVLtree.cpp.obj	94ca8eb5352fc449
-26	1039	7477073159850725	build.ninja	3511bd48133c0b85
-3484	6374	7477296366048497	CMakeFiles/GUI.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase_1/Usuario.cpp.obj	da409ba78ae2bc
-3479	6372	7477296366008349	CMakeFiles/GUI.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase_2/Estructuras/TreeUsuario.cpp.obj	6886a8957a3e9fb8
-39	262	7477331929482641	GUI_autogen/timestamp	f76e4f616b9b0f54
-39	262	7477331929482641	GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
-39	262	7477331929482641	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/timestamp	f76e4f616b9b0f54
-39	262	7477331929482641	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
-263	5654	7477331931722879	CMakeFiles/GUI.dir/mainwindow.cpp.obj	55c75e6fc982e2a8
-5655	5992	7477331985637607	GUI.exe	905bd56bc65141e4
-33	257	7477332263463164	GUI_autogen/timestamp	f76e4f616b9b0f54
-33	257	7477332263463164	GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
-33	257	7477332263463164	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/timestamp	f76e4f616b9b0f54
-33	257	7477332263463164	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
-258	5730	7477332265712356	CMakeFiles/GUI.dir/mainwindow.cpp.obj	55c75e6fc982e2a8
-5730	6075	7477332320432410	GUI.exe	905bd56bc65141e4
-34	263	7477347951491177	GUI_autogen/timestamp	f76e4f616b9b0f54
-34	263	7477347951491177	GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
-34	263	7477347951491177	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/timestamp	f76e4f616b9b0f54
-34	263	7477347951491177	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
-264	5754	7477347953794752	CMakeFiles/GUI.dir/mainwindow.cpp.obj	55c75e6fc982e2a8
-5755	6091	7477348008690347	GUI.exe	905bd56bc65141e4
-32	2346	7477360966326747	GUI_autogen/timestamp	f76e4f616b9b0f54
-32	2346	7477360966326747	GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
-32	2346	7477360966326747	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/timestamp	f76e4f616b9b0f54
-32	2346	7477360966326747	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
-2364	4708	7477360967811680	CMakeFiles/GUI.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase_2/Estructuras/AVLtree.cpp.obj	94ca8eb5352fc449
-2353	7578	7477360967701199	CMakeFiles/GUI.dir/main.cpp.obj	e9b890c93140d8e6
-2348	7582	7477360967646007	CMakeFiles/GUI.dir/GUI_autogen/mocs_compilation.cpp.obj	cc7e62abad7ef759
-33	264	7477366114505608	GUI_autogen/timestamp	f76e4f616b9b0f54
-33	264	7477366114505608	GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
-33	264	7477366114505608	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/timestamp	f76e4f616b9b0f54
-33	264	7477366114505608	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
-265	5601	7477366116828588	CMakeFiles/GUI.dir/mainwindow.cpp.obj	55c75e6fc982e2a8
-5602	5943	7477366170187484	GUI.exe	905bd56bc65141e4
-32	251	7477367436031491	GUI_autogen/timestamp	f76e4f616b9b0f54
-32	251	7477367436031491	GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
-32	251	7477367436031491	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/timestamp	f76e4f616b9b0f54
-32	251	7477367436031491	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
-252	5557	7477367438225202	CMakeFiles/GUI.dir/mainwindow.cpp.obj	55c75e6fc982e2a8
-5557	5887	7477367491282264	GUI.exe	905bd56bc65141e4
-33	260	7477373576860441	GUI_autogen/timestamp	f76e4f616b9b0f54
-33	260	7477373576860441	GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
-33	260	7477373576860441	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/timestamp	f76e4f616b9b0f54
-33	260	7477373576860441	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
-262	5771	7477373579151355	CMakeFiles/GUI.dir/mainwindow.cpp.obj	55c75e6fc982e2a8
-5771	6111	7477373634237676	GUI.exe	905bd56bc65141e4
+4144	12500	7477743716977104	CMakeFiles/GUI.dir/mainwindow.cpp.obj	55c75e6fc982e2a8
+4151	7913	7477743717047201	CMakeFiles/GUI.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase_2/Estructuras/AVLtree.cpp.obj	94ca8eb5352fc449
+26	1039	7477750371434506	build.ninja	3511bd48133c0b85
+21	2028	7477746511706371	CMakeFiles/GUI.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase_1/Usuario.cpp.obj	da409ba78ae2bc
+4158	7864	7477743717132518	CMakeFiles/GUI.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase_2/Estructuras/TreeUsuario.cpp.obj	6886a8957a3e9fb8
+4179	6080	7477743717333102	CMakeFiles/GUI.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase_2/Estructuras/PostSimple.cpp.obj	79f19c7255df585c
+4165	6082	7477743717197767	CMakeFiles/GUI.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase_2/Estructuras/ABBtree.cpp.obj	bf3a63cbcf3504ad
+4172	6091	7477743717262891	CMakeFiles/GUI.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase_2/Estructuras/TreePost.cpp.obj	d5f113916e2bfc82
+34	2454	7477754356741233	GUI_autogen/timestamp	f76e4f616b9b0f54
+34	2454	7477754356741233	GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
+34	2454	7477754356741233	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/timestamp	f76e4f616b9b0f54
+34	2454	7477754356741233	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
+2477	3109	7477754358146701	CMakeFiles/GUI.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase_1/Estructuras/EnlazadaDoble.cpp.obj	1ce880fd492b593f
+2471	4517	7477754358086755	CMakeFiles/GUI.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase_1/Usuario.cpp.obj	da409ba78ae2bc
+2461	7187	7477754357981402	CMakeFiles/GUI.dir/main.cpp.obj	e9b890c93140d8e6
+2455	7343	7477754357926187	CMakeFiles/GUI.dir/GUI_autogen/mocs_compilation.cpp.obj	cc7e62abad7ef759
+2466	7965	7477754358031613	CMakeFiles/GUI.dir/mainwindow.cpp.obj	55c75e6fc982e2a8
+7965	8311	7477754413018804	GUI.exe	3337787f96154e1e
+36	2406	7477760184461813	GUI_autogen/timestamp	f76e4f616b9b0f54
+36	2406	7477760184461813	GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
+36	2406	7477760184461813	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/timestamp	f76e4f616b9b0f54
+36	2406	7477760184461813	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
+2432	4758	7477760185926813	CMakeFiles/GUI.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase_2/Estructuras/TreeUsuario.cpp.obj	6886a8957a3e9fb8
+2425	4788	7477760185861752	CMakeFiles/GUI.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase_2/Estructuras/AVLtree.cpp.obj	94ca8eb5352fc449
+2438	4818	7477760185986971	CMakeFiles/GUI.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase_1/Usuario.cpp.obj	da409ba78ae2bc
+2413	7565	7477760185738084	CMakeFiles/GUI.dir/main.cpp.obj	e9b890c93140d8e6
+2407	7822	7477760185672700	CMakeFiles/GUI.dir/GUI_autogen/mocs_compilation.cpp.obj	cc7e62abad7ef759
+2419	8370	7477760185797748	CMakeFiles/GUI.dir/mainwindow.cpp.obj	55c75e6fc982e2a8
+8370	8747	7477760245300349	GUI.exe	3337787f96154e1e
+32	253	7477761462420822	GUI_autogen/timestamp	f76e4f616b9b0f54
+32	253	7477761462420822	GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
+32	253	7477761462420822	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/timestamp	f76e4f616b9b0f54
+32	253	7477761462420822	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
+260	2306	7477761464708724	CMakeFiles/GUI.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase_2/Estructuras/AVLtree.cpp.obj	94ca8eb5352fc449
+255	5736	7477761464653976	CMakeFiles/GUI.dir/mainwindow.cpp.obj	55c75e6fc982e2a8
+5736	6104	7477761519466320	GUI.exe	3337787f96154e1e
+33	309	7477763793556751	GUI_autogen/timestamp	f76e4f616b9b0f54
+33	309	7477763793556751	GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
+33	309	7477763793556751	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/timestamp	f76e4f616b9b0f54
+33	309	7477763793556751	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
+310	6230	7477763796322521	CMakeFiles/GUI.dir/mainwindow.cpp.obj	55c75e6fc982e2a8
+6230	6582	7477763855524492	GUI.exe	3337787f96154e1e
+36	305	7477764283003945	GUI_autogen/timestamp	f76e4f616b9b0f54
+36	305	7477764283003945	GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
+36	305	7477764283003945	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/timestamp	f76e4f616b9b0f54
+36	305	7477764283003945	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
+307	6083	7477764285711345	CMakeFiles/GUI.dir/mainwindow.cpp.obj	55c75e6fc982e2a8
+6083	6428	7477764343476386	GUI.exe	3337787f96154e1e
+32	295	7477764919703241	GUI_autogen/timestamp	f76e4f616b9b0f54
+32	295	7477764919703241	GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
+32	295	7477764919703241	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/timestamp	f76e4f616b9b0f54
+32	295	7477764919703241	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/mocs_compilation.cpp	f76e4f616b9b0f54
+296	6170	7477764922351251	CMakeFiles/GUI.dir/mainwindow.cpp.obj	55c75e6fc982e2a8
+6170	6527	7477764981082391	GUI.exe	3337787f96154e1e

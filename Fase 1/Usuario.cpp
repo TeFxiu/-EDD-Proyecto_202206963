@@ -18,6 +18,7 @@ Usuario::Usuario() {
     this->email = "";
     this->apellido = "";
     this->password = "";
+    this->feed = new ABBtree();
 }
 
 Usuario::Usuario(string _nombre, int id) {
@@ -29,6 +30,7 @@ Usuario::Usuario(string _nombre, int id) {
     this->email = "";
     this->apellido = "";
     this->password = "";
+    this->feed = nullptr;
 }
 
 Usuario::Usuario(string nombre, string apellido, time_t fechaNacimiento, string email, string pass) {
@@ -40,6 +42,7 @@ Usuario::Usuario(string nombre, string apellido, time_t fechaNacimiento, string 
     this->numPublicaciones = 0;
     this->id = idCounter++;
     this->fechaNacimiento = fechaNacimiento;
+    this->feed = new ABBtree();
 }
 
 void Usuario::setNombre(string nombre) {
@@ -107,4 +110,15 @@ time_t Usuario::getFechaNac() {
     return this->fechaNacimiento;
 }
 
-Usuario::~Usuario(){}
+ABBtree* Usuario::getFeed() {
+    return this->feed;
+}
+
+void Usuario::setFeed(ABBtree* newFeed) {
+    this->feed = newFeed;
+}
+
+
+Usuario::~Usuario(){
+    delete feed;
+}

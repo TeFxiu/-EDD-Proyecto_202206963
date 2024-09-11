@@ -11,6 +11,5 @@ struct NodoStories
     NodoStories* siguiente;
     NodoStories* anterior;
     NodoStories(Publicacion* entrada):dato(entrada), siguiente(nullptr), anterior(nullptr){};
-
 };
 #endif

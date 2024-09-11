@@ -26,7 +26,7 @@ bool verificarFecha(string fecha){
         return false;
     }
 }
-
+`
 bool verificarEmail(string email){
     regex emailRegex(R"(^(\w+)(\.\w+)*@(\w+)(\.\w+)+$)");
     smatch match;

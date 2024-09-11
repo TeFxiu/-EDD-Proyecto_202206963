@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "../Estructuras/AVLtree.h"
+#include "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/EnlazadaDoble.cpp"
 
 #include <QMainWindow>
 #include <QLabel>
@@ -43,6 +44,7 @@ private:
     Usuario* perfil = nullptr;
     Usuario* admin = nullptr;
     AVLtree* avl = nullptr;
+    DoublyLinkedList* feedGeneral = nullptr;
 
     void iniciarLogo();
     void frameMain();

@@ -779,10 +779,19 @@ GUI_autogen/timestamp: \
 	C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wow64apiset.h \
 	C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wtypes.h \
 	C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wtypesbase.h \
+	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 1/Estructuras/EnlazadaDoble.cpp \
 	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 1/Usuario.cpp \
+	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 1/headers/NodoStories.h \
+	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 1/headers/Publicacion.h \
 	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 1/headers/Usuario.h \
+	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/Estructuras/ABBtree.cpp \
+	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/Estructuras/ABBtree.h \
 	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/Estructuras/AVLtree.cpp \
 	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/Estructuras/AVLtree.h \
+	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/Estructuras/PostSimple.cpp \
+	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/Estructuras/PostSimple.h \
+	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/Estructuras/TreePost.cpp \
+	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/Estructuras/TreePost.h \
 	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/Estructuras/TreeUsuario.cpp \
 	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/Estructuras/TreeUsuario.h \
 	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/GUI/CMakeLists.txt \

@@ -474,7 +474,10 @@
        <string notr="true">color: rgb(0, 0, 0);</string>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>1</number>
+      </property>
+      <property name="tabBarAutoHide">
+       <bool>true</bool>
       </property>
       <widget class="QWidget" name="buscarMU">
        <attribute name="icon">
@@ -715,6 +718,52 @@ color: rgb(255, 255, 255);</string>
        <attribute name="title">
         <string>Publicaciones</string>
        </attribute>
+       <widget class="QMdiArea" name="mdiArea">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>291</width>
+          <height>571</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QScrollArea" name="scrollArea">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>0</y>
+          <width>511</width>
+          <height>571</height>
+         </rect>
+        </property>
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="scrollAreaWidgetContents">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>509</width>
+           <height>569</height>
+          </rect>
+         </property>
+         <widget class="QScrollBar" name="verticalScrollBar">
+          <property name="geometry">
+           <rect>
+            <x>490</x>
+            <y>0</y>
+            <width>16</width>
+            <height>561</height>
+           </rect>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Orientation::Vertical</enum>
+          </property>
+         </widget>
+        </widget>
+       </widget>
       </widget>
       <widget class="QWidget" name="solicitudesMU">
        <attribute name="icon">

@@ -21,8 +21,17 @@ set(PROJECT_SOURCES
         ../Estructuras/AVLtree.cpp
         ../Estructuras/TreeUsuario.cpp
         ../Estructuras/TreeUsuario.h
+        ../Estructuras/ABBtree.h
+        ../Estructuras/ABBtree.cpp
+        ../Estructuras/TreePost.h
+        ../Estructuras/TreePost.cpp
+        ../Estructuras/PostSimple.cpp
+        ../Estructuras/PostSimple.h
+        "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/Publicacion.h"
+        "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/NodoStories.h"
         "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Usuario.cpp"
         "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/Usuario.h"
+        "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/EnlazadaDoble.cpp"
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

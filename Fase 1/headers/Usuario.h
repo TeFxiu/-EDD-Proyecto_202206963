@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <string>
 #include <windows.h>
+#include "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ABBtree.h"
 
 using namespace std;
 
@@ -25,7 +26,7 @@ class Usuario {
         string password;
 
         time_t fechaNacimiento;
-
+        ABBtree* feed;
     public:
         Usuario();
         Usuario(string nombre, int id);
@@ -54,6 +55,9 @@ class Usuario {
 
         void setNumPublicaciones();
         int getNumPublicaciones();
+
+        ABBtree* getFeed();
+        void setFeed(ABBtree* newFeed);
 
         ~Usuario();
 };

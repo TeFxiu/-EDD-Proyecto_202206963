@@ -16,9 +16,10 @@ class DoublyLinkedList{
         NodoStories *tail;
         NodoStories *actual;
     public:
-        string propietario;
-        DoublyLinkedList(string propietario):head(nullptr), tail(nullptr), actual(head), propietario(propietario){};
+        DoublyLinkedList():head(nullptr), tail(nullptr), actual(head){};
+
         bool estaVacia() {return head == nullptr;};
+
         void append(Publicacion* dato){
             NodoStories* newNodo = new NodoStories(dato);
             if (this->estaVacia()) {
@@ -42,6 +43,7 @@ class DoublyLinkedList{
                 head = newNodo;
             }
         }
+        /*
 
         void removeAll(string dato){
             NodoStories* temp = head;
@@ -51,7 +53,7 @@ class DoublyLinkedList{
                     return;
 
                 }
-                while(temp != nullptr && temp->dato->getId() != dato){
+                while(temp != nullptr && temp->dato->getUsuario() != dato){
                     temp = temp->siguiente;
                 }
                 if (temp == nullptr){
@@ -75,7 +77,7 @@ class DoublyLinkedList{
                     temp->siguiente->anterior = temp->anterior;
                     temp = temp->siguiente;
                     delete del;
-                }   
+                }
             }
         }
 
@@ -125,7 +127,8 @@ class DoublyLinkedList{
             }
             return devolver;
         }
-
+         */
+/*
     void reporte(){
         ofstream archDot("Publicaciones.dot");
         archDot << "digraph Usuarios{"<< endl;
@@ -167,7 +170,6 @@ class DoublyLinkedList{
 
     }
 
-        /*
         void graph(){
             ofstream file("graph.dot");
             file<< "digraph G {" <<endl;
@@ -194,7 +196,8 @@ class DoublyLinkedList{
             system(command.c_str());
 
         }
-         */
+        */
+
 
 };
 #endif

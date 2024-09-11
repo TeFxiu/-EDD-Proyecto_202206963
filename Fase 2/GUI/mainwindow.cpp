@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
     admin = new Usuario("admin", "admin", 0, "admin@gmail.com", "EDD2S2024");
     avl = new AVLtree();
     mensajeIS = new QMessageBox();
+    feedGeneral = new DoublyLinkedList();
 }
 
 MainWindow::~MainWindow()
@@ -82,6 +83,9 @@ void MainWindow::on_newUsuario_clicked()
 
 void MainWindow::on_botonIS_clicked()
 {
+
+    ui->ventanas->setCurrentIndex(2);
+    /*
     string stdCorreo = ui->dataCorreo->text().toStdString();
     string stdPass = ui->dataPass->text().toStdString();
 
@@ -101,6 +105,7 @@ void MainWindow::on_botonIS_clicked()
 
     mensajeIS->setText("Datos invalido");
     mensajeIS->show();
+*/
 
 }
 

@@ -14,7 +14,6 @@ add_executable(Proyecto1
         headers/moduloUsuario.h
         headers/ModuloUsuario.cpp
         headers/NodoUser.h
-        Estructuras/CircularDoble.cpp
         headers/ModuloAdmin.h
         headers/NodoStories.h
         Estructuras/SimpleAmistad.cpp
@@ -29,4 +28,11 @@ add_executable(Proyecto1
         "../Fase 2/Estructuras/TreeUsuario.h"
         "../Fase 2/Estructuras/TreeUsuario.cpp"
         "../Fase 2/Estructuras/AVLtree.cpp"
+        "../Fase 2/Estructuras/ABBtree.h"
+        "../Fase 2/Estructuras/ABBtree.cpp"
+        "../Fase 2/Estructuras/TreePost.h"
+        "../Fase 2/Estructuras/TreePost.cpp"
+        "../Fase 2/Estructuras/PostSimple.h"
+        "../Fase 2/Estructuras/PostSimple.cpp"
+        "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ABBtree.h"
 )

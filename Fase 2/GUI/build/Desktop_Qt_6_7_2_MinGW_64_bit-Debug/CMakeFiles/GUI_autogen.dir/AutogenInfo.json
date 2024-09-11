@@ -257,15 +257,45 @@
 	"HEADERS" : 
 	[
 		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/NodoStories.h",
+			"MU",
+			"DBWYB7BEB2/moc_NodoStories.cpp",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/Publicacion.h",
+			"MU",
+			"DBWYB7BEB2/moc_Publicacion.cpp",
+			null
+		],
+		[
 			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/Usuario.h",
 			"MU",
 			"DBWYB7BEB2/moc_Usuario.cpp",
 			null
 		],
 		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ABBtree.h",
+			"MU",
+			"PLNSU7CHGX/moc_ABBtree.cpp",
+			null
+		],
+		[
 			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/AVLtree.h",
 			"MU",
 			"PLNSU7CHGX/moc_AVLtree.cpp",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/PostSimple.h",
+			"MU",
+			"PLNSU7CHGX/moc_PostSimple.cpp",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/TreePost.h",
+			"MU",
+			"PLNSU7CHGX/moc_TreePost.cpp",
 			null
 		],
 		[
@@ -353,12 +383,32 @@
 	"SOURCES" : 
 	[
 		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/EnlazadaDoble.cpp",
+			"MU",
+			null
+		],
+		[
 			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Usuario.cpp",
 			"MU",
 			null
 		],
 		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ABBtree.cpp",
+			"MU",
+			null
+		],
+		[
 			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/AVLtree.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/PostSimple.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/TreePost.cpp",
 			"MU",
 			null
 		],
