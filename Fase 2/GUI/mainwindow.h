@@ -10,6 +10,8 @@
 #include <QFrame>
 #include <QMessageBox>
 #include <QDate>
+#include <QVBoxLayout>
+#include <QScrollBar>
 
 
 QT_BEGIN_NAMESPACE
@@ -35,11 +37,18 @@ private slots:
 
     void on_botonIS_clicked();
 
+    void actualizarFeed(int value);
+
 private:
     Ui::MainWindow *ui;
 
+    int rango = 100;
+
     QMessageBox* mensajeIS = nullptr;
     QLabel* logo = nullptr;
+    QWidget *contenedor = nullptr;
+    QVBoxLayout *layout = nullptr;
+    QScrollBar* bar = nullptr;
 
     Usuario* perfil = nullptr;
     Usuario* admin = nullptr;
@@ -49,6 +58,7 @@ private:
     void iniciarLogo();
     void frameMain();
     void cargarPerfil();
+    void cargarPublicacion();
 
     void limpiarFormCC();
     void limpiarForm();

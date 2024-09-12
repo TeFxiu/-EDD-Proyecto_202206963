@@ -14,6 +14,11 @@ MainWindow::MainWindow(QWidget *parent)
     avl = new AVLtree();
     mensajeIS = new QMessageBox();
     feedGeneral = new DoublyLinkedList();
+    contenedor = new QWidget;
+    layout = new QVBoxLayout(contenedor);
+    bar = ui->scrollArea->verticalScrollBar();
+
+    connect(bar, &QScrollBar::valueChanged, this, &MainWindow::actualizarFeed);
 }
 
 MainWindow::~MainWindow()
@@ -84,6 +89,8 @@ void MainWindow::on_newUsuario_clicked()
 void MainWindow::on_botonIS_clicked()
 {
 
+    cargarPublicacion();
+    limpiarForm();
     ui->ventanas->setCurrentIndex(2);
     /*
     string stdCorreo = ui->dataCorreo->text().toStdString();
@@ -98,7 +105,9 @@ void MainWindow::on_botonIS_clicked()
     if (perfil != nullptr){
         if (perfil->getPass() == stdPass){
             cargarPerfil();
+            cargarPublicacion();
             limpiarForm();
+            ui->ventanas->setCurrentIndex(2);
             return ;
         }
     }
@@ -106,7 +115,28 @@ void MainWindow::on_botonIS_clicked()
     mensajeIS->setText("Datos invalido");
     mensajeIS->show();
 */
+}
 
+void MainWindow::actualizarFeed(int value){
+    if (value == bar->maximum()){
+    QFrame* ventana1 = new QFrame(contenedor);
+
+    QVBoxLayout* scroll = new QVBoxLayout(ventana1);
+
+    ventana1->setMinimumSize(420,435);
+
+    QLabel* las = new QLabel(QString("dfdf"), ventana1);
+
+    las->setText("sdsdsd");
+
+    QPushButton * bon = new QPushButton("Min", ventana1);
+    scroll->addWidget(bon);
+
+    scroll->addWidget(las);
+
+    layout->addWidget(ventana1);
+    }
+    return;
 }
 
 void MainWindow::cargarPerfil(){
@@ -127,7 +157,30 @@ void MainWindow::cargarPerfil(){
     parseo.setSecsSinceEpoch(fecha);
     ui->nacPerfil->setDateTime(parseo);
 
-    ui->ventanas->setCurrentIndex(2);
+}
+
+void MainWindow::cargarPublicacion(){
+
+    QFrame* ventana1 = new QFrame(contenedor);
+
+    QVBoxLayout* scroll = new QVBoxLayout(ventana1);
+
+    ventana1->setMinimumSize(420,435);
+
+    QLabel* las = new QLabel(QString("dfdf"), ventana1);
+
+    las->setText("sdsdsd");
+
+    QPushButton * bon = new QPushButton("Min", ventana1);
+    scroll->addWidget(bon);
+
+    scroll->addWidget(las);
+
+    layout->addWidget(ventana1);
+
+    ui->scrollArea->setWidget(contenedor);
+    contenedor->resize(ui->scrollArea->size());
+
 }
 
 void MainWindow::limpiarFormCC(){
