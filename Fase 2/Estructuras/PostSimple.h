@@ -14,16 +14,18 @@ class PostSimple {
         NodoStories* nuevo;
     public:
         PostSimple();
+        bool conectado = false;
         bool estaVacia();
-        bool vuelta = false;
+        bool vuelta = true;
 
+        string nombreHead();
         void setNuevo();
         void append(Publicacion* dato);
         void push(Publicacion* dato);
 
         time_t buscarFecha();
 
-        Publicacion* recorrer();
+        Publicacion* recorreraUno();
 };
 
 

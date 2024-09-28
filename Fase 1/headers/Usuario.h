@@ -4,7 +4,7 @@
 #include <iomanip>
 #include <string>
 #include <windows.h>
-#include "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ABBtree.h"
+#include "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ListaABB.h"
 #include "../Estructuras/Matriz.h"
 
 using namespace std;
@@ -25,10 +25,12 @@ class Usuario {
 
         time_t fechaNacimiento;
         ABBtree* feed;
+
         Matriz* relaciones;
         Pila* solicitudes;
         SimpleAmistad* enviados;
     public:
+        ListaABB* miFeed;
         Usuario();
         Usuario(string nombre, int id);
         Usuario(string nome, string apellido, time_t fechaNacimiento, string email, string pass);

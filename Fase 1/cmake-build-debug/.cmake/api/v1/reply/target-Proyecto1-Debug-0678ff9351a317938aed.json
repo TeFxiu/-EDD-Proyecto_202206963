@@ -82,7 +82,10 @@
 				25,
 				27,
 				29,
-				30
+				30,
+				31,
+				32,
+				33
 			]
 		},
 		{
@@ -156,7 +159,10 @@
 				25,
 				27,
 				29,
-				30
+				30,
+				31,
+				32,
+				33
 			]
 		},
 		{
@@ -352,6 +358,24 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ListaUsuarios.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ListaPosts.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/NodoPosts.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ListaABB.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

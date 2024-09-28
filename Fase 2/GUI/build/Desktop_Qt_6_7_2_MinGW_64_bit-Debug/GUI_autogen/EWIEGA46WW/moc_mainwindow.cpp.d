@@ -670,7 +670,11 @@ C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/GUI/build/Desktop_
   C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 1/headers/UsuarioA.h \
   C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/Estructuras/ABBtree.h \
   C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/Estructuras/AVLtree.h \
+  C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/Estructuras/ListaABB.h \
+  C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/Estructuras/ListaPosts.h \
   C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/Estructuras/ListaUsuarios.h \
+  C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/Estructuras/NodoABB.h \
+  C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/Estructuras/NodoPosts.h \
   C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/Estructuras/PostSimple.h \
   C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/Estructuras/TreePost.h \
   C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/Estructuras/TreeUsuario.h

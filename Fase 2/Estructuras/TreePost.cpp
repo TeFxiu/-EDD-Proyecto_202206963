@@ -5,18 +5,21 @@
 #include "TreePost.h"
 
 TreePost::TreePost(Publicacion* dato){
-    this->lista = new PostSimple();
-    lista->push(dato);
+    this->lista = new ListaPosts(dato);
     drcha = nullptr;
     izq = nullptr;
 }
 
-void TreePost::setlista(PostSimple* lista){
+void TreePost::setlista(ListaPosts* lista){
     this->lista = lista;
 }
 
 PostSimple* TreePost::getlista(){
-    return lista;
+    return lista->head->dato;
+}
+
+time_t TreePost::fecha() {
+    return lista->head->dato->buscarFecha();
 }
 
 void TreePost::setDrcha(TreePost *drcha){

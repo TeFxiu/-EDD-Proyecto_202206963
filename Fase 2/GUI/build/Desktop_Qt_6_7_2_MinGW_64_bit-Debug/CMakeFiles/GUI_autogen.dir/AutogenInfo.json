@@ -317,9 +317,33 @@
 			null
 		],
 		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ListaABB.h",
+			"MU",
+			"PLNSU7CHGX/moc_ListaABB.cpp",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ListaPosts.h",
+			"MU",
+			"PLNSU7CHGX/moc_ListaPosts.cpp",
+			null
+		],
+		[
 			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ListaUsuarios.h",
 			"MU",
 			"PLNSU7CHGX/moc_ListaUsuarios.cpp",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/NodoABB.h",
+			"MU",
+			"PLNSU7CHGX/moc_NodoABB.cpp",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/NodoPosts.h",
+			"MU",
+			"PLNSU7CHGX/moc_NodoPosts.cpp",
 			null
 		],
 		[
@@ -465,7 +489,27 @@
 			null
 		],
 		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ListaABB.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ListaPosts.cpp",
+			"MU",
+			null
+		],
+		[
 			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ListaUsuarios.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/NodoABB.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/NodoPosts.cpp",
 			"MU",
 			null
 		],

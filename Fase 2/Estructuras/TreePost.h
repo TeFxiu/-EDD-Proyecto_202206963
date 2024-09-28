@@ -5,24 +5,26 @@
 #ifndef PROYECTO1_TREEPOST_H
 #define PROYECTO1_TREEPOST_H
 
-
+#include <ctime>
 #include <iostream>
 #include <fstream>
 #include <sstream>
 
-#include "PostSimple.h"
+#include "ListaPosts.h"
 
 using namespace std;
 
 class TreePost{
-private:
-    PostSimple* lista;
-    TreePost *drcha, *izq;
+
 public:
+    ListaPosts* lista;
+    TreePost *drcha, *izq;
     TreePost(Publicacion* dato);
 
     PostSimple* getlista();
-    void setlista(PostSimple* lista);
+    void setlista(ListaPosts* lista);
+
+    time_t fecha();
 
     TreePost* getDrcha();
     void setDrcha(TreePost *drcha);

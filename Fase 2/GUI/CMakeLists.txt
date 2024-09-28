@@ -20,6 +20,14 @@ set(PROJECT_SOURCES
         ../Estructuras/AVLtree.h
         ../Estructuras/AVLtree.cpp
         ../Estructuras/TreeUsuario.cpp
+        ../Estructuras/ListaPosts.h
+        ../Estructuras/ListaPosts.cpp
+        ../Estructuras/ListaABB.cpp
+        ../Estructuras/ListaABB.cpp
+        ../Estructuras/NodoABB.cpp
+        ../Estructuras/NodoABB.h
+        ../Estructuras/NodoPosts.cpp
+        ../Estructuras/NodoPosts.h
         ../Estructuras/TreeUsuario.h
         ../Estructuras/ABBtree.h
         ../Estructuras/ABBtree.cpp

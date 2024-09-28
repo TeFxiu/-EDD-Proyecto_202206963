@@ -279,7 +279,7 @@ void MainWindow::cargarPerfil(){
 void MainWindow::actualizarFeed(int value){
     if (listaFeed != nullptr){
         if (regresarInicio){
-            Publicacion* actual = listaFeed->recorrer();
+            Publicacion* actual = listaFeed->recorreraUno();
             if (!actual){
                 return;
             }
@@ -334,7 +334,7 @@ void MainWindow::actualizarFeed(int value){
             regresarInicio = false;
         }
         if (value == bar->maximum()){
-            Publicacion* actual = listaFeed->recorrer();
+            Publicacion* actual = listaFeed->recorreraUno();
             if (!actual){
                 return;
             }
@@ -433,11 +433,36 @@ void MainWindow::on_crearPost_clicked()
     ui->opPublicacion->setCurrentIndex(0);
     ui->imagenPost->clear();
     ruta = "";
-    PostSimple* nuevo = feed->buscarPublicaciones(post->getFecha());
-    if (nuevo == listaFeed){
-        listaFeed->setNuevo();
-        regresarInicio = true;
+
+    if (feed->buscarPublicaciones(post->getFecha())->head->siguiente == nullptr){
+        perfil->miFeed->conectar(post->getFecha());
     }
+
+    if (!listaFeed){
+        return;
+    }
+
+    time_t fech = listaFeed->head->dato->buscarFecha();
+
+    if (fech != post->getFecha()){
+        return;
+    }
+
+    string user = listaFeed->nombreHead();
+
+    if(user != perfil->getEmail()){
+        listaFeed = perfil->miFeed->buscarPublicaciones(post->getFecha());
+        delete layout;
+        layout = new QVBoxLayout(contenedor);
+        actualizarFeed(bar->maximum());
+        return;
+    }
+
+    listaFeed->nuevo();
+    regresarInicio = true;
+
+
+
 }
 
 void MainWindow::on_crearPublicacion_clicked()
@@ -447,15 +472,17 @@ void MainWindow::on_crearPublicacion_clicked()
 
 void MainWindow::on_filtroFech_clicked()
 {
+    delete layout;
+    layout = new QVBoxLayout(contenedor);
     if(perfil->getFeed()->estaVacio()){
         return;
     };
     QDateTime dt = QDateTime(ui->foundPostFecha->date(), QTime(0,0));
     filtroFecha = dt.toSecsSinceEpoch();
-    listaFeed = perfil->getFeed()->buscarPublicaciones(filtroFecha);
+    listaFeed = perfil->miFeed->buscarPublicaciones(filtroFecha);
     if (listaFeed){
-        listaFeed->vuelta = false;
-    }else{
+        listaFeed->activar();
+    }else {
         return;
     }
     actualizarFeed(bar->maximum());

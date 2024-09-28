@@ -45,28 +45,33 @@ time_t PostSimple::buscarFecha(){
     return -1;
 }
 
-Publicacion* PostSimple::recorrer(){
-    if (!vuelta){
+Publicacion* PostSimple::recorreraUno(){
+    if (vuelta){
         retorno = head;
-        vuelta = true;
+        vuelta = false;
         nuevo = retorno;
     }
-    if (retorno == nullptr && nuevo == retorno){
-        return nullptr;
-    }else if (nuevo == retorno){
-        Publicacion* devuelto = retorno->dato;
-        retorno = retorno->siguiente;
+
+    if (conectado){
+        Publicacion* devolver = nuevo->dato;
         nuevo = retorno;
-        return devuelto;
-        }else{
-            Publicacion* devolver = nuevo->dato;
-            nuevo = retorno;
-            return devolver;
-        }
+        conectado = false;
+        return devolver;
+    }else if (retorno != nullptr){
+        Publicacion* devolver = retorno->dato;
+        retorno = retorno->siguiente;
+        return devolver;
+    }
+    return nullptr;
 }
 
 void PostSimple::setNuevo(){
     nuevo = head;
+    conectado = true;
+}
+
+string PostSimple::nombreHead(){
+    return head->dato->getUsuario();
 }
 
 /*

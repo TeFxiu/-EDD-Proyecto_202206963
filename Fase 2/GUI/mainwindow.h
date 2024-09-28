@@ -74,7 +74,7 @@ private:
     Usuario* admin = nullptr;
     AVLtree* avl = nullptr;
     DoublyLinkedList* feedGeneral = nullptr;
-    PostSimple* listaFeed = nullptr;
+    ListaPosts* listaFeed = nullptr;
     ListaUsuarios* usuariosGlobal = nullptr;
 
     string buscarDireccion();

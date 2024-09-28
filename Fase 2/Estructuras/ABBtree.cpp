@@ -12,7 +12,7 @@ bool ABBtree::estaVacio(){
     return root == nullptr;
 }
 
-PostSimple* ABBtree::buscarPublicaciones(time_t fecha, TreePost* actual) {
+PostSimple* ABBtree::buscarPublicacionesI(time_t fecha, TreePost* actual) {
     if (actual == nullptr){
         return nullptr;
     }
@@ -20,15 +20,34 @@ PostSimple* ABBtree::buscarPublicaciones(time_t fecha, TreePost* actual) {
     if(actual->getlista()->buscarFecha() == fecha){
         return actual->getlista();
     } else if (actual->getlista()->buscarFecha() < fecha){
+        return buscarPublicacionesI(fecha, actual->getDrcha());
+    } else if (actual->getlista()->buscarFecha() > fecha){
+        return buscarPublicacionesI(fecha, actual->getIzq());
+    }
+}
+
+PostSimple* ABBtree::buscarPublicacionesI(time_t fecha){
+    return buscarPublicacionesI(fecha, root);
+}
+
+ListaPosts* ABBtree::buscarPublicaciones(time_t fecha, TreePost* actual) {
+    if (actual == nullptr){
+        return nullptr;
+    }
+
+    if(actual->getlista()->buscarFecha() == fecha){
+        return actual->lista;
+    } else if (actual->getlista()->buscarFecha() < fecha){
         return buscarPublicaciones(fecha, actual->getDrcha());
     } else if (actual->getlista()->buscarFecha() > fecha){
         return buscarPublicaciones(fecha, actual->getIzq());
     }
 }
 
-PostSimple* ABBtree::buscarPublicaciones(time_t fecha){
+ListaPosts* ABBtree::buscarPublicaciones(time_t fecha){
     return buscarPublicaciones(fecha, root);
 }
+
 
 void ABBtree::insertar(Publicacion* data){
     insertar(data,root);
@@ -37,7 +56,6 @@ void ABBtree::insertar(Publicacion* data){
 void ABBtree::insertar(Publicacion* data, TreePost*& root){
     if (root == nullptr) {
         root = new TreePost(data);
-
         return;
     }
 
@@ -51,6 +69,39 @@ void ABBtree::insertar(Publicacion* data, TreePost*& root){
     }else if(data->getFecha() == tiempo){
         listaActual->push(data);
     }
+}
+
+void ABBtree::conectar(ABBtree* copia, TreePost* raiz){
+    if(raiz != nullptr){
+        PostSimple* nuevo = copia->buscarPublicacionesI(raiz->fecha());
+        if (nuevo != nullptr){
+            raiz->lista->insertar(nuevo);
+        }
+        conectar(copia,raiz->getIzq());
+        conectar(copia,raiz->getDrcha());
+    }
+}
+
+
+void ABBtree::conectar(ABBtree* copia){
+    conectar(copia, root);
+}
+void ABBtree::conectar(ABBtree* copia, TreePost* raiz, time_t fecha){
+    if(raiz != nullptr){
+        if (fecha == raiz->fecha()) {
+            PostSimple *nuevo = copia->buscarPublicacionesI(raiz->fecha());
+            if (nuevo != nullptr) {
+                raiz->lista->insertar(nuevo);
+            }
+        }
+        conectar(copia,raiz->getIzq(), fecha);
+        conectar(copia,raiz->getDrcha(), fecha);
+    }
+}
+
+
+void ABBtree::conectar(ABBtree* copia, time_t fecha){
+    conectar(copia, root, fecha);
 }
 
 void ABBtree::preOrden(TreePost* raiz){

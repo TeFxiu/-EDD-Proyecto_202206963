@@ -38,4 +38,7 @@ add_executable(Proyecto1
         headers/UsuarioA.h
         UsuarioA.cpp
         "../Fase 2/Estructuras/ListaUsuarios.cpp"
+        "../Fase 2/Estructuras/ListaPosts.cpp"
+        "../Fase 2/Estructuras/NodoPosts.cpp"
+        "../Fase 2/Estructuras/ListaABB.cpp"
 )

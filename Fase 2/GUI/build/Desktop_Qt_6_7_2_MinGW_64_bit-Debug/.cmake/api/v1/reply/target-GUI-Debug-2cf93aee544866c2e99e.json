@@ -51,7 +51,7 @@
 			{
 				"command" : 3,
 				"file" : 1,
-				"line" : 50,
+				"line" : 59,
 				"parent" : 0
 			},
 			{
@@ -75,13 +75,13 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 91,
+				"line" : 100,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 1,
-				"line" : 74,
+				"line" : 83,
 				"parent" : 0
 			},
 			{
@@ -367,16 +367,20 @@
 				2,
 				6,
 				7,
+				9,
 				10,
-				12,
+				11,
 				13,
-				18,
-				21,
-				23,
-				24,
-				27,
-				29,
-				30
+				17,
+				19,
+				20,
+				25,
+				28,
+				30,
+				31,
+				34,
+				36,
+				37
 			]
 		}
 	],
@@ -502,17 +506,21 @@
 				2,
 				6,
 				7,
+				9,
 				10,
-				12,
+				11,
 				13,
-				16,
-				18,
-				21,
+				17,
+				19,
+				20,
 				23,
-				24,
-				27,
-				29,
-				30
+				25,
+				28,
+				30,
+				31,
+				34,
+				36,
+				37
 			]
 		},
 		{
@@ -522,19 +530,23 @@
 				3,
 				5,
 				8,
-				9,
-				11,
+				12,
 				14,
 				15,
-				17,
-				19,
-				20,
+				16,
+				18,
+				21,
 				22,
-				25,
+				24,
 				26,
-				28,
-				31,
-				32
+				27,
+				29,
+				32,
+				33,
+				35,
+				38,
+				39,
+				40
 			]
 		},
 		{
@@ -542,14 +554,14 @@
 			"sourceIndexes" : 
 			[
 				4,
-				33
+				41
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				34
+				42
 			]
 		}
 	],
@@ -600,6 +612,45 @@
 			"compileGroupIndex" : 0,
 			"path" : "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/TreeUsuario.cpp",
 			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ListaPosts.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ListaPosts.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ListaABB.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/NodoABB.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/NodoABB.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/NodoPosts.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/NodoPosts.h",
+			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
@@ -729,6 +780,11 @@
 		{
 			"backtrace" : 4,
 			"path" : "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/NodoAmistad.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"path" : "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/Amistad.h",
 			"sourceGroupIndex" : 1
 		},
 		{
