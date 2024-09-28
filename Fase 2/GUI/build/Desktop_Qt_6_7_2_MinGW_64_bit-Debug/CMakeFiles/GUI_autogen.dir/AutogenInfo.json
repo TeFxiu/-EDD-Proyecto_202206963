@@ -257,9 +257,33 @@
 	"HEADERS" : 
 	[
 		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/Matriz.h",
+			"MU",
+			"NAGBMXRZSJ/moc_Matriz.cpp",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/Amistad.h",
+			"MU",
+			"DBWYB7BEB2/moc_Amistad.cpp",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/NodoAmistad.h",
+			"MU",
+			"DBWYB7BEB2/moc_NodoAmistad.cpp",
+			null
+		],
+		[
 			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/NodoStories.h",
 			"MU",
 			"DBWYB7BEB2/moc_NodoStories.cpp",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/NodoUser.h",
+			"MU",
+			"DBWYB7BEB2/moc_NodoUser.cpp",
 			null
 		],
 		[
@@ -275,6 +299,12 @@
 			null
 		],
 		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/UsuarioA.h",
+			"MU",
+			"DBWYB7BEB2/moc_UsuarioA.cpp",
+			null
+		],
+		[
 			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ABBtree.h",
 			"MU",
 			"PLNSU7CHGX/moc_ABBtree.cpp",
@@ -284,6 +314,12 @@
 			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/AVLtree.h",
 			"MU",
 			"PLNSU7CHGX/moc_AVLtree.cpp",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ListaUsuarios.h",
+			"MU",
+			"PLNSU7CHGX/moc_ListaUsuarios.cpp",
 			null
 		],
 		[
@@ -302,6 +338,12 @@
 			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/TreeUsuario.h",
 			"MU",
 			"PLNSU7CHGX/moc_TreeUsuario.cpp",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/tinyfiledialogs/tinyfiledialogs.h",
+			"MU",
+			"CILVA5WTOC/moc_tinyfiledialogs.cpp",
 			null
 		],
 		[
@@ -388,7 +430,27 @@
 			null
 		],
 		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/Matriz.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/Pila.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/SimpleAmistad.cpp",
+			"MU",
+			null
+		],
+		[
 			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Usuario.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/UsuarioA.cpp",
 			"MU",
 			null
 		],
@@ -399,6 +461,11 @@
 		],
 		[
 			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/AVLtree.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ListaUsuarios.cpp",
 			"MU",
 			null
 		],
@@ -414,6 +481,11 @@
 		],
 		[
 			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/TreeUsuario.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/tinyfiledialogs/tinyfiledialogs.c",
 			"MU",
 			null
 		],

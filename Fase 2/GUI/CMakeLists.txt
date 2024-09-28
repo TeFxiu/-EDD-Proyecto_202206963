@@ -27,11 +27,24 @@ set(PROJECT_SOURCES
         ../Estructuras/TreePost.cpp
         ../Estructuras/PostSimple.cpp
         ../Estructuras/PostSimple.h
+        ../Estructuras/tinyfiledialogs/tinyfiledialogs.h
+        ../Estructuras/tinyfiledialogs/tinyfiledialogs.c
+        ../Estructuras/ListaUsuarios.h
+        ../Estructuras/ListaUsuarios.cpp
         "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/Publicacion.h"
         "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/NodoStories.h"
         "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Usuario.cpp"
         "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/Usuario.h"
         "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/EnlazadaDoble.cpp"
+        "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/Matriz.cpp"
+        "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/Matriz.h"
+        "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/NodoUser.h"
+        "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/UsuarioA.cpp"
+        "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/UsuarioA.h"
+        "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/SimpleAmistad.cpp"
+        "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/Pila.cpp"
+        "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/NodoAmistad.h"
+        "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/Amistad.h"
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

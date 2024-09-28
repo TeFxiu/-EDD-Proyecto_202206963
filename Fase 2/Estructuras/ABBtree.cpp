@@ -11,34 +11,33 @@ ABBtree::ABBtree(){
 bool ABBtree::estaVacio(){
     return root == nullptr;
 }
-/*
 
-Publicacion* ABBtree::buscarPublicacion(string email, TreePost* actual) {
+PostSimple* ABBtree::buscarPublicaciones(time_t fecha, TreePost* actual) {
     if (actual == nullptr){
         return nullptr;
     }
 
-    if(actual->getData()->getEmail() == email){
-        return actual->getData();
-    } else if (actual->getData()->getEmail() < email){
-        return buscarPublicacion(email, actual->getDrcha());
-    } else if (actual->getData()->getEmail() > email){
-        return buscarPublicacion(email, actual->getIzq());
+    if(actual->getlista()->buscarFecha() == fecha){
+        return actual->getlista();
+    } else if (actual->getlista()->buscarFecha() < fecha){
+        return buscarPublicaciones(fecha, actual->getDrcha());
+    } else if (actual->getlista()->buscarFecha() > fecha){
+        return buscarPublicaciones(fecha, actual->getIzq());
     }
 }
 
-Publicacion* ABBtree::buscarPublicacion(string mail){
-    return buscarPublicacion(mail, root);
+PostSimple* ABBtree::buscarPublicaciones(time_t fecha){
+    return buscarPublicaciones(fecha, root);
 }
- */
 
 void ABBtree::insertar(Publicacion* data){
     insertar(data,root);
 }
 
-void ABBtree::insertar(Publicacion* data, TreePost* root){
+void ABBtree::insertar(Publicacion* data, TreePost*& root){
     if (root == nullptr) {
         root = new TreePost(data);
+
         return;
     }
 
@@ -46,9 +45,9 @@ void ABBtree::insertar(Publicacion* data, TreePost* root){
     time_t tiempo = listaActual->buscarFecha();
 
     if (data->getFecha() < tiempo){
-        insertar(data, root->getIzq());
+        insertar(data, root->refIzq());
     }else if(data->getFecha() > tiempo){
-        insertar(data, root->getDrcha());
+        insertar(data, root->refDrcha());
     }else if(data->getFecha() == tiempo){
         listaActual->push(data);
     }

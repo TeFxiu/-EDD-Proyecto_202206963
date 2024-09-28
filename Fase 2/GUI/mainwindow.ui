@@ -234,6 +234,9 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
       <widget class="QWidget" name="buscarAdmin">
        <attribute name="title">
         <string>Buscar</string>
@@ -474,7 +477,7 @@
        <string notr="true">color: rgb(0, 0, 0);</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <property name="tabBarAutoHide">
        <bool>true</bool>
@@ -704,7 +707,7 @@ color: rgb(255, 255, 255);</string>
                <bool>true</bool>
               </property>
               <property name="displayFormat">
-               <string>d/M/yyyy</string>
+               <string>yyyy/M/d</string>
               </property>
              </widget>
             </item>
@@ -724,17 +727,20 @@ color: rgb(255, 255, 255);</string>
        <widget class="QStackedWidget" name="opPublicacion">
         <property name="geometry">
          <rect>
-          <x>250</x>
+          <x>0</x>
           <y>0</y>
-          <width>531</width>
-          <height>561</height>
+          <width>811</width>
+          <height>571</height>
          </rect>
         </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
         <widget class="QWidget" name="postPrincipal">
-         <widget class="QPushButton" name="pushButton_3">
+         <widget class="QPushButton" name="crearPublicacion">
           <property name="geometry">
            <rect>
-            <x>60</x>
+            <x>310</x>
             <y>30</y>
             <width>171</width>
             <height>31</height>
@@ -757,7 +763,7 @@ color: rgb(255, 255, 255);</string>
          <widget class="QScrollArea" name="scrollArea">
           <property name="geometry">
            <rect>
-            <x>60</x>
+            <x>310</x>
             <y>80</y>
             <width>461</width>
             <height>451</height>
@@ -777,121 +783,224 @@ color: rgb(255, 255, 255);</string>
            </property>
           </widget>
          </widget>
-        </widget>
-        <widget class="QWidget" name="addPost"/>
-       </widget>
-       <widget class="QWidget" name="verticalLayoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>281</width>
-          <height>571</height>
-         </rect>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_9">
-         <item>
-          <widget class="QGroupBox" name="groupBox_4">
-           <property name="font">
-            <font>
-             <family>Cascadia Code</family>
-             <pointsize>11</pointsize>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="title">
-            <string>Fecha</string>
-           </property>
-           <widget class="QWidget" name="gridLayoutWidget_6">
-            <property name="geometry">
-             <rect>
-              <x>0</x>
-              <y>20</y>
-              <width>281</width>
-              <height>261</height>
-             </rect>
-            </property>
-            <layout class="QGridLayout" name="gridLayout_3">
-             <item row="0" column="0">
-              <layout class="QVBoxLayout" name="verticalLayout_4">
-               <item>
-                <spacer name="horizontalSpacer">
-                 <property name="orientation">
-                  <enum>Qt::Orientation::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_3">
-                 <property name="orientation">
-                  <enum>Qt::Orientation::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_4">
-                 <property name="orientation">
-                  <enum>Qt::Orientation::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="QDateEdit" name="foundPostFecha">
-                 <property name="font">
-                  <font>
-                   <family>Cascadia Code</family>
-                   <pointsize>10</pointsize>
-                   <bold>false</bold>
-                  </font>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
-                 </property>
-                 <property name="displayFormat">
-                  <string notr="true">d/M/yyyy</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_2">
-                 <property name="orientation">
-                  <enum>Qt::Orientation::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <widget class="QWidget" name="verticalLayoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>281</width>
+            <height>571</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_9">
+           <item>
+            <widget class="QGroupBox" name="groupBox_4">
+             <property name="font">
+              <font>
+               <family>Cascadia Code</family>
+               <pointsize>11</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="title">
+              <string>Fecha</string>
+             </property>
+             <widget class="QWidget" name="gridLayoutWidget_6">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>20</y>
+                <width>281</width>
+                <height>261</height>
+               </rect>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_3">
+               <item row="0" column="0">
+                <layout class="QVBoxLayout" name="verticalLayout_4">
                  <item>
-                  <widget class="QPushButton" name="pushButton_2">
+                  <spacer name="horizontalSpacer">
+                   <property name="orientation">
+                    <enum>Qt::Orientation::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_3">
+                   <property name="orientation">
+                    <enum>Qt::Orientation::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_4">
+                   <property name="orientation">
+                    <enum>Qt::Orientation::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QDateEdit" name="foundPostFecha">
                    <property name="font">
                     <font>
                      <family>Cascadia Code</family>
                      <pointsize>10</pointsize>
                      <bold>false</bold>
+                    </font>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+                   </property>
+                   <property name="displayFormat">
+                    <string notr="true">d/M/yyyy</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_2">
+                   <property name="orientation">
+                    <enum>Qt::Orientation::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_4">
+                   <item>
+                    <widget class="QPushButton" name="filtroFech">
+                     <property name="font">
+                      <font>
+                       <family>Cascadia Code</family>
+                       <pointsize>10</pointsize>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 255);</string>
+                     </property>
+                     <property name="text">
+                      <string>Aplicar</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="groupBox_3">
+             <property name="font">
+              <font>
+               <family>Cascadia Code</family>
+               <pointsize>11</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="title">
+              <string>Recorrido</string>
+             </property>
+             <widget class="QWidget" name="gridLayoutWidget_5">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>30</y>
+                <width>281</width>
+                <height>251</height>
+               </rect>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_2">
+               <item row="0" column="0">
+                <layout class="QVBoxLayout" name="verticalLayout_3">
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout">
+                   <item>
+                    <widget class="QLabel" name="label_7">
+                     <property name="font">
+                      <font>
+                       <family>Cascadia Code</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Orden</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QComboBox" name="comboBox">
+                     <property name="currentText">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_5">
+                   <property name="orientation">
+                    <enum>Qt::Orientation::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_2">
+                   <item>
+                    <widget class="QLabel" name="label_21">
+                     <property name="font">
+                      <font>
+                       <family>Cascadia Code</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Cantidad</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLineEdit" name="lineEdit"/>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="pushButton">
+                   <property name="font">
+                    <font>
+                     <family>Cascadia Code</family>
+                     <pointsize>10</pointsize>
                     </font>
                    </property>
                    <property name="styleSheet">
@@ -906,116 +1015,156 @@ color: rgb(255, 255, 255);</string>
                 </layout>
                </item>
               </layout>
-             </item>
-            </layout>
-           </widget>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="addPost">
+         <widget class="QPushButton" name="regresarFeed">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>20</y>
+            <width>83</width>
+            <height>29</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(0, 0, 0);
+
+</string>
+          </property>
+          <property name="text">
+           <string>Regresar</string>
+          </property>
+         </widget>
+         <widget class="QGroupBox" name="groupBox_5">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>50</y>
+            <width>731</width>
+            <height>481</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="title">
+           <string>Nueva Publicacion</string>
+          </property>
+          <widget class="QWidget" name="gridLayoutWidget_7">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>40</y>
+             <width>711</width>
+             <height>181</height>
+            </rect>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_7">
+            <item row="0" column="0">
+             <layout class="QVBoxLayout" name="verticalLayout_10">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_5">
+                <item>
+                 <widget class="QLabel" name="label_6">
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Mensaje</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPlainTextEdit" name="textPost"/>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+            <item row="1" column="0">
+             <layout class="QHBoxLayout" name="horizontalLayout_6"/>
+            </item>
+           </layout>
           </widget>
-         </item>
-         <item>
-          <widget class="QGroupBox" name="groupBox_3">
+          <widget class="QPushButton" name="buscarImagen">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>240</y>
+             <width>131</width>
+             <height>31</height>
+            </rect>
+           </property>
            <property name="font">
             <font>
-             <family>Cascadia Code</family>
-             <pointsize>11</pointsize>
-             <bold>true</bold>
+             <pointsize>10</pointsize>
+             <bold>false</bold>
             </font>
            </property>
-           <property name="title">
-            <string>Recorrido</string>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(0, 0, 0);</string>
            </property>
-           <widget class="QWidget" name="gridLayoutWidget_5">
-            <property name="geometry">
-             <rect>
-              <x>0</x>
-              <y>30</y>
-              <width>281</width>
-              <height>251</height>
-             </rect>
-            </property>
-            <layout class="QGridLayout" name="gridLayout_2">
-             <item row="0" column="0">
-              <layout class="QVBoxLayout" name="verticalLayout_3">
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout">
-                 <item>
-                  <widget class="QLabel" name="label_7">
-                   <property name="font">
-                    <font>
-                     <family>Cascadia Code</family>
-                     <pointsize>10</pointsize>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>Orden</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QComboBox" name="comboBox">
-                   <property name="currentText">
-                    <string/>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_5">
-                 <property name="orientation">
-                  <enum>Qt::Orientation::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_2">
-                 <item>
-                  <widget class="QLabel" name="label_21">
-                   <property name="font">
-                    <font>
-                     <family>Cascadia Code</family>
-                     <pointsize>10</pointsize>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>Cantidad</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLineEdit" name="lineEdit"/>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <widget class="QPushButton" name="pushButton">
-                 <property name="font">
-                  <font>
-                   <family>Cascadia Code</family>
-                   <pointsize>10</pointsize>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
-                 </property>
-                 <property name="text">
-                  <string>Aplicar</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-            </layout>
-           </widget>
+           <property name="text">
+            <string>Buscar imagen</string>
+           </property>
           </widget>
-         </item>
-        </layout>
+          <widget class="QPushButton" name="crearPost">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>420</y>
+             <width>151</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string>Crear Publicacion</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="imagenPost">
+           <property name="geometry">
+            <rect>
+             <x>190</x>
+             <y>240</y>
+             <width>421</width>
+             <height>211</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </widget>
+        </widget>
        </widget>
       </widget>
       <widget class="QWidget" name="solicitudesMU">
@@ -1025,6 +1174,169 @@ color: rgb(255, 255, 255);</string>
        <attribute name="title">
         <string>Solicitudes</string>
        </attribute>
+       <widget class="QGroupBox" name="groupBox_6">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>20</y>
+          <width>751</width>
+          <height>241</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Cascadia Code</family>
+          <pointsize>10</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="title">
+         <string>Usuarios</string>
+        </property>
+        <widget class="QScrollArea" name="scrollArea_2">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>741</width>
+           <height>201</height>
+          </rect>
+         </property>
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>739</width>
+            <height>199</height>
+           </rect>
+          </property>
+          <widget class="QTableWidget" name="tablaUsuarios">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>731</width>
+             <height>191</height>
+            </rect>
+           </property>
+           <column>
+            <property name="text">
+             <string>Nombres</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Apellido</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Correo</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Nacimiento</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Solicitud</string>
+            </property>
+           </column>
+          </widget>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_7">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>290</y>
+          <width>351</width>
+          <height>261</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Cascadia Code</family>
+          <pointsize>11</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="title">
+         <string>Solicitudes enviadas</string>
+        </property>
+        <widget class="QTableWidget" name="soliEnviadas">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>331</width>
+           <height>221</height>
+          </rect>
+         </property>
+         <column>
+          <property name="text">
+           <string>Correo</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string/>
+          </property>
+         </column>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_8">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>300</y>
+          <width>401</width>
+          <height>261</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Cascadia Code</family>
+          <pointsize>11</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="title">
+         <string>Solicitudes recibidas</string>
+        </property>
+        <widget class="QTableWidget" name="soliRecibidas">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>381</width>
+           <height>221</height>
+          </rect>
+         </property>
+         <column>
+          <property name="text">
+           <string>Correo</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string/>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string/>
+          </property>
+         </column>
+        </widget>
+       </widget>
       </widget>
       <widget class="QWidget" name="reportesMU">
        <attribute name="icon">
@@ -1243,7 +1555,7 @@ color: rgb(255, 255, 255);</string>
                <bool>true</bool>
               </property>
               <property name="displayFormat">
-               <string>d/M/yyyy</string>
+               <string>yyyy/M/d</string>
               </property>
              </widget>
             </item>
@@ -1653,8 +1965,11 @@ background-color: rgb(0, 0, 0);</string>
          <pointsize>10</pointsize>
         </font>
        </property>
+       <property name="currentSection">
+        <enum>QDateTimeEdit::Section::YearSection</enum>
+       </property>
        <property name="displayFormat">
-        <string>d/M/yyyy</string>
+        <string>yyyy/M/d</string>
        </property>
       </widget>
       <widget class="QPushButton" name="back0">

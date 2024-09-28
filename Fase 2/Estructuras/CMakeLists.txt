@@ -12,6 +12,8 @@ add_executable(Estructuras
         TreeUsuario.
         ABBtree.cpp
         ABBtree.h
+        PostSimple.h
+        PostSimple.cpp
         "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/Usuario.h"
         "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Usuario.cpp"
         "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/Publicacion.h"

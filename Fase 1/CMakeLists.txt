@@ -35,4 +35,7 @@ add_executable(Proyecto1
         "../Fase 2/Estructuras/PostSimple.h"
         "../Fase 2/Estructuras/PostSimple.cpp"
         "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ABBtree.h"
+        headers/UsuarioA.h
+        UsuarioA.cpp
+        "../Fase 2/Estructuras/ListaUsuarios.cpp"
 )

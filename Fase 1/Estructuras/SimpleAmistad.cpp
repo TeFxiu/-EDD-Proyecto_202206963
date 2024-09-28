@@ -1,8 +1,6 @@
 #include <iostream>
 #include <string>
 #include "../headers/NodoAmistad.h"
-#include <iomanip>
-#include <fstream>
 
 using namespace std;
 
@@ -10,7 +8,9 @@ class SimpleAmistad{
     private:
         NodoAmistad *head;
         NodoAmistad* retorno;
+        bool bandera = true;
     public:
+        int contador = 0;
         SimpleAmistad():head(nullptr),retorno(nullptr){};
         
         bool estaVacia() {return head == nullptr;};
@@ -19,6 +19,7 @@ class SimpleAmistad{
             NodoAmistad* newNodo = new NodoAmistad(dato);
             if (this->estaVacia()) {
                 head = newNodo;
+                contador++;
             }else{
                 NodoAmistad* temp = head;
                 while (temp->siguiente != nullptr)
@@ -26,8 +27,22 @@ class SimpleAmistad{
                     temp = temp->siguiente;
                 }
                 temp->siguiente = newNodo;
+                contador++;
             }
         };
+        Usuario* recorreraUno() {
+            if (bandera){
+                retorno = head;
+                bandera = false;
+            }
+            if (retorno != nullptr){
+                Usuario* ret = retorno->dato.getReceptor();
+                retorno = retorno ->siguiente;
+                return ret;
+            }
+            bandera = true;
+            return nullptr;
+        }
 
         Amistad extraer(){
             if (this->estaVacia()){
@@ -37,7 +52,6 @@ class SimpleAmistad{
                 NodoAmistad* temp = head;
                 head = head->siguiente;
                 Amistad dato = temp->dato;
-                delete temp;
                 return dato;
             }
         }
@@ -54,8 +68,11 @@ class SimpleAmistad{
 
         bool findEmail(string email){
             NodoAmistad* temp = head;
-            while (temp != nullptr && temp->dato.getReceptor()->getEmail() != email)
+            while (temp != nullptr)
             {
+                if (temp->dato.getReceptor()->getEmail() == email){
+                    break;
+                }
                 temp = temp->siguiente;
             }
             if (temp == nullptr){
@@ -68,59 +85,24 @@ class SimpleAmistad{
         void solicitudRechazada(string email){
             NodoAmistad* temp = head;
             NodoAmistad* temp2 = nullptr;
-            while (temp != nullptr && temp->dato.getReceptor()->getEmail() != email)
-            {
+
+            while (temp != nullptr){
+                if (temp->dato.getReceptor()->getEmail() == email){
+                    break;
+                }
                 temp2 = temp;
                 temp = temp->siguiente;
             }
+
             if (temp == nullptr){
-                cout << "No se encontro la solicitud" << endl;
+                return;
             }else{
                 if (temp2 == nullptr){
                     head = temp->siguiente;
-                    delete temp;
                 }else{
                     temp2->siguiente = temp->siguiente;
-                    delete temp;
                 }
+                contador--;
             }
         };
-    void reporte(){
-        ofstream archDot("Lista_espera.dot");
-        archDot << "digraph Espera{"<< endl;
-        archDot << "node[shape = \"box\"];"<< endl;
-
-        NodoAmistad* actual = head;
-        while(actual) {
-            string nodo;
-            string agregarParametros;
-            if (actual == head) {
-                nodo = "\"Nodo" + to_string(actual->dato.getReceptor()->getId()) + "\"";
-                agregarParametros = nodo + "[label = \"" + actual->dato.getReceptor()->getNombre() +"\"];";
-            }else {
-                nodo = "\"Nodo" + to_string(actual->dato.getReceptor()->getId()) + "\"";
-                archDot << nodo << endl;
-                agregarParametros = nodo + "[label = \"" + actual->dato.getReceptor()->getNombre() +"\"];";
-            }
-            archDot << agregarParametros << endl;
-            archDot << nodo;
-            if (actual->siguiente) {
-                string conexion  = "->";
-                archDot << conexion;
-            }
-            actual = actual->siguiente;
-
-        }
-        archDot << "}"<< endl;
-        archDot.close();
-
-        int result = system("dot -Tpng ./Lista_espera.dot -o ./Lista_espera.png");
-        if (result != 0) {
-            cout << "Ocurrió un error al momento de crear la imagen" << endl;
-        } else {
-            cout << "La imagen fue generada exitosamente" << endl;
-        }
-
-    }
-
 };

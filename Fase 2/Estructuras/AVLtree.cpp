@@ -1,4 +1,6 @@
 #include "AVLtree.h"
+#include "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/SimpleAmistad.cpp"
+#include "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/Pila.cpp"
 
 AVLtree::AVLtree(){
     root = nullptr;
@@ -104,6 +106,28 @@ void AVLtree::rotacionIzq(TreeUsuario* &root){
     aux->setIzq(iniciado);
     root->setAltura(1 + max(obtenerAltura(root->getIzq()), obtenerAltura(root->getDrcha())));
     aux->setAltura(1 + max(obtenerAltura(aux->getIzq()), obtenerAltura(aux->getDrcha())));
+}
+
+void AVLtree::preOrdenTabla(TreeUsuario* raiz, ListaUsuarios* lista , Usuario* perfil){
+    if(raiz != nullptr){
+        if (raiz->getData()->getEmail() != perfil->getEmail()){
+            if(!perfil->getEnviados()->findEmail(raiz->getData()->getEmail())){
+                if(!perfil->getPila()->findEmail(raiz->getData()->getEmail())){
+                    bool bandera;
+                    if (raiz->getData()->getId() < perfil->getId()){
+                        bandera = perfil->getMatriz()->buscarAmistad(raiz->getData()->getEmail(), perfil->getEmail());
+                    }else{
+                        bandera = perfil->getMatriz()->buscarAmistad(perfil->getEmail(),raiz->getData()->getEmail());
+                    }
+                    if (!bandera){
+                        lista->append(raiz->getData());
+                    }
+                }
+            }
+        }
+        preOrdenTabla(raiz->getIzq(), lista, perfil);
+        preOrdenTabla(raiz->getDrcha(), lista, perfil);
+    }
 }
 
 void AVLtree::preOrden(TreeUsuario* raiz){

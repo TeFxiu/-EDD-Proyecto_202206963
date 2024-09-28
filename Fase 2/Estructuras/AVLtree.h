@@ -1,4 +1,4 @@
-#include "TreeUsuario.h"
+#include "ListaUsuarios.h"
 
 using namespace std;
 
@@ -22,5 +22,6 @@ class AVLtree{
         Usuario* buscarUsuario(string mail);
         void insertar(Usuario* data);
         void inOrden(TreeUsuario* raiz);
+        void preOrdenTabla(TreeUsuario* raiz, ListaUsuarios* lista, Usuario* perfil);
         void preOrden(TreeUsuario* raiz);
 };

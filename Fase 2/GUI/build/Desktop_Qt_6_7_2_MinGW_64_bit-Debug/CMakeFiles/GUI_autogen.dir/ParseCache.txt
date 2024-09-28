@@ -2,6 +2,9 @@
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/mainwindow.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/QDate
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/QJsonArray
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/QJsonDocument
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/QJsonObject
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/q20functional.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/q20memory.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/q20type_traits.h
@@ -21,6 +24,8 @@ C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/mainwindow.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qbytearraylist.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qbytearrayview.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qcalendar.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qcborcommon.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qcborvalue.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qchar.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qcompare.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qcompare_impl.h
@@ -36,8 +41,12 @@ C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/mainwindow.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qdatastream.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qdatetime.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qdebug.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qdir.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qendian.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qexceptionhandling.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qfile.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qfiledevice.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qfileinfo.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qflags.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qfloat16.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qforeach.h
@@ -52,6 +61,10 @@ C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/mainwindow.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qiodevicebase.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qiterable.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qiterator.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qjsonarray.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qjsondocument.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qjsonobject.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qjsonvalue.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qlatin1stringview.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qline.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qlist.h
@@ -76,6 +89,7 @@ C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/mainwindow.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qprocessordetection.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qrect.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qrefcount.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qregularexpression.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qscopedpointer.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qscopeguard.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qset.h
@@ -107,6 +121,7 @@ C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/mainwindow.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qtdeprecationmarkers.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qtenvironmentvariables.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qtextstream.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qtimezone.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qtmetamacros.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qtnoop.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qtpreprocessorsupport.h
@@ -119,6 +134,7 @@ C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/mainwindow.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qtypes.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qurl.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qutf8stringview.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/quuid.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qvariant.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qvarlengtharray.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qversiontagging.h
@@ -137,7 +153,10 @@ C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/mainwindow.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qimage.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qkeysequence.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qpaintdevice.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qpainter.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qpainterpath.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qpalette.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qpen.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qpicture.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qpixelformat.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qpixmap.h
@@ -146,29 +165,40 @@ C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/mainwindow.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qrgb.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qrgba64.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qtextdocument.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qtextoption.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qtgui-config.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qtguiexports.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qtguiglobal.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qtransform.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qwindowdefs.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtGui/qwindowdefs_win.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/QFileDialog
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/QFrame
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/QGraphicsPixmapItem
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/QGraphicsScene
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/QGraphicsView
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/QLabel
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/QMainWindow
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/QMessageBox
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/QScrollBar
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/QVBoxLayout
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qabstractscrollarea.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qabstractslider.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qboxlayout.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qdialog.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qdialogbuttonbox.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qfiledialog.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qframe.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qgraphicsitem.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qgraphicsscene.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qgraphicsview.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qgridlayout.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qlabel.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qlayout.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qlayoutitem.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qmainwindow.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qmessagebox.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qscrollarea.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qscrollbar.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qsizepolicy.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtWidgets/qtabwidget.h
@@ -243,6 +273,10 @@ C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/mainwindow.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/exception.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/exception_defines.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/exception_ptr.h
+ mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/fs_dir.h
+ mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/fs_fwd.h
+ mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/fs_ops.h
+ mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/fs_path.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/fstream.tcc
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/functexcept.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/functional_hash.h
@@ -317,6 +351,7 @@ C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/mainwindow.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/climits
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/clocale
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cmath
+ mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/codecvt
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstddef
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstdint
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstdio
@@ -336,6 +371,7 @@ C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/mainwindow.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/numeric_traits.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/string_conversions.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/type_traits.h
+ mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/filesystem
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/fstream
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/functional
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/initializer_list
@@ -623,11 +659,19 @@ C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/mainwindow.h
  mdp:C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wtypes.h
  mdp:C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wtypesbase.h
  mdp:C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/EnlazadaDoble.cpp
+ mdp:C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/Matriz.h
+ mdp:C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/Pila.cpp
+ mdp:C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/SimpleAmistad.cpp
+ mdp:C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/Amistad.h
+ mdp:C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/NodoAmistad.h
  mdp:C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/NodoStories.h
+ mdp:C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/NodoUser.h
  mdp:C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/Publicacion.h
  mdp:C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/Usuario.h
+ mdp:C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/UsuarioA.h
  mdp:C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ABBtree.h
  mdp:C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/AVLtree.h
+ mdp:C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ListaUsuarios.h
  mdp:C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/PostSimple.h
  mdp:C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/TreePost.h
  mdp:C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/TreeUsuario.h
@@ -991,6 +1035,7 @@ C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/crearusuario.h
  mdp:C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h
  mdp:C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/moc_predefs.h
  mdp:C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/crearusuario.h
+C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/UsuarioA.h
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/modulocrear.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/q20functional.h
@@ -1352,13 +1397,25 @@ C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/AVLtree
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/TreePost.h
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/Usuario.h
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ABBtree.cpp
+C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ListaUsuarios.h
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Usuario.cpp
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/TreeUsuario.h
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/TreeUsuario.cpp
+C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/SimpleAmistad.cpp
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/NodoStories.h
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/Publicacion.h
+C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/NodoAmistad.h
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ABBtree.h
+C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/Matriz.h
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/PostSimple.h
+C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/Matriz.cpp
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/PostSimple.cpp
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/TreePost.cpp
+C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/UsuarioA.cpp
+C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/Amistad.h
+C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/Pila.cpp
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/EnlazadaDoble.cpp
+C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/tinyfiledialogs/tinyfiledialogs.h
+C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/tinyfiledialogs/tinyfiledialogs.c
+C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/NodoUser.h
+C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ListaUsuarios.cpp

@@ -3,7 +3,11 @@
 
 #include "../Estructuras/AVLtree.h"
 #include "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/EnlazadaDoble.cpp"
+#include "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/SimpleAmistad.cpp"
+#include "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/Pila.cpp"
+#include "../Estructuras/ListaUsuarios.h"
 
+#include <QFileDialog>
 #include <QMainWindow>
 #include <QLabel>
 #include <QPixmap>
@@ -12,6 +16,12 @@
 #include <QDate>
 #include <QVBoxLayout>
 #include <QScrollBar>
+#include <QJsonDocument>
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QGraphicsScene>
+#include <QGraphicsPixmapItem>
+#include <QGraphicsView>
 
 
 QT_BEGIN_NAMESPACE
@@ -39,10 +49,20 @@ private slots:
 
     void actualizarFeed(int value);
 
+    void on_crearPublicacion_clicked();
+
+    void on_regresarFeed_clicked();
+
+    void on_buscarImagen_clicked();
+
+    void on_crearPost_clicked();
+
+    void on_filtroFech_clicked();
+
+    void on_eliminarPerfil_2_clicked();
+
 private:
     Ui::MainWindow *ui;
-
-    int rango = 100;
 
     QMessageBox* mensajeIS = nullptr;
     QLabel* logo = nullptr;
@@ -54,11 +74,30 @@ private:
     Usuario* admin = nullptr;
     AVLtree* avl = nullptr;
     DoublyLinkedList* feedGeneral = nullptr;
+    PostSimple* listaFeed = nullptr;
+    ListaUsuarios* usuariosGlobal = nullptr;
+
+    string buscarDireccion();
+    string ruta = "";
+
+    int filaTabla = 0;
+    void capturarRow(int fila);
+    time_t filtroFecha = 0;
+
+    bool regresarInicio = false;
 
     void iniciarLogo();
     void frameMain();
     void cargarPerfil();
     void cargarPublicacion();
+    void cargarTabla();
+    void enviarSolicitud(Usuario* actual);
+    void enviarTabla(Usuario* tabla);
+    void addTabla(Usuario* actual);
+    void cancelarSolicitud(Usuario* actual);
+    void cancelarSolicitudP(Usuario* actual);
+    void cargarSolicitudes();
+    void cargarRecibidos();
 
     void limpiarFormCC();
     void limpiarForm();

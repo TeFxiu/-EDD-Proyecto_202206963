@@ -1,9 +1,6 @@
 #include "./headers/Usuario.h"
 #include "./Estructuras/Pila.cpp"
 #include "./Estructuras/SimpleAmistad.cpp"
-#include "./Estructuras/Matriz.h"
-#include "./Estructuras/CircularDoble.cpp"
-#include "./Estructuras/EnlazadaDoble.cpp"
 
 using namespace std;
 
@@ -19,6 +16,9 @@ Usuario::Usuario() {
     this->apellido = "";
     this->password = "";
     this->feed = new ABBtree();
+    this->relaciones = new Matriz();
+    this->solicitudes = new Pila();
+    this->enviados = new SimpleAmistad();
 }
 
 Usuario::Usuario(string _nombre, int id) {
@@ -31,6 +31,9 @@ Usuario::Usuario(string _nombre, int id) {
     this->apellido = "";
     this->password = "";
     this->feed = nullptr;
+    this->relaciones = nullptr;
+    this->solicitudes = nullptr;
+    this->enviados = nullptr;
 }
 
 Usuario::Usuario(string nombre, string apellido, time_t fechaNacimiento, string email, string pass) {
@@ -43,6 +46,27 @@ Usuario::Usuario(string nombre, string apellido, time_t fechaNacimiento, string 
     this->id = idCounter++;
     this->fechaNacimiento = fechaNacimiento;
     this->feed = new ABBtree();
+    this->relaciones = new Matriz();
+    this->solicitudes = new Pila();
+    this->enviados = new SimpleAmistad();
+}
+
+void Usuario::addSolicitud(Usuario* actual){
+    Amistad amistad(this, actual);
+    actual->getPila()->push(amistad);
+    this->getEnviados()->append(amistad);
+}
+
+void Usuario::rechazarSolicitud(Usuario* actual){
+    this->getPila()->eliminarCola(actual->getEmail());
+    actual->getEnviados()->solicitudRechazada(this->getEmail());
+}
+
+void Usuario::aceptarSolicitud(Usuario* actual){
+    UsuarioA* receptor = new UsuarioA(this->getEmail(), this->getId());
+    UsuarioA* emisor = new UsuarioA(actual->getEmail(), actual->getId());
+    this->getMatriz()->insertarAmistad(receptor, emisor);
+    actual->getMatriz()->insertarAmistad(receptor, emisor);
 }
 
 void Usuario::setNombre(string nombre) {
@@ -107,7 +131,12 @@ void Usuario::setFechaNac(time_t fecha) {
 }
 
 time_t Usuario::getFechaNac() {
-    return this->fechaNacimiento;
+    tm* fecha = localtime(&fechaNacimiento);
+    fecha->tm_sec = 0;
+    fecha->tm_hour = 0;
+    fecha->tm_min = 0;
+    time_t retorno = mktime(fecha);
+    return retorno;
 }
 
 ABBtree* Usuario::getFeed() {
@@ -118,6 +147,29 @@ void Usuario::setFeed(ABBtree* newFeed) {
     this->feed = newFeed;
 }
 
+Matriz* Usuario::getMatriz() {
+    return this->relaciones;
+}
+
+void Usuario::setMatriz(Matriz* nuevo) {
+    this->relaciones = nuevo;
+}
+
+Pila* Usuario::getPila() {
+    return this->solicitudes;
+}
+
+void Usuario::setPila(Pila* pila) {
+    this->solicitudes = pila;
+}
+
+SimpleAmistad* Usuario::getEnviados() {
+    return this->enviados;
+}
+
+void Usuario::setEnviados(SimpleAmistad *enviado) {
+    this->enviados = enviado;
+}
 
 Usuario::~Usuario(){
     delete feed;

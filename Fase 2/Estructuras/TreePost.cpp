@@ -34,3 +34,12 @@ void TreePost::setIzq(TreePost *izq){
 TreePost* TreePost::getIzq(){
     return izq;
 }
+
+TreePost*& TreePost::refDrcha(){
+    return drcha;
+}
+
+TreePost*& TreePost::refIzq(){
+    return izq;
+}
+

@@ -29,6 +29,9 @@ public:
 
     TreePost* getIzq();
     void setIzq(TreePost *Izq);
+
+    TreePost*& refDrcha();
+    TreePost*& refIzq();
 };
 
 

@@ -7,6 +7,7 @@
 PostSimple::PostSimple() {
     head = nullptr;
     retorno = nullptr;
+    nuevo = nullptr;
 }
 
 bool PostSimple::estaVacia() {
@@ -44,22 +45,31 @@ time_t PostSimple::buscarFecha(){
     return -1;
 }
 
+Publicacion* PostSimple::recorrer(){
+    if (!vuelta){
+        retorno = head;
+        vuelta = true;
+        nuevo = retorno;
+    }
+    if (retorno == nullptr && nuevo == retorno){
+        return nullptr;
+    }else if (nuevo == retorno){
+        Publicacion* devuelto = retorno->dato;
+        retorno = retorno->siguiente;
+        nuevo = retorno;
+        return devuelto;
+        }else{
+            Publicacion* devolver = nuevo->dato;
+            nuevo = retorno;
+            return devolver;
+        }
+}
 
+void PostSimple::setNuevo(){
+    nuevo = head;
+}
 
 /*
-Publicacion* PostSimple::buscarPublicacion(string correo){
-    NodoStories* temp = head;
-    while (temp != nullptr && temp->dato->getEmail() != email)
-    {
-        temp = temp->siguiente;
-    }
-    if (temp == nullptr){
-        return true;
-    }else{
-        retorno = temp;
-        return false;
-    }
-}
 
 
     void PostSimple::reporte(){

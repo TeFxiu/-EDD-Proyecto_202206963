@@ -10,16 +10,16 @@ using namespace std;
 
 class ABBtree{
 private:
-    void insertar(Publicacion* data, TreePost* root);
+    void insertar(Publicacion* data, TreePost*& root);
 
-    Publicacion* buscarPublicacion(string email, TreePost* actual);
+    PostSimple* buscarPublicaciones(time_t fecha, TreePost* actual);
 public:
     ABBtree();
     TreePost* root;
 
     bool estaVacio();
 
-    Publicacion* buscarPublicacion(string mail);
+    PostSimple* buscarPublicaciones(time_t fecha);
 
     void insertar(Publicacion* data);
     void inOrden(TreePost* raiz);
