@@ -24,6 +24,7 @@ public:
     bool insertarAmistad(UsuarioA* entrada, UsuarioA* amigo, bool bandera);
     void eliminarAmistad(UsuarioA* entrada);
     bool buscarAmistad(string amigo, string perfil);
+    bool buscar(string amigo, string perfil);
     bool estaVacio();
 };
 #endif

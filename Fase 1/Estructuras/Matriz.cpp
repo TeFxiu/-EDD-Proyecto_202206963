@@ -252,6 +252,23 @@ bool Matriz::buscarAmistad(std::string amigo, std::string perfil) {
     return false;
 }
 
+bool Matriz::buscar(std::string amigo, std::string perfil) {
+    NodoUser* aux = raiz;
+    while(aux->siguiente != nullptr) {
+        if (aux->siguiente->dato->getEmail() == amigo) {
+            aux = aux->siguiente;
+            while (aux->abajo != nullptr){
+                if (aux->abajo->amigo->getEmail() == perfil || aux->abajo->dato->getEmail() == perfil){
+                    return true;
+                }
+                aux = aux->abajo;
+            }
+        }
+        aux = aux->siguiente;
+    }
+    return false;
+}
+
 void Matriz::insertarAmistad(UsuarioA* entrada, UsuarioA* amigo) {
     NodoUser* nuevoFila = new NodoUser(entrada, 0);
     NodoUser* nuevoColumna = new NodoUser(0, entrada);

@@ -61,6 +61,18 @@ private slots:
 
     void on_eliminarPerfil_2_clicked();
 
+    void on_buscarUsuario_clicked();
+
+    void on_adminBuscando_clicked();
+
+    void on_usarOrden_clicked();
+
+    void on_pushButton_3_clicked();
+
+    void cargaEdicion();
+
+    void on_cargaUsuarios_clicked();
+
 private:
     Ui::MainWindow *ui;
 
@@ -72,6 +84,7 @@ private:
 
     Usuario* perfil = nullptr;
     Usuario* admin = nullptr;
+    Usuario* editar = nullptr;
     AVLtree* avl = nullptr;
     DoublyLinkedList* feedGeneral = nullptr;
     ListaPosts* listaFeed = nullptr;
@@ -79,6 +92,8 @@ private:
 
     string buscarDireccion();
     string ruta = "";
+
+    bool ventana = false;
 
     int filaTabla = 0;
     void capturarRow(int fila);

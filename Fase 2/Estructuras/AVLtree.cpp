@@ -2,6 +2,8 @@
 #include "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/SimpleAmistad.cpp"
 #include "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/Pila.cpp"
 
+
+
 AVLtree::AVLtree(){
     root = nullptr;
 }
@@ -130,18 +132,121 @@ void AVLtree::preOrdenTabla(TreeUsuario* raiz, ListaUsuarios* lista , Usuario* p
     }
 }
 
-void AVLtree::preOrden(TreeUsuario* raiz){
+void AVLtree::preOrden(QStackedWidget*& ventana,QTableWidget* tabla,TreeUsuario* raiz){
     if(raiz != nullptr){
-        std::cout << raiz->getData()->getNombre() << ", ";
-        preOrden(raiz->getIzq());
-        preOrden(raiz->getDrcha());
+        tabla->insertRow(tabla->rowCount());
+        int row = tabla->rowCount()-1;
+        Usuario* user = raiz->getData();
+
+        tabla->setItem(row, 0, new QTableWidgetItem(QString(user->getNombre().c_str())));
+        tabla->setItem(row, 1, new QTableWidgetItem(QString(user->getApellido().c_str())));
+        tabla->setItem(row, 2, new QTableWidgetItem(QString(user->getEmail().c_str())));
+
+        time_t fecha = user->getFechaNac();
+        tm* fechaFormat = localtime(&fecha);
+
+        stringstream fomat;
+        fomat << put_time(fechaFormat, "%Y/%m/%d");
+
+        tabla->setItem(row, 3, new QTableWidgetItem(QString(fomat.str().c_str())));
+
+        QPushButton* editar = new QPushButton("Editar");
+
+        QObject::connect(editar, &QPushButton::clicked, [this, &ventana](){
+            ventana->setCurrentIndex(1);
+        });
+
+        tabla->setCellWidget(row, 4, editar);
+
+
+        QPushButton* eliminar = new QPushButton("Eliminar");
+
+        QObject::connect(eliminar, &QPushButton::clicked, [this, user](){
+            this->estaVacio();
+        });
+
+        tabla->setCellWidget(row, 5, eliminar);
+
+        preOrden(ventana,tabla,raiz->getIzq());
+        preOrden(ventana,tabla,raiz->getDrcha());
     }
 }
 
-void AVLtree::inOrden(TreeUsuario* raiz){
+void AVLtree::inOrden( QStackedWidget*& ventana,QTableWidget* tabla,TreeUsuario* raiz){
     if(raiz != nullptr){
-        preOrden(raiz->getIzq());
-        std::cout << raiz->getData()->getNombre() << ", ";
-        preOrden(raiz->getDrcha());
+
+        inOrden( ventana,tabla, raiz->getIzq());
+            tabla->insertRow(tabla->rowCount());
+            int row = tabla->rowCount()-1;
+            Usuario* user = raiz->getData();
+
+            tabla->setItem(row, 0, new QTableWidgetItem(QString(user->getNombre().c_str())));
+            tabla->setItem(row, 1, new QTableWidgetItem(QString(user->getApellido().c_str())));
+            tabla->setItem(row, 2, new QTableWidgetItem(QString(user->getEmail().c_str())));
+
+            time_t fecha = user->getFechaNac();
+            tm* fechaFormat = localtime(&fecha);
+
+            stringstream fomat;
+            fomat << put_time(fechaFormat, "%Y/%m/%d");
+
+            tabla->setItem(row, 3, new QTableWidgetItem(QString(fomat.str().c_str())));
+
+            QPushButton* editar = new QPushButton("Editar");
+
+            QObject::connect(editar, &QPushButton::clicked, [this, &ventana](){
+                ventana->setCurrentIndex(1);
+            });
+
+            tabla->setCellWidget(row, 4, editar);
+
+
+            QPushButton* eliminar = new QPushButton("Eliminar");
+
+            QObject::connect(eliminar, &QPushButton::clicked, [this, user](){
+                this->estaVacio();
+            });
+
+            tabla->setCellWidget(row, 5, eliminar);
+        inOrden(ventana,tabla,raiz->getDrcha());
+    }
+}
+
+void AVLtree::postOrden(QStackedWidget*& ventana,QTableWidget* tabla,TreeUsuario* raiz){
+    if(raiz != nullptr){
+        postOrden(ventana,tabla, raiz->getIzq());
+        postOrden(ventana,tabla, raiz->getDrcha());
+        tabla->insertRow(tabla->rowCount());
+        int row = tabla->rowCount()-1;
+        Usuario* user = raiz->getData();
+
+        tabla->setItem(row, 0, new QTableWidgetItem(QString(user->getNombre().c_str())));
+        tabla->setItem(row, 1, new QTableWidgetItem(QString(user->getApellido().c_str())));
+        tabla->setItem(row, 2, new QTableWidgetItem(QString(user->getEmail().c_str())));
+
+        time_t fecha = user->getFechaNac();
+        tm* fechaFormat = localtime(&fecha);
+
+        stringstream fomat;
+        fomat << put_time(fechaFormat, "%Y/%m/%d");
+
+        tabla->setItem(row, 3, new QTableWidgetItem(QString(fomat.str().c_str())));
+
+        QPushButton* editar = new QPushButton("Editar");
+
+        QObject::connect(editar, &QPushButton::clicked, [this, &ventana](){
+            ventana->setCurrentIndex(1);
+        });
+
+        tabla->setCellWidget(row, 4, editar);
+
+
+        QPushButton* eliminar = new QPushButton("Eliminar");
+
+        QObject::connect(eliminar, &QPushButton::clicked, [this, user](){
+            this->estaVacio();
+        });
+
+        tabla->setCellWidget(row, 5, eliminar);
     }
 }

@@ -22,10 +22,36 @@ MainWindow::MainWindow(QWidget *parent)
     ui->scrollArea->setWidget(contenedor);
     contenedor->resize(ui->scrollArea->size());
     connect(bar, &QScrollBar::valueChanged, this, &MainWindow::actualizarFeed);
+    connect(ui->editarPerfil, &QStackedWidget::currentChanged, this,&MainWindow::cargaEdicion);
 }
-
 void MainWindow::frameMain(){
     ui->ventanas->setCurrentIndex(0);
+}
+
+void MainWindow::cargaEdicion(){
+
+    if (ventana){
+        return;
+    }
+
+    QTableWidgetItem* interseccion = ui->adminUsuarios->item(ui->adminUsuarios->currentRow(),2);
+    string user = interseccion->text().toStdString();
+
+
+    editar = avl->buscarUsuario(user);
+    if (!editar){
+        return;
+    }
+
+    ui->editarNombre->setText(QString(editar->getNombre().c_str()));
+    ui->editarApellido->setText(QString(editar->getApellido().c_str()));
+    ui->editarCorreo->setText(QString(editar->getEmail().c_str()));
+    ui->editarPass->setText(QString(editar->getPass().c_str()));
+    QDateTime fecha;
+    fecha.setSecsSinceEpoch(editar->getFechaNac());
+
+    ui->editarFecha->setDateTime(fecha);
+    ventana = true;
 }
 
 void MainWindow::iniciarLogo(){
@@ -80,6 +106,10 @@ void MainWindow::on_botonIS_clicked()
 
     if (stdCorreo == admin->getEmail() && stdPass == admin->getPass()){
         ui->ventanas->setCurrentIndex(1);
+        ui->ordenAdmin->addItem(QString("Preorden"));
+        ui->ordenAdmin->addItem(QString("Inorden"));
+        ui->ordenAdmin->addItem(QString("PostOrden"));
+        return;
     }
 
     perfil = avl->buscarUsuario(stdCorreo);
@@ -134,6 +164,7 @@ void MainWindow::cargarTabla(){
     tableWidget->resizeColumnsToContents();
 
 }
+
 
 void MainWindow::cargarSolicitudes(){
     QTableWidget* tableWidget = ui->soliEnviadas;
@@ -395,7 +426,8 @@ void MainWindow::on_regresarFeed_clicked()
 }
 
 string MainWindow::buscarDireccion(){
-    QString ruta = QFileDialog::getOpenFileName(this, "Open File", "/", "Text Files(*.jpg);;All Files (*,*)");
+    QString ruta = QFileDialog::getOpenFileName(this, "Open File", "/",
+                                                "JSON Files (*.json);;JPEG Files (*.jpg);;All Files (*.*)");
 
     if(ruta.isEmpty()){
         return "";
@@ -501,10 +533,6 @@ void MainWindow::limpiarForm(){
     ui->dataPass->clear();
 }
 
-MainWindow::~MainWindow(){
-    delete ui;
-    delete logo;
-}
 
 void MainWindow::on_eliminarPerfil_2_clicked()
 {
@@ -513,5 +541,177 @@ void MainWindow::on_eliminarPerfil_2_clicked()
     }
     usuariosGlobal->reset();
     ui->ventanas->setCurrentIndex(0);
+}
+
+
+void MainWindow::on_buscarUsuario_clicked()
+{
+    ui->showApellido->clear();
+    ui->showCorreo->clear();
+    ui->showNac->clear();
+    ui->showNombre->clear();
+    string nombre = ui->correoUsuario->text().toStdString();
+    bool verificar = perfil->getMatriz()->buscarAmistad(nombre, perfil->getEmail());
+    if (!verificar){
+        return;
+    }
+    Usuario* encontrado  = avl->buscarUsuario(nombre);
+    ui->showNombre->setText(QString(encontrado->getNombre().c_str()));
+    ui->showApellido->setText(QString(encontrado->getApellido().c_str()));
+    ui->showCorreo->setText(QString(encontrado->getEmail().c_str()));
+    time_t fecha = encontrado->getFechaNac();
+    QDateTime fe;
+    fe.setSecsSinceEpoch(fecha);
+    ui->showNac->setDateTime(fe);
+
+    ui->correoUsuario->clear();
+}
+
+
+void MainWindow::on_adminBuscando_clicked()
+{
+    for (int i = 0; i < ui->adminUsuarios->rowCount(); i++){
+        ui->adminUsuarios->removeRow(0);
+    }
+    string buscado = ui->buscarenAdmin->text().toStdString();
+
+    Usuario* encontrado = avl->buscarUsuario(buscado);
+
+    if (!encontrado){
+        return;
+    }
+
+    ui->adminUsuarios->setRowCount(1);
+    ui->adminUsuarios->setItem(0, 0, new QTableWidgetItem(QString(encontrado->getNombre().c_str())));
+    ui->adminUsuarios->setItem(0, 1, new QTableWidgetItem(QString(encontrado->getApellido().c_str())));
+    ui->adminUsuarios->setItem(0, 2, new QTableWidgetItem(QString(encontrado->getEmail().c_str())));
+
+    time_t fech = encontrado->getFechaNac();
+    tm* format = localtime(&fech);
+
+    stringstream formato;
+    formato << put_time(format, "%Y/%m/%d");
+
+    ui->adminUsuarios->setItem(0, 3, new QTableWidgetItem(QString(formato.str().c_str())));
+}
+
+void MainWindow::on_usarOrden_clicked()
+{
+    int index = ui->ordenAdmin->currentIndex();
+    ui->adminUsuarios->clearContents();
+    ui->adminUsuarios->setRowCount(0);
+
+    switch (index) {
+    case 0:
+        avl->preOrden(ui->editarPerfil,ui->adminUsuarios, avl->root);
+        break;
+    case 1:
+        avl->inOrden(ui->editarPerfil,ui->adminUsuarios, avl->root);
+        break;
+    case 2:
+        avl->postOrden(ui->editarPerfil,ui->adminUsuarios, avl->root);
+        break;
+    default:
+        break;
+    }
+
+}
+
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    ui->editarPerfil->setCurrentIndex(0);
+    ventana = false;
+}
+
+MainWindow::~MainWindow(){
+    delete ui;
+    delete logo;
+}
+
+void MainWindow::on_cargaUsuarios_clicked()
+{
+    string ruta = buscarDireccion();
+    if (!ruta.empty()){
+        QString archivo(ruta.c_str());
+        QFile file (archivo);
+
+        if (file.open(QFile::ReadOnly)){
+            QByteArray jsonData = file.readAll();
+            file.close();
+
+            QJsonDocument doc = QJsonDocument::fromJson(jsonData);
+
+            if (doc.isArray()){
+                QJsonArray root = doc.array();
+                foreach (const QJsonValue &v, root) {
+                    QJsonObject obj = v.toObject();
+
+                    string nombre = obj.value("nombres").toString().toStdString();
+                    string apellido = obj.value("apellidos").toString().toStdString();
+                    string fecha = obj.value("fecha_de_nacimiento").toString().toStdString();
+                    int anio = std::stoi(fecha.substr(0, 4));
+                    int mes = std::stoi(fecha.substr(5, 7));
+                    int dia = std::stoi(fecha.substr(8));
+
+                    tm* ingreso = new tm();
+                    ingreso->tm_hour = 0;
+                    ingreso->tm_mday =dia;
+                    ingreso->tm_min = 0;
+                    ingreso->tm_mon = mes-1;
+                    ingreso->tm_sec = 0;
+                    ingreso->tm_year = anio-1900;
+
+                    time_t fechaformat = mktime(ingreso);
+                    string correo = obj.value("correo").toString().toStdString();
+                    string pass = obj.value("contraseña").toString().toStdString();
+
+                    Usuario* nuevo = new Usuario(nombre, apellido, fechaformat, correo, pass);
+                    avl->insertar(nuevo);
+                }
+            }else{
+                 QMessageBox::warning(this, "Error", "El archivo JSON no es un array.");
+            }
+
+        }else{
+            QMessageBox::warning(this, "Error", "No se pudo abrir el archivo.");
+        }
+    }
+
+
+
+}
+
+
+void MainWindow::on_cargaSoli_clicked()
+{
+    string ruta = buscarDireccion();
+    if (!ruta.empty()){
+        QString archivo(ruta.c_str());
+        QFile file (archivo);
+
+        if (file.open(QFile::ReadOnly)){
+            QByteArray jsonData = file.readAll();
+            file.close();
+
+            QJsonDocument doc = QJsonDocument::fromJson(jsonData);
+
+            if (doc.isArray()){
+                QJsonArray root = doc.array();
+                foreach (const QJsonValue &v, root) {
+                    QJsonObject obj = v.toObject();
+
+                    string emisor = obj.value("emisor").toString().toStdString();
+                    string recpertor = obj.value("receptor").toString().toStdString();
+                    string estado = obj.value("estado").toString().toStdString();
+                }
+            }else{
+                QMessageBox::warning(this, "Error", "El archivo JSON no es un array.");
+            }
+
+        }else{
+            QMessageBox::warning(this, "Error", "No se pudo abrir el archivo.");
+        }
+    }
 }
 

@@ -1,6 +1,11 @@
 #include "ListaUsuarios.h"
+#include <QTableWidget>
+#include <QPushButton>
+#include <QStackedWidget>
 
 using namespace std;
+
+class MainWindow;
 
 class AVLtree{
     private:
@@ -21,7 +26,8 @@ class AVLtree{
 
         Usuario* buscarUsuario(string mail);
         void insertar(Usuario* data);
-        void inOrden(TreeUsuario* raiz);
+        void inOrden(QStackedWidget*& ventana,QTableWidget* tabla,TreeUsuario* raiz);
         void preOrdenTabla(TreeUsuario* raiz, ListaUsuarios* lista, Usuario* perfil);
-        void preOrden(TreeUsuario* raiz);
+        void preOrden(QStackedWidget*& ventana,QTableWidget* tabla,TreeUsuario* raiz);
+        void postOrden(QStackedWidget*& ventana,QTableWidget* tabla, TreeUsuario* raiz);
 };
