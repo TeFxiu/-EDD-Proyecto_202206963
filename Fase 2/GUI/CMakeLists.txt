@@ -39,6 +39,12 @@ set(PROJECT_SOURCES
         ../Estructuras/tinyfiledialogs/tinyfiledialogs.c
         ../Estructuras/ListaUsuarios.h
         ../Estructuras/ListaUsuarios.cpp
+        ../Estructuras/ArbolB.cpp
+        ../Estructuras/ArbolB.h
+        ../Estructuras/Comentarios.cpp
+        ../Estructuras/Comentarios.h
+        ../Estructuras/NodoB.cpp
+        ../Estructuras/NodoB.h
         "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/Publicacion.h"
         "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/NodoStories.h"
         "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Usuario.cpp"

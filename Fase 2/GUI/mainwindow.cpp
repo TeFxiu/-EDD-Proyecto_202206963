@@ -90,7 +90,7 @@ void MainWindow::on_newUsuario_clicked()
 void MainWindow::on_botonCC_clicked()
 {
     limpiarForm();
-    ui->ventanas->setCurrentIndex(3);
+    ui->ventanas->setCurrentIndex(4);
 }
 
 void MainWindow::on_back0_clicked()
@@ -121,7 +121,7 @@ void MainWindow::on_botonIS_clicked()
             cargarRecibidos();
             cargarSolicitudes();
             cargarTabla();
-            ui->ventanas->setCurrentIndex(2);
+            ui->ventanas->setCurrentIndex(3);
             return ;
         }
     }
@@ -360,6 +360,14 @@ void MainWindow::actualizarFeed(int value){
                 scroll->addWidget(ponerImagen);
             }
 
+            QPushButton* comentarios =  new QPushButton("Comentarios");
+
+            QObject::connect(comentarios, &QPushButton::clicked, [this, actual]{
+                this->agregarComentario(actual);
+            });
+
+            scroll->addWidget(comentarios);
+
             layout->insertWidget(0, ventana1);
             bar->setValue(0);
             regresarInicio = false;
@@ -411,10 +419,85 @@ void MainWindow::actualizarFeed(int value){
                 ponerImagen->setPixmap(imagen.scaled(300,200,Qt::KeepAspectRatio));
                 scroll->addWidget(ponerImagen);
             }
+
+            QPushButton* comentarios =  new QPushButton("Comentarios");
+
+            QObject::connect(comentarios, &QPushButton::clicked, [this, actual]{
+                this->agregarComentario(actual);
+            });
+
+            scroll->addWidget(comentarios);
+
             layout->addWidget(ventana1);
         }
 
+    }else if (recorrido != nullptr){
+        if (value == bar->maximum()){
+            Publicacion* actual = recorrido->recorreraUno();
+            if (!actual){
+                return;
+            }
+            QFrame* ventana1 = new QFrame(contenedor);
+            QVBoxLayout* scroll = new QVBoxLayout(ventana1);
+            ventana1->setMinimumSize(420,435);
+            string usuario = actual->getUsuario();
+            if (usuario == perfil->getEmail()){
+                QPushButton* botonBasura = new QPushButton(ventana1);
+                QIcon iconoBasura = style()->standardIcon(QStyle::SP_TrashIcon);
+                botonBasura->setIcon(iconoBasura);
+                botonBasura->setIconSize(QSize(32, 32));
+                scroll->addWidget(botonBasura);
+            }
+
+            QFont font("Cascadia Code", 10);
+            font.setBold(true);
+
+            QLabel* textFeed = new QLabel(QString(usuario.c_str()), ventana1);
+            textFeed->setFont(font);
+
+            time_t fecha = actual->getHora();
+            tm* fechaFormat = localtime(&fecha);
+
+            stringstream formatString;
+            formatString << put_time(fechaFormat, "%d/%m/%Y %H:%M");
+
+            QLabel* fechaFeed = new QLabel(QString(formatString.str().c_str()), ventana1);
+            fechaFeed->setFont(font);
+
+            string texto = actual->getTexto();
+
+            QLabel* contenido = new QLabel(QString(texto.c_str()), ventana1);
+            contenido->setWordWrap(true);
+            contenido->setFont(font);
+
+            scroll->addWidget(textFeed);
+            scroll->addWidget(fechaFeed);
+            scroll->addWidget(contenido);
+            if (!actual->getImage().empty()){
+                QPixmap imagen(actual->getImage().c_str());
+                QLabel* ponerImagen = new QLabel(ventana1);
+                ponerImagen->setPixmap(imagen.scaled(300,200,Qt::KeepAspectRatio));
+                scroll->addWidget(ponerImagen);
+            }
+
+            QPushButton* comentarios =  new QPushButton("Comentarios");
+
+            QObject::connect(comentarios, &QPushButton::clicked, [this, actual]{
+                this->agregarComentario(actual);
+            });
+
+            scroll->addWidget(comentarios);
+
+            layout->addWidget(ventana1);
+        }
     }
+}
+
+void MainWindow::agregarComentario(Publicacion* dato){
+
+    comentando = dato;
+    ui->ventanas->setCurrentIndex(2);
+    ui->VentanaComentarios->setCurrentIndex(0);
 }
 
 void MainWindow::on_regresarFeed_clicked()
@@ -682,7 +765,6 @@ void MainWindow::on_cargaUsuarios_clicked()
 
 }
 
-
 void MainWindow::on_cargaSoli_clicked()
 {
     string ruta = buscarDireccion();
@@ -702,8 +784,32 @@ void MainWindow::on_cargaSoli_clicked()
                     QJsonObject obj = v.toObject();
 
                     string emisor = obj.value("emisor").toString().toStdString();
-                    string recpertor = obj.value("receptor").toString().toStdString();
+                    string receptor = obj.value("receptor").toString().toStdString();
                     string estado = obj.value("estado").toString().toStdString();
+
+                    Usuario* emisor0 = avl->buscarUsuario(emisor);
+                    Usuario* receptor0 = avl->buscarUsuario(receptor);
+                    if (!(emisor0 && receptor0)){
+                        continue;
+                    }
+
+                    bool prueba1 = emisor0->getPila()->findEmail(receptor);
+                    bool prueba2 = emisor0->getEnviados()->findEmail(receptor);
+
+                    if (prueba1 || prueba2){
+                        continue;
+                    }
+
+                    bool relacion = emisor0->getMatriz()->buscar(receptor, emisor);
+                    if (relacion){
+                        continue;
+                    }
+
+                    emisor0->addSolicitud(receptor0);
+                    if (estado == "ACEPTADA"){
+                        receptor0->aceptarSolicitud(emisor0);
+                        receptor0->rechazarSolicitud(receptor0);
+                    }
                 }
             }else{
                 QMessageBox::warning(this, "Error", "El archivo JSON no es un array.");
@@ -713,5 +819,118 @@ void MainWindow::on_cargaSoli_clicked()
             QMessageBox::warning(this, "Error", "No se pudo abrir el archivo.");
         }
     }
+}
+
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    ui->ventanas->setCurrentIndex(3);
+    comentando = nullptr;
+    ui->textoComent->clear();
+}
+
+
+void MainWindow::on_publicarComent_clicked()
+{
+    string contenido = ui->textoComent->toPlainText().toStdString();
+    time_t now = time(nullptr);
+    Comentarios* nuevo = new Comentarios(perfil->getEmail(), contenido, now);
+
+    comentando->agregarComentario(nuevo);
+    ui->ventanas->setCurrentIndex(3);
+    comentando = nullptr;
+    ui->textoComent->clear();
+}
+
+
+void MainWindow::on_cargarPosts_clicked()
+{
+    string ruta = buscarDireccion();
+    if (!ruta.empty()){
+        QString archivo(ruta.c_str());
+        QFile file (archivo);
+
+        if (file.open(QFile::ReadOnly)){
+            QByteArray jsonData = file.readAll();
+            file.close();
+
+            QJsonDocument doc = QJsonDocument::fromJson(jsonData);
+
+            if (doc.isArray()){
+                QJsonArray root = doc.array();
+                foreach (const QJsonValue &v, root) {
+                    QJsonObject obj = v.toObject();
+
+                    string correo = obj.value("correo").toString().toStdString();
+                    string contenido = obj.value("contenido").toString().toStdString();
+                    string fecha = obj.value("fecha").toString().toStdString();
+                    string hora = obj.value("hora").toString().toStdString();
+                    int dia = std::stoi(fecha.substr(0, 2));
+                    int mes = std::stoi(fecha.substr(3, 5));
+                    int anio = std::stoi(fecha.substr(6));
+
+                    int horas = std::stoi(hora.substr(0,2));
+                    int min = std::stoi(hora.substr(3));
+
+                    QDate dat(anio, mes, dia);
+                    QTime hor(horas, min);
+
+                    QDateTime nuev(dat, hor);
+
+                    time_t fechaformat = nuev.toSecsSinceEpoch();
+                    Publicacion* nuevo  = new Publicacion(correo, contenido, fechaformat);
+                    Usuario* user = avl->buscarUsuario(correo);
+                    if (!user){
+                        continue;
+                    }
+                    user->getFeed()->insertar(nuevo);
+                    feedGeneral->append(nuevo);
+                }
+            }else{
+                QMessageBox::warning(this, "Error", "El archivo JSON no es un array.");
+            }
+
+        }else{
+            QMessageBox::warning(this, "Error", "No se pudo abrir el archivo.");
+        }
+    }
+}
+
+
+void MainWindow::on_pushButton_5_clicked()
+{
+    ui->ventanas->setCurrentIndex(0);
+}
+
+
+void MainWindow::on_pushButton_clicked()
+{
+    string num = ui->lineEdit->text().toStdString();
+    int num1 = std::stoi(num);
+
+    recorrido = new PostSimple();
+
+    int index = ui->comboBox->currentIndex();
+
+    switch (index) {
+    case 0:
+        perfil->getFeed()->preOrden(perfil->getFeed()->root, num1, recorrido,0);
+        break;
+    case 1:
+        perfil->getFeed()->inOrden(perfil->getFeed()->root, num1, recorrido,0);
+        break;
+    case 2:
+        perfil->getFeed()->postOrden(perfil->getFeed()->root, num1, recorrido,0);
+        break;
+
+    default:
+        break;
+    }
+
+    listaFeed = nullptr;
+
+    delete layout;
+    layout = new QVBoxLayout(contenedor);
+    actualizarFeed(bar->maximum());
 }
 

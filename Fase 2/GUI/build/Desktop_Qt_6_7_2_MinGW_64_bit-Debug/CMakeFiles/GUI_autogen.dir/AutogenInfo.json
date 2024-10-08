@@ -317,6 +317,18 @@
 			null
 		],
 		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ArbolB.h",
+			"MU",
+			"PLNSU7CHGX/moc_ArbolB.cpp",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/Comentarios.h",
+			"MU",
+			"PLNSU7CHGX/moc_Comentarios.cpp",
+			null
+		],
+		[
 			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ListaABB.h",
 			"MU",
 			"PLNSU7CHGX/moc_ListaABB.cpp",
@@ -338,6 +350,12 @@
 			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/NodoABB.h",
 			"MU",
 			"PLNSU7CHGX/moc_NodoABB.cpp",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/NodoB.h",
+			"MU",
+			"PLNSU7CHGX/moc_NodoB.cpp",
 			null
 		],
 		[
@@ -489,6 +507,16 @@
 			null
 		],
 		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ArbolB.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/Comentarios.cpp",
+			"MU",
+			null
+		],
+		[
 			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ListaABB.cpp",
 			"MU",
 			null
@@ -505,6 +533,11 @@
 		],
 		[
 			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/NodoABB.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/NodoB.cpp",
 			"MU",
 			null
 		],

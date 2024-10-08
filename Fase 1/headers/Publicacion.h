@@ -3,6 +3,7 @@
 
 #include <string>
 #include <ctime>
+#include "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ArbolB.h"
 
 using namespace std;
 
@@ -14,6 +15,7 @@ class Publicacion{
         string texto;
         string imagen;
         time_t fecha_hora;
+        ArbolB* comentario;
     public:
         inline Publicacion():usuario(""), texto(""), fecha_hora(0){};
         inline Publicacion(string _usuario, string _texto ,time_t _fecha):usuario(_usuario),texto(_texto), fecha_hora(_fecha){superId++;}
@@ -35,6 +37,11 @@ class Publicacion{
 
         inline int getNumComentario(){return numComentarios;};
         inline void setComentario(){numComentarios++;};
+
+        inline void agregarComentario(Comentarios* dato){
+            comentario->insertar(dato);
+        }
+
 
         inline ~Publicacion(){};
 

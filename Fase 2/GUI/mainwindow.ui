@@ -779,11 +779,88 @@
              <string>Cargar Publicaciones</string>
             </property>
            </widget>
+           <widget class="QPushButton" name="pushButton_5">
+            <property name="geometry">
+             <rect>
+              <x>70</x>
+              <y>470</y>
+              <width>83</width>
+              <height>29</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Regresar</string>
+            </property>
+           </widget>
           </widget>
          </item>
         </layout>
        </widget>
       </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_3">
+     <widget class="QStackedWidget" name="VentanaComentarios">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>781</width>
+        <height>611</height>
+       </rect>
+      </property>
+      <widget class="QWidget" name="page_4">
+       <widget class="QPushButton" name="pushButton_4">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>20</y>
+          <width>83</width>
+          <height>29</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Regresar</string>
+        </property>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_12">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>80</y>
+          <width>711</width>
+          <height>441</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Comentario</string>
+        </property>
+        <widget class="QPlainTextEdit" name="textoComent">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>40</y>
+           <width>671</width>
+           <height>191</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="publicarComent">
+         <property name="geometry">
+          <rect>
+           <x>310</x>
+           <y>330</y>
+           <width>83</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Enviar</string>
+         </property>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_5"/>
      </widget>
     </widget>
     <widget class="QWidget" name="ModuloUsuario">
@@ -1014,7 +1091,7 @@
        <string notr="true">color: rgb(0, 0, 0);</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>4</number>
       </property>
       <property name="tabBarAutoHide">
        <bool>true</bool>
@@ -1493,8 +1570,23 @@ color: rgb(255, 255, 255);</string>
                    <item>
                     <widget class="QComboBox" name="comboBox">
                      <property name="currentText">
-                      <string/>
+                      <string>PreOrden</string>
                      </property>
+                     <item>
+                      <property name="text">
+                       <string>PreOrden</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>InOrden</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>PostOrden</string>
+                      </property>
+                     </item>
                     </widget>
                    </item>
                   </layout>

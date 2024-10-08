@@ -32,8 +32,9 @@ public:
     void conectar(ABBtree* copia);
     void conectar(ABBtree* copia, time_t fecha);
 
-    void inOrden(TreePost* raiz);
-    void preOrden(TreePost* raiz);
+    void postOrden(TreePost* raiz, int contador, PostSimple* nueva, int sube);
+    void inOrden(TreePost* raiz, int contador, PostSimple* nueva, int sube);
+    void preOrden(TreePost* raiz, int contador, PostSimple* nueva, int sube);
 };
 
 

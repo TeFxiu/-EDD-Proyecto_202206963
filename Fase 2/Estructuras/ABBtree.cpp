@@ -104,16 +104,65 @@ void ABBtree::conectar(ABBtree* copia, time_t fecha){
     conectar(copia, root, fecha);
 }
 
-void ABBtree::preOrden(TreePost* raiz){
+void ABBtree::preOrden(TreePost* raiz, int contador, PostSimple* nueva, int sube){
     if(raiz != nullptr){
-        preOrden(raiz->getIzq());
-        preOrden(raiz->getDrcha());
+        if (contador == sube){
+            return;
+        }
+        if (sube == 0 ){
+            raiz->getlista()->vuelta = true;
+        }
+        while(true){
+            Publicacion* publi = raiz->getlista()->recorreraUno();
+            if (!publi){
+                break;
+            }
+            nueva->append(publi);
+        }
+        sube++;
+        preOrden(raiz->getIzq(), contador, nueva, sube);
+        preOrden(raiz->getDrcha(), contador, nueva, sube);
     }
 }
 
-void ABBtree::inOrden(TreePost* raiz){
+void ABBtree::inOrden(TreePost* raiz, int contador, PostSimple* nueva, int sube){
     if(raiz != nullptr){
-        preOrden(raiz->getIzq());
-        preOrden(raiz->getDrcha());
+        inOrden(raiz->getIzq(), contador, nueva, sube);
+        if (contador == sube){
+            return;
+        }
+        if (sube == 0 ){
+            raiz->getlista()->vuelta = true;
+        }
+        while(true){
+            Publicacion* publi = raiz->getlista()->recorreraUno();
+            if (!publi){
+                break;
+            }
+            nueva->append(publi);
+        }
+        sube++;
+        inOrden(raiz->getDrcha(), contador, nueva, sube);
+    }
+}
+
+void ABBtree::postOrden(TreePost* raiz, int contador, PostSimple* nueva, int sube){
+    if(raiz != nullptr){
+        postOrden(raiz->getIzq(), contador, nueva, sube);
+        postOrden(raiz->getDrcha(), contador, nueva, sube);
+        if (contador == sube){
+            return;
+        }
+        if (sube == 0 ){
+            raiz->getlista()->vuelta = true;
+        }
+        while(true){
+            Publicacion* publi = raiz->getlista()->recorreraUno();
+            if (!publi){
+                break;
+            }
+            nueva->append(publi);
+        }
+        sube++;
     }
 }

@@ -73,6 +73,18 @@ private slots:
 
     void on_cargaUsuarios_clicked();
 
+    void on_cargaSoli_clicked();
+
+    void on_pushButton_4_clicked();
+
+    void on_publicarComent_clicked();
+
+    void on_cargarPosts_clicked();
+
+    void on_pushButton_5_clicked();
+
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 
@@ -89,6 +101,7 @@ private:
     DoublyLinkedList* feedGeneral = nullptr;
     ListaPosts* listaFeed = nullptr;
     ListaUsuarios* usuariosGlobal = nullptr;
+    Publicacion* comentando = nullptr;
 
     string buscarDireccion();
     string ruta = "";
@@ -101,6 +114,7 @@ private:
 
     bool regresarInicio = false;
 
+    void agregarComentario(Publicacion* dato);
     void iniciarLogo();
     void frameMain();
     void cargarPerfil();
@@ -116,6 +130,7 @@ private:
 
     void limpiarFormCC();
     void limpiarForm();
+    PostSimple* recorrido;
 
 };
 #endif // MAINWINDOW_H

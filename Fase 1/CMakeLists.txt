@@ -41,4 +41,9 @@ add_executable(Proyecto1
         "../Fase 2/Estructuras/ListaPosts.cpp"
         "../Fase 2/Estructuras/NodoPosts.cpp"
         "../Fase 2/Estructuras/ListaABB.cpp"
+        "../Fase 2/Estructuras/Comentarios.h"
+        "../Fase 2/Estructuras/Comentarios.cpp"
+        "../Fase 2/Estructuras/NodoB.h"
+        "../Fase 2/Estructuras/ArbolB.h"
+        "../Fase 2/Estructuras/ArbolB.cpp"
 )
