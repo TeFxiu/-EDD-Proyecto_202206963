@@ -8,13 +8,19 @@
 
 class ArbolB {
 private:
-    NodoB* raiz;
-    bool setValue(Comentarios* dato, Comentarios*& segundo, NodoB* raiz, NodoB** nuevo);
     NodoB* nuevoNodo(Comentarios* dato, NodoB* child);
-    void insertarNodo(int pos, Comentarios* dato, NodoB* raiz, NodoB* subArbol);
-    void division(Comentarios* val, Comentarios*& apuntaVal, int pos, NodoB* raiz, NodoB* segundo, NodoB** child);
+
+    bool setValue(Comentarios* dato, Comentarios*& retorno, NodoB* root, NodoB*& child);
+    bool buscarPosicion(Comentarios* dato, NodoB* root, int& pos);
+
+    void insertarNodo(int pos, Comentarios* dato, NodoB* raiz, NodoB* child);
+    void forzarInsercion(int pos, Comentarios* dato, NodoB* raiz);
+    void division(Comentarios* val, Comentarios*& retorno, int pos, NodoB* root, NodoB*& child);
+
 public:
     ArbolB();
+
+    NodoB* raiz;
 
     void insertar(Comentarios* dato);
 };

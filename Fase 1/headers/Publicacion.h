@@ -15,7 +15,7 @@ class Publicacion{
         string texto;
         string imagen;
         time_t fecha_hora;
-        ArbolB* comentario;
+        ArbolB* comentario = new ArbolB();
     public:
         inline Publicacion():usuario(""), texto(""), fecha_hora(0){};
         inline Publicacion(string _usuario, string _texto ,time_t _fecha):usuario(_usuario),texto(_texto), fecha_hora(_fecha){superId++;}

@@ -6,7 +6,7 @@
 #define PROYECTO1_NODOB_H
 
 #define MAX 4
-#define MIN 2
+#define MID 2
 
 class NodoB {
 public:
