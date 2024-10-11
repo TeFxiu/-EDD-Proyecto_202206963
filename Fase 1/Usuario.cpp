@@ -16,7 +16,6 @@ Usuario::Usuario() {
     this->apellido = "";
     this->password = "";
     this->feed = new ABBtree();
-    this->relaciones = new Matriz();
     this->solicitudes = new Pila();
     this->enviados = new SimpleAmistad();
     this->miFeed = new ListaABB();
@@ -33,7 +32,6 @@ Usuario::Usuario(string _nombre, int id) {
     this->apellido = "";
     this->password = "";
     this->feed = nullptr;
-    this->relaciones = nullptr;
     this->solicitudes = nullptr;
     this->enviados = nullptr;
     this->miFeed = nullptr;
@@ -49,7 +47,6 @@ Usuario::Usuario(string nombre, string apellido, time_t fechaNacimiento, string 
     this->id = idCounter++;
     this->fechaNacimiento = fechaNacimiento;
     this->feed = new ABBtree();
-    this->relaciones = new Matriz();
     this->solicitudes = new Pila();
     this->enviados = new SimpleAmistad();
     this->miFeed = new ListaABB();
@@ -58,8 +55,8 @@ Usuario::Usuario(string nombre, string apellido, time_t fechaNacimiento, string 
 
 void Usuario::addSolicitud(Usuario* actual){
     Amistad amistad(this, actual);
-    actual->getPila()->push(amistad);
     this->getEnviados()->append(amistad);
+    actual->getPila()->push(amistad);
 }
 
 void Usuario::rechazarSolicitud(Usuario* actual){
@@ -68,10 +65,7 @@ void Usuario::rechazarSolicitud(Usuario* actual){
 }
 
 void Usuario::aceptarSolicitud(Usuario* actual){
-    UsuarioA* receptor = new UsuarioA(this->getEmail(), this->getId());
-    UsuarioA* emisor = new UsuarioA(actual->getEmail(), actual->getId());
-    this->getMatriz()->insertarAmistad(receptor, emisor);
-    actual->getMatriz()->insertarAmistad(receptor, emisor);
+
     miFeed->insertar(actual->getFeed());
     actual->miFeed->insertar(feed);
 
@@ -155,14 +149,6 @@ ABBtree* Usuario::getFeed() {
 
 void Usuario::setFeed(ABBtree* newFeed) {
     this->feed = newFeed;
-}
-
-Matriz* Usuario::getMatriz() {
-    return this->relaciones;
-}
-
-void Usuario::setMatriz(Matriz* nuevo) {
-    this->relaciones = nuevo;
 }
 
 Pila* Usuario::getPila() {

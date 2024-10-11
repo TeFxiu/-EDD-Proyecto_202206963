@@ -110,25 +110,24 @@ void AVLtree::rotacionIzq(TreeUsuario* &root){
     aux->setAltura(1 + max(obtenerAltura(aux->getIzq()), obtenerAltura(aux->getDrcha())));
 }
 
-void AVLtree::preOrdenTabla(TreeUsuario* raiz, ListaUsuarios* lista , Usuario* perfil){
+void AVLtree::preOrdenTabla(TreeUsuario* raiz, ListaUsuarios* lista , Usuario* perfil, Grafo* amistades, SuperVertice* relEmisor){
     if(raiz != nullptr){
         if (raiz->getData()->getEmail() != perfil->getEmail()){
             if(!perfil->getEnviados()->findEmail(raiz->getData()->getEmail())){
                 if(!perfil->getPila()->findEmail(raiz->getData()->getEmail())){
-                    bool bandera;
-                    if (raiz->getData()->getId() < perfil->getId()){
-                        bandera = perfil->getMatriz()->buscarAmistad(raiz->getData()->getEmail(), perfil->getEmail());
-                    }else{
-                        bandera = perfil->getMatriz()->buscarAmistad(perfil->getEmail(),raiz->getData()->getEmail());
-                    }
-                    if (!bandera){
+
+                    bool emisor = relEmisor ? relEmisor->buscarRelacion(raiz->getData()) : false;
+
+                    bool receptor = amistades->buscarAmistad(raiz->getData(), perfil);
+
+                    if (!(emisor || receptor)){
                         lista->append(raiz->getData());
                     }
                 }
             }
         }
-        preOrdenTabla(raiz->getIzq(), lista, perfil);
-        preOrdenTabla(raiz->getDrcha(), lista, perfil);
+        preOrdenTabla(raiz->getIzq(), lista, perfil, amistades, relEmisor);
+        preOrdenTabla(raiz->getDrcha(), lista, perfil, amistades, relEmisor);
     }
 }
 

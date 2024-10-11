@@ -393,6 +393,24 @@
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
 			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/Grafo.h",
+			"MU",
+			"N2JQUZO7VR/moc_Grafo.cpp",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/SuperVertice.h",
+			"MU",
+			"N2JQUZO7VR/moc_SuperVertice.cpp",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/Vertice.h",
+			"MU",
+			"N2JQUZO7VR/moc_Vertice.cpp",
+			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
@@ -573,6 +591,21 @@
 		],
 		[
 			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/mainwindow.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/Grafo.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/SuperVertice.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/Vertice.cpp",
 			"MU",
 			null
 		]

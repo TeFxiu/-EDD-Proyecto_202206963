@@ -1,4 +1,5 @@
 #include "ListaUsuarios.h"
+#include "C:\Users\TeFxiu\Documents\EDD\[EDD]Proyecto_202206963\Fase 3\Estructuras\Grafo.h"
 #include <QTableWidget>
 #include <QPushButton>
 #include <QStackedWidget>
@@ -27,7 +28,7 @@ class AVLtree{
         Usuario* buscarUsuario(string mail);
         void insertar(Usuario* data);
         void inOrden(QStackedWidget*& ventana,QTableWidget* tabla,TreeUsuario* raiz);
-        void preOrdenTabla(TreeUsuario* raiz, ListaUsuarios* lista, Usuario* perfil);
+        void preOrdenTabla(TreeUsuario* raiz, ListaUsuarios* lista, Usuario* perfil, Grafo* amistades, SuperVertice* relEmisor);
         void preOrden(QStackedWidget*& ventana,QTableWidget* tabla,TreeUsuario* raiz);
         void postOrden(QStackedWidget*& ventana,QTableWidget* tabla, TreeUsuario* raiz);
 };

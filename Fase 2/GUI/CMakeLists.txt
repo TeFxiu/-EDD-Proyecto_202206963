@@ -59,6 +59,12 @@ set(PROJECT_SOURCES
         "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/Pila.cpp"
         "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/NodoAmistad.h"
         "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/Amistad.h"
+        "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/Grafo.h"
+        "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/Grafo.cpp"
+        "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/SuperVertice.h"
+        "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/SuperVertice.cpp"
+        "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/Vertice.h"
+        "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/Vertice.cpp"
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

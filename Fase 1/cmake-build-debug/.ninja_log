@@ -1,5 +1,5 @@
 # ninja log v6
-32	1200	7475231002323762	CMakeFiles/Proyecto1.dir/Usuario.cpp.obj	bc2dcc4f38fb37b7
+34	3924	7503224680181211	CMakeFiles/Proyecto1.dir/Usuario.cpp.obj	bc2dcc4f38fb37b7
 24	8034	7475231002246977	CMakeFiles/Proyecto1.dir/main.cpp.obj	6210f6575ddfa25c
 38	518	7454652565934250	CMakeFiles/Proyecto1.dir/Listas/EnlazadaDoble.cpp.obj	c9f3d600badda337
 2559	5123	7462416405290133	Proyecto1.exe	e06b87e577a2f1e8
@@ -7,14 +7,19 @@
 39	797	7475231002398913	CMakeFiles/Proyecto1.dir/Estructuras/EnlazadaSimple.cpp.obj	b7766d457112cad2
 40	761	7453989405070689	CMakeFiles/Proyecto1.dir/Listas/EnlazadaSimple.cpp.obj	25ad345fc4f93068
 46	3417	7475231002461300	CMakeFiles/Proyecto1.dir/headers/ModuloUsuario.cpp.obj	df3a758afa9d4a70
-104	1175	7462405054948123	CMakeFiles/Proyecto1.dir/Estructuras/EnlazadaDoble.cpp.obj	e1316c3e9a07f871
+46	1113	7503224680296409	CMakeFiles/Proyecto1.dir/Estructuras/EnlazadaDoble.cpp.obj	e1316c3e9a07f871
 26	627	7462416379958131	CMakeFiles/Proyecto1.dir/Estructuras/CircularDoble.cpp.obj	d1ae70c49e33affb
 65	926	7454857508560015	CMakeFiles/Proyecto1.dir/headers/Amistad.cpp.obj	82b3d3e8c31f036a
-60	1023	7475231002603179	CMakeFiles/Proyecto1.dir/Estructuras/Pila.cpp.obj	f241f2d673dd7a9
-53	1040	7475231002532408	CMakeFiles/Proyecto1.dir/Estructuras/SimpleAmistad.cpp.obj	2c033185ffc121c0
+68	3823	7503224680521994	CMakeFiles/Proyecto1.dir/Estructuras/Pila.cpp.obj	f241f2d673dd7a9
+61	3747	7503224680446907	CMakeFiles/Proyecto1.dir/Estructuras/SimpleAmistad.cpp.obj	2c033185ffc121c0
 68	4840	7475231002684061	CMakeFiles/Proyecto1.dir/headers/ModuloAdmin.cpp.obj	3ef13a82a80d0d78
 31	2517	7456495471677650	CMakeFiles/Proyecto1.dir/tinyfiledialogs/tinyfiledialogs.c.obj	8988f7602289266b
-77	1233	7475231002770706	CMakeFiles/Proyecto1.dir/Estructuras/Matriz.cpp.obj	9d1da786bd4f43d7
-94	937	7475231002948566	CMakeFiles/Proyecto1.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase_2/Estructuras/TreeUsuario.cpp.obj	96ab4a9b29e86de9
+85	3720	7503224680687413	CMakeFiles/Proyecto1.dir/Estructuras/Matriz.cpp.obj	9d1da786bd4f43d7
+101	3856	7503224680847950	CMakeFiles/Proyecto1.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase_2/Estructuras/TreeUsuario.cpp.obj	96ab4a9b29e86de9
+1132	4389	7503224691152943	CMakeFiles/Proyecto1.dir/UsuarioA.cpp.obj	783eb8ffacc71b84
 103	939	7475231003044590	CMakeFiles/Proyecto1.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase_2/Estructuras/AVLtree.cpp.obj	a4ad9d849725d06b
 121	971	7475231003218163	CMakeFiles/Proyecto1.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase_2/Estructuras/main.cpp.obj	54cf586dadede56b
+129	1132	7503224681123696	CMakeFiles/Proyecto1.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase_2/Estructuras/TreePost.cpp.obj	b378319797efd796
+120	1197	7503224681038478	CMakeFiles/Proyecto1.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase_2/Estructuras/ABBtree.cpp.obj	a159e7cac7758c1a
+1115	1921	7503224690982365	CMakeFiles/Proyecto1.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase_2/Estructuras/PostSimple.cpp.obj	6fb26c2b6889a891
+1197	4691	7503224691809788	CMakeFiles/Proyecto1.dir/C_/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase_2/Estructuras/ListaUsuarios.cpp.obj	74502f9b748ce8db

@@ -893,5 +893,11 @@ GUI_autogen/timestamp: \
 	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/GUI/main.cpp \
 	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/GUI/mainwindow.cpp \
 	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/GUI/mainwindow.h \
+	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 3/Estructuras/Grafo.cpp \
+	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 3/Estructuras/Grafo.h \
+	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 3/Estructuras/SuperVertice.cpp \
+	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 3/Estructuras/SuperVertice.h \
+	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 3/Estructuras/Vertice.cpp \
+	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 3/Estructuras/Vertice.h \
 	C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/GUI/mainwindow.ui \
 	C:/Qt/Tools/CMake_64/bin/cmake.exe

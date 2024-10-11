@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     mensajeIS = new QMessageBox();
     feedGeneral = new DoublyLinkedList();
     usuariosGlobal = new ListaUsuarios();
+    amistades = new Grafo();
 
     contenedor = new QWidget;
     layout = new QVBoxLayout(contenedor);
@@ -131,7 +132,8 @@ void MainWindow::on_botonIS_clicked()
 }
 
 void MainWindow::cargarTabla(){
-    avl->preOrdenTabla(avl->root,usuariosGlobal, perfil);
+    SuperVertice* relacioneEmisor = amistades->amistedesEmisor(perfil);
+    avl->preOrdenTabla(avl->root,usuariosGlobal, perfil, amistades, relacioneEmisor);
     bool bandera= true;
     QTableWidget* tableWidget = ui->tablaUsuarios;
     tableWidget->setRowCount(usuariosGlobal->contador);
@@ -211,7 +213,7 @@ void MainWindow::cargarRecibidos(){
 
         QObject::connect(enviar, &QPushButton::clicked, [this,acutal](){
             ui->soliRecibidas->removeRow(ui->soliRecibidas->currentRow());
-            perfil->aceptarSolicitud(acutal);
+            amistades->insertar(acutal, perfil);
             cancelarSolicitudP(acutal);
         });
         ui->soliRecibidas->setCellWidget(row, 1, enviar);
@@ -634,11 +636,13 @@ void MainWindow::on_buscarUsuario_clicked()
     ui->showNac->clear();
     ui->showNombre->clear();
     string nombre = ui->correoUsuario->text().toStdString();
-    bool verificar = perfil->getMatriz()->buscarAmistad(nombre, perfil->getEmail());
-    if (!verificar){
+    Usuario* encontrado  = avl->buscarUsuario(nombre);
+    bool emisor = amistades->buscarAmistad(perfil, encontrado);
+    bool receptor = amistades->buscarAmistad(encontrado, perfil);
+
+    if (!(emisor || receptor)){
         return;
     }
-    Usuario* encontrado  = avl->buscarUsuario(nombre);
     ui->showNombre->setText(QString(encontrado->getNombre().c_str()));
     ui->showApellido->setText(QString(encontrado->getApellido().c_str()));
     ui->showCorreo->setText(QString(encontrado->getEmail().c_str()));
@@ -800,15 +804,17 @@ void MainWindow::on_cargaSoli_clicked()
                         continue;
                     }
 
-                    bool relacion = emisor0->getMatriz()->buscar(receptor, emisor);
-                    if (relacion){
+                    bool emisorE = amistades->buscarAmistad(emisor0, receptor0);
+                    bool receptorE = amistades->buscarAmistad(receptor0, emisor0);
+                    if (emisorE || receptorE){
                         continue;
                     }
 
                     emisor0->addSolicitud(receptor0);
+
                     if (estado == "ACEPTADA"){
-                        receptor0->aceptarSolicitud(emisor0);
-                        receptor0->rechazarSolicitud(receptor0);
+                        amistades->insertar(emisor0, receptor0);
+                        receptor0->rechazarSolicitud(emisor0);
                     }
                 }
             }else{

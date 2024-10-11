@@ -47,4 +47,10 @@ add_executable(Proyecto1
         "../Fase 2/Estructuras/ArbolB.h"
         "../Fase 2/Estructuras/ArbolB.cpp"
         "../Fase 2/Estructuras/sha.h"
+        "../Fase 3/Estructuras/Vertice.h"
+        "../Fase 3/Estructuras/Vertice.cpp"
+        "../Fase 3/Estructuras/SuperVertice.h"
+        "../Fase 3/Estructuras/SuperVertice.cpp"
+        "../Fase 3/Estructuras/Grafo.h"
+        "../Fase 3/Estructuras/Grafo.cpp"
 )

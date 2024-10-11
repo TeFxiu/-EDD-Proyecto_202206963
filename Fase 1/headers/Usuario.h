@@ -26,7 +26,6 @@ class Usuario {
         time_t fechaNacimiento;
         ABBtree* feed;
 
-        Matriz* relaciones;
         Pila* solicitudes;
         SimpleAmistad* enviados;
     public:
@@ -65,9 +64,6 @@ class Usuario {
 
         ABBtree* getFeed();
         void setFeed(ABBtree* newFeed);
-
-        Matriz* getMatriz();
-        void setMatriz(Matriz* nuevo);
 
         Pila* getPila();
         void setPila(Pila* pila);

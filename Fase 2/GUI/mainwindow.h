@@ -6,6 +6,7 @@
 #include "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/SimpleAmistad.cpp"
 #include "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/Pila.cpp"
 #include "../Estructuras/ListaUsuarios.h"
+#include "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/Grafo.h"
 
 #include <QFileDialog>
 #include <QMainWindow>
@@ -102,6 +103,7 @@ private:
     ListaPosts* listaFeed = nullptr;
     ListaUsuarios* usuariosGlobal = nullptr;
     Publicacion* comentando = nullptr;
+    Grafo* amistades = nullptr;
 
     string buscarDireccion();
     string ruta = "";
