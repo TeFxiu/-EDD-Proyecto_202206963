@@ -138,3 +138,13 @@ NodoB* ArbolB::nuevoNodo(Comentarios *dato, NodoB *child) {
     root->hijos[1] = child;
     return root;
 }
+
+string ArbolB::resumen(string refactor, NodoB* actual){
+    if (!actual) return "";
+
+    for (int i = 0; i < 5; i++ ){
+        resumen(refactor, actual->hijos[i]);
+        if (actual->datos[i]) refactor += actual->datos[i]->resumir();
+    }
+    return "s";
+}

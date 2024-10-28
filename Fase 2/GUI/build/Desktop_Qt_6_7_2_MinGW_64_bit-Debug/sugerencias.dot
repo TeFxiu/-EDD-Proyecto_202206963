@@ -1,0 +1,17 @@
+digraph G{
+2[label="Maria"];
+11[label="Fase2", style=filled, fillcolor=red];
+11 -> 2[dir=none];
+3[label="Juan", style=filled, fillcolor=green];
+3 -> 11[dir=none];
+7[label="Jose", style=filled, fillcolor=green];
+7 -> 11[dir=none];
+9[label="Miguel", style=filled, fillcolor=green];
+9 -> 11[dir=none];
+10[label="Sofia", style=filled, fillcolor=green];
+10 -> 11[dir=none];
+5[label="Luis", style=filled, fillcolor=green];
+5 -> 11[dir=none];
+1[label="Carlos", style=filled, fillcolor=green];
+1 -> 11[dir=none];
+}

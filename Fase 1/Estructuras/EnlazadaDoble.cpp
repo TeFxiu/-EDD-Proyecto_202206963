@@ -1,10 +1,4 @@
-#include <iostream>
-#include <string>
 #include "../headers/NodoStories.h"
-
-#include <iomanip>
-#include <fstream>
-
 #ifndef ENLAZADADOBLE_CPP
 #define ENLAZADADOBLE_CPP
 
@@ -15,20 +9,24 @@ class DoublyLinkedList{
         NodoStories *head;
         NodoStories *tail;
         NodoStories *actual;
+        bool bandera;
     public:
-        DoublyLinkedList():head(nullptr), tail(nullptr), actual(head){};
+        int contador;
+        DoublyLinkedList():head(nullptr), tail(nullptr), actual(head), bandera(false){};
 
         bool estaVacia() {return head == nullptr;};
 
         void append(Publicacion* dato){
             NodoStories* newNodo = new NodoStories(dato);
             if (this->estaVacia()) {
+                contador++;
                 head = newNodo;
                 tail = newNodo;
             }else{
                 tail->siguiente = newNodo;
                 newNodo->anterior = tail;
                 tail = newNodo;
+                contador++;
             }
         }
 
@@ -42,6 +40,21 @@ class DoublyLinkedList{
                 head->anterior = newNodo;
                 head = newNodo;
             }
+        }
+
+        Publicacion* recorrerUno(){
+            if (bandera){
+                actual = head;
+                bandera = false;
+            }
+
+            while(actual){
+                NodoStories* aux = actual;
+                actual = actual->siguiente;
+                return aux->dato;
+            }
+            bandera = true;
+            return nullptr;
         }
         /*
 

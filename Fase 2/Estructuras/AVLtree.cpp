@@ -110,24 +110,20 @@ void AVLtree::rotacionIzq(TreeUsuario* &root){
     aux->setAltura(1 + max(obtenerAltura(aux->getIzq()), obtenerAltura(aux->getDrcha())));
 }
 
-void AVLtree::preOrdenTabla(TreeUsuario* raiz, ListaUsuarios* lista , Usuario* perfil, Grafo* amistades, SuperVertice* relEmisor){
+void AVLtree::preOrdenTabla(TreeUsuario* raiz, ListaUsuarios* lista , Usuario* perfil, Grafo* amistades){
     if(raiz != nullptr){
         if (raiz->getData()->getEmail() != perfil->getEmail()){
             if(!perfil->getEnviados()->findEmail(raiz->getData()->getEmail())){
                 if(!perfil->getPila()->findEmail(raiz->getData()->getEmail())){
-
-                    bool emisor = relEmisor ? relEmisor->buscarRelacion(raiz->getData()) : false;
-
                     bool receptor = amistades->buscarAmistad(raiz->getData(), perfil);
-
-                    if (!(emisor || receptor)){
+                    if (!receptor){
                         lista->append(raiz->getData());
                     }
                 }
             }
         }
-        preOrdenTabla(raiz->getIzq(), lista, perfil, amistades, relEmisor);
-        preOrdenTabla(raiz->getDrcha(), lista, perfil, amistades, relEmisor);
+        preOrdenTabla(raiz->getIzq(), lista, perfil, amistades);
+        preOrdenTabla(raiz->getDrcha(), lista, perfil, amistades);
     }
 }
 

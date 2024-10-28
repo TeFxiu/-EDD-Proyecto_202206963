@@ -1,5 +1,6 @@
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/EWIEGA46WW/moc_mainwindow.cpp: C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/GUI/mainwindow.h \
   C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/moc_predefs.h \
+  C:/Qt/6.7.2/mingw_64/include/QtCore/QCryptographicHash \
   C:/Qt/6.7.2/mingw_64/include/QtCore/QDate \
   C:/Qt/6.7.2/mingw_64/include/QtCore/QJsonArray \
   C:/Qt/6.7.2/mingw_64/include/QtCore/QJsonDocument \
@@ -37,6 +38,7 @@ C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase\ 2/GUI/build/Desktop_
   C:/Qt/6.7.2/mingw_64/include/QtCore/qcontainerinfo.h \
   C:/Qt/6.7.2/mingw_64/include/QtCore/qcontainertools_impl.h \
   C:/Qt/6.7.2/mingw_64/include/QtCore/qcontiguouscache.h \
+  C:/Qt/6.7.2/mingw_64/include/QtCore/qcryptographichash.h \
   C:/Qt/6.7.2/mingw_64/include/QtCore/qdarwinhelpers.h \
   C:/Qt/6.7.2/mingw_64/include/QtCore/qdatastream.h \
   C:/Qt/6.7.2/mingw_64/include/QtCore/qdatetime.h \

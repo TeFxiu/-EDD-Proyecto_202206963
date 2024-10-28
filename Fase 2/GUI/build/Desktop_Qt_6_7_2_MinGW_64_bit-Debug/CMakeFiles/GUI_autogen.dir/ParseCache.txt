@@ -5,6 +5,7 @@ C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ArbolB.
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/NodoABB.h
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/mainwindow.h
  mmc:Q_OBJECT
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/QCryptographicHash
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/QDate
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/QJsonArray
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/QJsonDocument
@@ -42,6 +43,7 @@ C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/mainwindow.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qcontainerinfo.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qcontainertools_impl.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qcontiguouscache.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qcryptographichash.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qdarwinhelpers.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qdatastream.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qdatetime.h
@@ -1427,6 +1429,7 @@ C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/modulocrear.h
  mdp:C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/GUI_autogen/moc_predefs.h
  mdp:C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/modulocrear.h
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/UsuarioA.h
+C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/Block.h
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/modulocrear.cpp
  uic:ui_modulocrear.h
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/TreePost.h
@@ -1435,8 +1438,10 @@ C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ListaUs
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ABBtree.cpp
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/Usuario.h
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Usuario.cpp
+C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/Nodo.cpp
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/TreeUsuario.h
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/Vertice.cpp
+C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/sha.h
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/Estructuras/SimpleAmistad.cpp
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/TreeUsuario.cpp
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/NodoStories.h
@@ -1459,7 +1464,9 @@ C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 1/headers/NodoUser.h
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ListaUsuarios.cpp
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/NodoB.h
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ListaPosts.h
+C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/Merkle.h
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ListaABB.cpp
+C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/Nodo.h
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/NodoB.cpp
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ListaPosts.cpp
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/Vertice.h
@@ -1468,3 +1475,5 @@ C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/SuperVe
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/Comentarios.h
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/Comentarios.cpp
 C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/Grafo.cpp
+C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/Block.cpp
+C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/Merkle.cpp

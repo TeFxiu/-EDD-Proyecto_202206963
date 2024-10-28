@@ -395,6 +395,12 @@
 			null
 		],
 		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/Block.h",
+			"MU",
+			"N2JQUZO7VR/moc_Block.cpp",
+			null
+		],
+		[
 			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/Grafo.h",
 			"MU",
 			"N2JQUZO7VR/moc_Grafo.cpp",
@@ -591,6 +597,11 @@
 		],
 		[
 			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/GUI/mainwindow.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/Block.cpp",
 			"MU",
 			null
 		],

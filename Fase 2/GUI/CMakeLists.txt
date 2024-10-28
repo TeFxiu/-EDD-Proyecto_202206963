@@ -65,6 +65,8 @@ set(PROJECT_SOURCES
         "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/SuperVertice.cpp"
         "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/Vertice.h"
         "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/Vertice.cpp"
+        "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/Block.h"
+        "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/Block.cpp"
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

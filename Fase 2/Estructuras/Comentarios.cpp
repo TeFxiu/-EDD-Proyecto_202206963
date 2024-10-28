@@ -21,3 +21,13 @@ string Comentarios::getContenido() {
 time_t Comentarios::getFecha_hora() {
     return fecha_hora;
 }
+
+string Comentarios::resumir(){
+    string retorno;
+    time_t tiempo = this->getFecha_hora();
+    tm* tm = localtime(&tiempo);
+    stringstream format;
+    format << put_time(tm, "%d/%m/%Y %H:%M");
+    retorno = correo + contenido + format.str();
+    return retorno;
+}

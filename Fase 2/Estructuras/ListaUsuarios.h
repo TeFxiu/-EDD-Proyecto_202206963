@@ -17,6 +17,7 @@ class ListaUsuarios {
         ListaUsuarios();
 
         bool estaVacia();
+        TreeUsuario* buscar(Usuario* buscado);
         int contador = 0;
 
         void append(Usuario* dato);
@@ -24,7 +25,11 @@ class ListaUsuarios {
         void push(Usuario* dato);
         void reset();
 
+        void ordenar();
+
+        void agregarPerfiles(ListaUsuarios* lista, Usuario* perfil);
         Usuario* recorreraUno();
+        bool buscarB(Usuario* buscando);
 };
 
 

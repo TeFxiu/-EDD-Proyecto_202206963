@@ -8,6 +8,7 @@
 #include "../Estructuras/ListaUsuarios.h"
 #include "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 3/Estructuras/Grafo.h"
 
+#include <QCryptographicHash>
 #include <QFileDialog>
 #include <QMainWindow>
 #include <QLabel>
@@ -86,24 +87,39 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_modificarPerfil_clicked();
+
+    void on_pushButton_6_clicked();
+
+    void on_pp_clicked();
+
+    void on_pushButton_7_clicked();
+
+    void on_pushButton_8_clicked();
+
+    void on_pushButton_9_clicked();
+
 private:
     Ui::MainWindow *ui;
 
     QMessageBox* mensajeIS = nullptr;
-    QLabel* logo = nullptr;
-    QWidget *contenedor = nullptr;
+    QLabel* logo = nullptr; // Label donde se muestra la imagen del logo
+    QWidget *contenedor = nullptr; // Los siguientes 3 son los necesarios para crear el feed de publicaciones
     QVBoxLayout *layout = nullptr;
     QScrollBar* bar = nullptr;
 
-    Usuario* perfil = nullptr;
+    Usuario* perfil = nullptr; // Perfil actual que inicio sesio
     Usuario* admin = nullptr;
     Usuario* editar = nullptr;
-    AVLtree* avl = nullptr;
-    DoublyLinkedList* feedGeneral = nullptr;
+
+    AVLtree* avl = nullptr; //Arbol de usuarios
+    DoublyLinkedList* feedGeneral = nullptr; // Lista enlazada doble donde se guardan todas las publicaciones
     ListaPosts* listaFeed = nullptr;
     ListaUsuarios* usuariosGlobal = nullptr;
+    ListaUsuarios* recomendados = nullptr;
     Publicacion* comentando = nullptr;
     Grafo* amistades = nullptr;
+    PostSimple* recorrido;
 
     string buscarDireccion();
     string ruta = "";
@@ -122,6 +138,7 @@ private:
     void cargarPerfil();
     void cargarPublicacion();
     void cargarTabla();
+    void cargarRecomendaciones();
     void enviarSolicitud(Usuario* actual);
     void enviarTabla(Usuario* tabla);
     void addTabla(Usuario* actual);
@@ -129,10 +146,9 @@ private:
     void cancelarSolicitudP(Usuario* actual);
     void cargarSolicitudes();
     void cargarRecibidos();
-
     void limpiarFormCC();
     void limpiarForm();
-    PostSimple* recorrido;
+    void crearBloque(Publicacion* post);
 
 };
 #endif // MAINWINDOW_H

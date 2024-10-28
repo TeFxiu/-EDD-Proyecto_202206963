@@ -10,7 +10,11 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     iniciarLogo();
     frameMain();
-    admin = new Usuario("admin", "admin", 0, "admin@gmail.com", "EDD2S2024");
+    QCryptographicHash hash(QCryptographicHash::Sha256);
+    hash.addData("EDD2S2024");
+    string contrasenia = hash.result().toStdString();
+    admin = new Usuario("admin", "admin", 0, "admin@gmail.com", contrasenia);
+
     avl = new AVLtree();
     mensajeIS = new QMessageBox();
     feedGeneral = new DoublyLinkedList();
@@ -25,35 +29,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(bar, &QScrollBar::valueChanged, this, &MainWindow::actualizarFeed);
     connect(ui->editarPerfil, &QStackedWidget::currentChanged, this,&MainWindow::cargaEdicion);
 }
-void MainWindow::frameMain(){
-    ui->ventanas->setCurrentIndex(0);
-}
-
-void MainWindow::cargaEdicion(){
-
-    if (ventana){
-        return;
-    }
-
-    QTableWidgetItem* interseccion = ui->adminUsuarios->item(ui->adminUsuarios->currentRow(),2);
-    string user = interseccion->text().toStdString();
-
-
-    editar = avl->buscarUsuario(user);
-    if (!editar){
-        return;
-    }
-
-    ui->editarNombre->setText(QString(editar->getNombre().c_str()));
-    ui->editarApellido->setText(QString(editar->getApellido().c_str()));
-    ui->editarCorreo->setText(QString(editar->getEmail().c_str()));
-    ui->editarPass->setText(QString(editar->getPass().c_str()));
-    QDateTime fecha;
-    fecha.setSecsSinceEpoch(editar->getFechaNac());
-
-    ui->editarFecha->setDateTime(fecha);
-    ventana = true;
-}
 
 void MainWindow::iniciarLogo(){
     QFrame* inicio = ui->frameIS;
@@ -62,24 +37,28 @@ void MainWindow::iniciarLogo(){
     logo->setPixmap(pix.scaled(200, 200, Qt::KeepAspectRatio));
     logo->setGeometry(this->width()/2-100, this->height()/8, 200, 100);
     logo->show();
-
 }
 
-void MainWindow::on_newUsuario_clicked()
+void MainWindow::frameMain(){
+    ui->ventanas->setCurrentIndex(0);
+}
+
+void MainWindow::on_newUsuario_clicked() //creacion de Usuario
 {
-    //creacion de Usuario
     string nombre = ui->newNombre->text().toStdString();
     string apellido = ui->newApellido->text().toStdString();
+    QCryptographicHash hash(QCryptographicHash::Sha256);
+    hash.addData(ui->newPass->text().toUtf8());
     string correo = ui->newCorreo->text().toStdString();
     QDateTime fecha = QDateTime(ui->newFecha->date(), QTime(0,0));
     time_t fechaNac = fecha.toSecsSinceEpoch();
-    string pass = ui->newPass->text().toStdString();
+    string pass = hash.result().toStdString();
     Usuario* userNew = new Usuario(nombre, apellido, fechaNac, correo, pass);
     Usuario* userFound = avl->buscarUsuario(correo);
 
     limpiarFormCC();
 
-    if (userFound == nullptr){
+    if (!userFound){
         avl->insertar(userNew);
         ui->ventanas->setCurrentIndex(0);
     }else{
@@ -88,61 +67,124 @@ void MainWindow::on_newUsuario_clicked()
     }
 }
 
-void MainWindow::on_botonCC_clicked()
-{
-    limpiarForm();
-    ui->ventanas->setCurrentIndex(4);
-}
-
-void MainWindow::on_back0_clicked()
-{
-    limpiarFormCC();
-    ui->ventanas->setCurrentIndex(0);
-}
-
 void MainWindow::on_botonIS_clicked()
 {
     string stdCorreo = ui->dataCorreo->text().toStdString();
-    string stdPass = ui->dataPass->text().toStdString();
+    QCryptographicHash hash(QCryptographicHash::Sha256);
+    hash.addData(ui->dataPass->text().toStdString());
+    string stdPass = hash.result().toStdString();
 
     if (stdCorreo == admin->getEmail() && stdPass == admin->getPass()){
         ui->ventanas->setCurrentIndex(1);
+        limpiarForm();
         ui->ordenAdmin->addItem(QString("Preorden"));
         ui->ordenAdmin->addItem(QString("Inorden"));
         ui->ordenAdmin->addItem(QString("PostOrden"));
         return;
     }
-
     perfil = avl->buscarUsuario(stdCorreo);
-
-    if (perfil != nullptr){
+    if (perfil){
         if (perfil->getPass() == stdPass){
             cargarPerfil();
             limpiarForm();
             cargarRecibidos();
             cargarSolicitudes();
             cargarTabla();
+            cargarRecomendaciones();
             ui->ventanas->setCurrentIndex(3);
             return ;
         }
     }
-
     mensajeIS->setText("Datos invalido");
     mensajeIS->show();
 }
 
+void MainWindow::cargarPerfil() // Carga los datos del perfil actual recientemente loggeado
+{
+    string nombre = perfil->getNombre();
+    ui->nombrePerfil->setText(QString(nombre.c_str()));
+
+    string apellido = perfil->getApellido();
+    ui->apellidoPerfil->setText(QString(apellido.c_str()));
+
+    string correo = perfil->getEmail();
+    ui->correoPerfil->setText(QString(correo.c_str()));
+
+    string pass = perfil->getPass();
+    ui->passPerfil->setEchoMode(QLineEdit::Password);
+    ui->passPerfil->setText(QString(pass.c_str()));
+
+    time_t fecha = perfil->getFechaNac();
+    QDateTime parseo = QDateTime();
+    parseo.setSecsSinceEpoch(fecha);
+    ui->nacPerfil->setDateTime(parseo);
+}
+
+void MainWindow::cargarSolicitudes(){
+    QTableWidget* tableWidget = ui->soliEnviadas;
+    SimpleAmistad* cargando = perfil->getEnviados();
+    tableWidget->setRowCount(cargando->contador);
+    int row = 0;
+    while(true){
+        Usuario* acutal = cargando->recorreraUno();
+        if (!acutal) break;
+        tableWidget->setItem(row, 0, new QTableWidgetItem(QString(acutal->getEmail().c_str())));
+        QPushButton* cancelar = new QPushButton("Cancelar");
+        QObject::connect(cancelar, &QPushButton::clicked, [this,acutal](){
+            ui->soliEnviadas->removeRow(ui->soliEnviadas->currentRow());
+            addTabla(acutal);
+            cancelarSolicitud(acutal);
+            cargarRecomendaciones();
+        });
+        ui->soliEnviadas->setCellWidget(row, 1, cancelar);
+        row++;
+    }
+    tableWidget->resizeColumnsToContents();
+}
+
+void MainWindow::cancelarSolicitudP(Usuario* actual){
+    perfil->rechazarSolicitud(actual);
+}
+
+void MainWindow::cargarRecibidos(){
+    QTableWidget* tableWidget = ui->soliRecibidas;
+    Pila* cargando = perfil->getPila();
+    tableWidget->setRowCount(cargando->contador);
+    int row = 0;
+    while(true){
+        Usuario* acutal = cargando->recorreraUno();
+        if (!acutal) break;
+        tableWidget->setItem(row, 0, new QTableWidgetItem(QString(acutal->getEmail().c_str())));
+        QPushButton* enviar = new QPushButton("Aceptar");
+        QObject::connect(enviar, &QPushButton::clicked, [this,acutal](){
+            ui->soliRecibidas->removeRow(ui->soliRecibidas->currentRow());
+            amistades->insertar(acutal, perfil);
+            amistades->insertar(perfil, acutal);
+            cancelarSolicitudP(acutal);
+            cargarRecomendaciones();
+        });
+        ui->soliRecibidas->setCellWidget(row, 1, enviar);
+        QPushButton* rechazar = new QPushButton("Rechazar");
+        QObject::connect(rechazar, &QPushButton::clicked, [this,acutal](){
+            ui->soliRecibidas->removeRow(ui->soliRecibidas->currentRow());
+            addTabla(acutal);
+            cargarRecomendaciones();
+            cancelarSolicitudP(acutal);
+        });
+        ui->soliRecibidas->setCellWidget(row, 2, rechazar);
+        row++;
+    }
+    tableWidget->resizeColumnsToContents();
+}
+
 void MainWindow::cargarTabla(){
-    SuperVertice* relacioneEmisor = amistades->amistedesEmisor(perfil);
-    avl->preOrdenTabla(avl->root,usuariosGlobal, perfil, amistades, relacioneEmisor);
-    bool bandera= true;
+    avl->preOrdenTabla(avl->root,usuariosGlobal, perfil, amistades);
     QTableWidget* tableWidget = ui->tablaUsuarios;
     tableWidget->setRowCount(usuariosGlobal->contador);
     int row = 0;
     while(true){
         Usuario* acutal = usuariosGlobal->recorreraUno();
-        if (acutal == nullptr){
-            break;;
-        }
+        if (!acutal) break;
 
         time_t fecha = acutal->getFechaNac();
         tm* fechaNac = localtime(&fecha);
@@ -164,70 +206,43 @@ void MainWindow::cargarTabla(){
         row++;
     }
     tableWidget->resizeColumnsToContents();
-
 }
 
-
-void MainWindow::cargarSolicitudes(){
-    QTableWidget* tableWidget = ui->soliEnviadas;
-    SimpleAmistad* cargando = perfil->getEnviados();
-    tableWidget->setRowCount(cargando->contador);
+void MainWindow::cargarRecomendaciones(){
+    SuperVertice* grafPerfil = amistades->amistedesEmisor(perfil);
+    ListaUsuarios* posiblesAmigos = new ListaUsuarios();
+    if (grafPerfil) amistades->buscarRecomendaciones(grafPerfil, posiblesAmigos);
+    recomendados = new ListaUsuarios();
+    recomendados->agregarPerfiles(posiblesAmigos, perfil);
+    recomendados->ordenar();
+    QTableWidget* tableWidget = ui->tablaRecomendaciones;
+    tableWidget->setRowCount(recomendados->contador);
     int row = 0;
-
     while(true){
-        Usuario* acutal = cargando->recorreraUno();
-        if (acutal == nullptr){
-            break;
-        }
-        tableWidget->setItem(row, 0, new QTableWidgetItem(QString(acutal->getEmail().c_str())));
-        QPushButton* cancelar = new QPushButton("Cancelar");
+        Usuario* acutal = recomendados->recorreraUno();
+        if (!acutal) break;
+        TreeUsuario* relacionados = recomendados->buscar(acutal);
 
-        QObject::connect(cancelar, &QPushButton::clicked, [this,acutal](){
-            ui->soliEnviadas->removeRow(ui->soliEnviadas->currentRow());
-            addTabla(acutal);
-            cancelarSolicitud(acutal);
+        string recomendar = to_string(relacionados->getAltura());
+        tableWidget->setItem(row, 0, new QTableWidgetItem(QString(acutal->getNombre().c_str())));
+        tableWidget->setItem(row, 1, new QTableWidgetItem(QString(acutal->getApellido().c_str())));
+        tableWidget->setItem(row, 2, new QTableWidgetItem(QString(acutal->getEmail().c_str())));
+        tableWidget->setItem(row, 3, new QTableWidgetItem(QString(recomendar.c_str())));
+        QPushButton* boton = new QPushButton("Enviar Solicitud");
+
+        QObject::connect(boton, &QPushButton::clicked, [this, acutal, row, tableWidget](){
+            ui->tablaRecomendaciones->removeRow(ui->tablaRecomendaciones->currentRow());
+            for (int i =0 ; i <  ui->tablaUsuarios->rowCount(); i++){
+                if (ui->tablaUsuarios->item(i, 2)->text().toStdString() == acutal->getEmail()) ui->tablaUsuarios->removeRow(i);
+            }
+            perfil->addSolicitud(acutal);
+            enviarTabla(acutal);
         });
-        ui->soliEnviadas->setCellWidget(row, 1, cancelar);
 
+        tableWidget->setCellWidget(row, 4, boton);
         row++;
     }
-    tableWidget->resizeColumnsToContents();
-
-}
-
-void MainWindow::cargarRecibidos(){
-    QTableWidget* tableWidget = ui->soliRecibidas;
-    Pila* cargando = perfil->getPila();
-    tableWidget->setRowCount(cargando->contador);
-
-    int row = 0;
-
-    while(true){
-        Usuario* acutal = cargando->recorreraUno();
-        if (acutal == nullptr){
-            break;
-        }
-
-        tableWidget->setItem(row, 0, new QTableWidgetItem(QString(acutal->getEmail().c_str())));
-        QPushButton* enviar = new QPushButton("Aceptar");
-
-        QObject::connect(enviar, &QPushButton::clicked, [this,acutal](){
-            ui->soliRecibidas->removeRow(ui->soliRecibidas->currentRow());
-            amistades->insertar(acutal, perfil);
-            cancelarSolicitudP(acutal);
-        });
-        ui->soliRecibidas->setCellWidget(row, 1, enviar);
-
-        QPushButton* rechazar = new QPushButton("Rechazar");
-
-        QObject::connect(rechazar, &QPushButton::clicked, [this,acutal](){
-            ui->soliRecibidas->removeRow(ui->soliRecibidas->currentRow());
-            addTabla(acutal);
-            cancelarSolicitudP(acutal);
-        });
-        ui->soliRecibidas->setCellWidget(row, 2, rechazar);
-        row++;
-    }
+    tableWidget->sortItems(3, Qt::DescendingOrder);
     tableWidget->resizeColumnsToContents();
 }
 
@@ -238,11 +253,15 @@ void MainWindow::capturarRow(int row){
 void MainWindow::enviarSolicitud(Usuario* actual){
     perfil->addSolicitud(actual);
     ui->tablaUsuarios->removeRow(filaTabla);
+    int i;
+    for(i=0; i < ui->tablaRecomendaciones->rowCount(); i++){
+        if (ui->tablaRecomendaciones->item(i, 2)->text().toStdString() == actual->getEmail()) ui->tablaRecomendaciones->removeRow(i);
+    }
     filaTabla = 0;
     enviarTabla(actual);
 }
 
-void MainWindow::enviarTabla(Usuario* actual){  //Se pasa de la Tabla de Usuario a la tabla de enviados
+void MainWindow::enviarTabla(Usuario* actual){// Se cambia de la tabla general a la tabla de solicitudes enviadas, despues de enviar una solicitud
     ui->soliEnviadas->insertRow(ui->soliEnviadas->rowCount());
     ui->soliEnviadas->setItem(ui->soliEnviadas->rowCount()-1, 0, new QTableWidgetItem(QString(actual->getEmail().c_str())));
     QPushButton* cancelar = new QPushButton("Cancelar");
@@ -251,6 +270,7 @@ void MainWindow::enviarTabla(Usuario* actual){  //Se pasa de la Tabla de Usuario
         ui->soliEnviadas->removeRow(ui->soliEnviadas->currentRow());
         addTabla(actual);
         cancelarSolicitud(actual);
+        cargarRecomendaciones();
     });
     ui->soliEnviadas->setCellWidget(ui->soliEnviadas->rowCount()-1, 1, cancelar);
 
@@ -261,11 +281,7 @@ void MainWindow::cancelarSolicitud(Usuario* actual){
     actual->rechazarSolicitud(perfil);
 }
 
-void MainWindow::cancelarSolicitudP(Usuario* actual){
-    perfil->rechazarSolicitud(actual);
-}
-
-void MainWindow::addTabla(Usuario* acutal) {    //Funcion para aniadir objetos individuales a la tabla de Usuarios general
+void MainWindow::addTabla(Usuario* acutal) {//Escribe a los usuario en la tabla general despues de ser rechazados
     QTableWidget* tableWidget = ui->tablaUsuarios;
     ui->tablaUsuarios->insertRow(ui->tablaUsuarios->rowCount());
     int row = ui->tablaUsuarios->rowCount()-1;
@@ -288,25 +304,6 @@ void MainWindow::addTabla(Usuario* acutal) {    //Funcion para aniadir objetos i
 
     tableWidget->setCellWidget(row, 4, boton);
     tableWidget->resizeColumnsToContents();
-}
-
-void MainWindow::cargarPerfil(){
-    const char* nombre = perfil->getNombre().c_str();
-    ui->nombrePerfil->setText(QString(nombre));
-
-    const char* apellido = perfil->getApellido().c_str();
-    ui->apellidoPerfil->setText(QString(apellido));
-
-    const char* correo = perfil->getEmail().c_str();
-    ui->correoPerfil->setText(QString(correo));
-
-    const char* pass = perfil->getPass().c_str();
-    ui->passPerfil->setText(QString(pass));
-
-    time_t fecha = perfil->getFechaNac();
-    QDateTime parseo = QDateTime();
-    parseo.setSecsSinceEpoch(fecha);
-    ui->nacPerfil->setDateTime(parseo);
 }
 
 void MainWindow::actualizarFeed(int value){
@@ -496,10 +493,9 @@ void MainWindow::actualizarFeed(int value){
 }
 
 void MainWindow::agregarComentario(Publicacion* dato){
-
     comentando = dato;
     ui->ventanas->setCurrentIndex(2);
-    ui->VentanaComentarios->setCurrentIndex(0);
+    ui->Extras->setCurrentIndex(1);
 }
 
 void MainWindow::on_regresarFeed_clicked()
@@ -542,7 +538,6 @@ void MainWindow::on_crearPost_clicked()
         delete post;
         return;
     }
-
     feedGeneral->append(post);
     ABBtree* feed = perfil->getFeed();
     feed->insertar(post);
@@ -577,9 +572,6 @@ void MainWindow::on_crearPost_clicked()
 
     listaFeed->nuevo();
     regresarInicio = true;
-
-
-
 }
 
 void MainWindow::on_crearPublicacion_clicked()
@@ -605,7 +597,7 @@ void MainWindow::on_filtroFech_clicked()
     actualizarFeed(bar->maximum());
 }
 
-void MainWindow::limpiarFormCC(){
+void MainWindow::limpiarFormCC() { // Limpiar entradas en la creacion de usuario
     ui->newNombre->clear();
     ui->newApellido->clear();
     ui->newCorreo->clear();
@@ -618,7 +610,6 @@ void MainWindow::limpiarForm(){
     ui->dataPass->clear();
 }
 
-
 void MainWindow::on_eliminarPerfil_2_clicked()
 {
     for(int i = 0; i<ui->tablaUsuarios->rowCount(); i++){
@@ -627,7 +618,6 @@ void MainWindow::on_eliminarPerfil_2_clicked()
     usuariosGlobal->reset();
     ui->ventanas->setCurrentIndex(0);
 }
-
 
 void MainWindow::on_buscarUsuario_clicked()
 {
@@ -638,9 +628,8 @@ void MainWindow::on_buscarUsuario_clicked()
     string nombre = ui->correoUsuario->text().toStdString();
     Usuario* encontrado  = avl->buscarUsuario(nombre);
     bool emisor = amistades->buscarAmistad(perfil, encontrado);
-    bool receptor = amistades->buscarAmistad(encontrado, perfil);
 
-    if (!(emisor || receptor)){
+    if (!emisor){
         return;
     }
     ui->showNombre->setText(QString(encontrado->getNombre().c_str()));
@@ -653,7 +642,6 @@ void MainWindow::on_buscarUsuario_clicked()
 
     ui->correoUsuario->clear();
 }
-
 
 void MainWindow::on_adminBuscando_clicked()
 {
@@ -704,16 +692,10 @@ void MainWindow::on_usarOrden_clicked()
 
 }
 
-
 void MainWindow::on_pushButton_3_clicked()
 {
     ui->editarPerfil->setCurrentIndex(0);
     ventana = false;
-}
-
-MainWindow::~MainWindow(){
-    delete ui;
-    delete logo;
 }
 
 void MainWindow::on_cargaUsuarios_clicked()
@@ -751,8 +733,10 @@ void MainWindow::on_cargaUsuarios_clicked()
 
                     time_t fechaformat = mktime(ingreso);
                     string correo = obj.value("correo").toString().toStdString();
-                    string pass = obj.value("contraseña").toString().toStdString();
-
+                    string passH = obj.value("contraseña").toString().toStdString();
+                    QCryptographicHash hash(QCryptographicHash::Sha256);
+                    hash.addData(passH);
+                    string pass = hash.result().toStdString();
                     Usuario* nuevo = new Usuario(nombre, apellido, fechaformat, correo, pass);
                     avl->insertar(nuevo);
                 }
@@ -764,9 +748,6 @@ void MainWindow::on_cargaUsuarios_clicked()
             QMessageBox::warning(this, "Error", "No se pudo abrir el archivo.");
         }
     }
-
-
-
 }
 
 void MainWindow::on_cargaSoli_clicked()
@@ -804,9 +785,8 @@ void MainWindow::on_cargaSoli_clicked()
                         continue;
                     }
 
-                    bool emisorE = amistades->buscarAmistad(emisor0, receptor0);
                     bool receptorE = amistades->buscarAmistad(receptor0, emisor0);
-                    if (emisorE || receptorE){
+                    if (receptorE){
                         continue;
                     }
 
@@ -814,6 +794,7 @@ void MainWindow::on_cargaSoli_clicked()
 
                     if (estado == "ACEPTADA"){
                         amistades->insertar(emisor0, receptor0);
+                        amistades->insertar(receptor0, emisor0);
                         receptor0->rechazarSolicitud(emisor0);
                     }
                 }
@@ -827,14 +808,12 @@ void MainWindow::on_cargaSoli_clicked()
     }
 }
 
-
 void MainWindow::on_pushButton_4_clicked()
 {
     ui->ventanas->setCurrentIndex(3);
     comentando = nullptr;
     ui->textoComent->clear();
 }
-
 
 void MainWindow::on_publicarComent_clicked()
 {
@@ -847,7 +826,6 @@ void MainWindow::on_publicarComent_clicked()
     comentando = nullptr;
     ui->textoComent->clear();
 }
-
 
 void MainWindow::on_cargarPosts_clicked()
 {
@@ -902,12 +880,10 @@ void MainWindow::on_cargarPosts_clicked()
     }
 }
 
-
 void MainWindow::on_pushButton_5_clicked()
 {
     ui->ventanas->setCurrentIndex(0);
 }
-
 
 void MainWindow::on_pushButton_clicked()
 {
@@ -940,3 +916,111 @@ void MainWindow::on_pushButton_clicked()
     actualizarFeed(bar->maximum());
 }
 
+void MainWindow::on_botonCC_clicked()
+{
+    limpiarForm();
+    ui->ventanas->setCurrentIndex(4);
+}
+
+void MainWindow::on_back0_clicked()
+{
+    limpiarFormCC();
+    ui->ventanas->setCurrentIndex(0);
+}
+
+void MainWindow::cargaEdicion(){
+    if (ventana) return;
+
+    QTableWidgetItem* interseccion = ui->adminUsuarios->item(ui->adminUsuarios->currentRow(),2);
+    string user = interseccion->text().toStdString();
+
+    editar = avl->buscarUsuario(user);
+    if (!editar){
+        return;
+    }
+
+    ui->editarNombre->setText(QString(editar->getNombre().c_str()));
+    ui->editarApellido->setText(QString(editar->getApellido().c_str()));
+    ui->editarCorreo->setText(QString(editar->getEmail().c_str()));
+    ui->editarPass->setText(QString(editar->getPass().c_str()));
+    QDateTime fecha;
+    fecha.setSecsSinceEpoch(editar->getFechaNac());
+
+    ui->editarFecha->setDateTime(fecha);
+    ventana = true;
+}
+
+MainWindow::~MainWindow(){
+    delete ui;
+    delete logo;
+}
+
+void MainWindow::on_modificarPerfil_clicked()
+{
+    ui->ventanas->setCurrentIndex(2);
+    ui->Extras->setCurrentIndex(5);
+
+    string nombre = perfil->getNombre();
+    ui->nombreEdit->setText(QString(nombre.c_str()));
+
+    string apellido = perfil->getApellido();
+    ui->apellidoEdit->setText(QString(apellido.c_str()));
+
+    string correo = perfil->getEmail();
+    ui->correoEdit->setText(QString(correo.c_str()));
+
+    time_t fecha = perfil->getFechaNac();
+    QDateTime parseo = QDateTime();
+    parseo.setSecsSinceEpoch(fecha);
+    ui->nacEdit->setDateTime(parseo);
+}
+
+void MainWindow::on_pushButton_6_clicked()
+{
+    string nombre = ui->nombreEdit->text().toStdString();
+    string apellido = ui->apellidoEdit->text().toStdString();
+    QCryptographicHash hash(QCryptographicHash::Sha256);
+    hash.addData(ui->passEdit->text().toStdString().c_str());
+    string pass = hash.result().toStdString();
+    QDateTime fecha = ui->nacEdit->dateTime();
+    time_t fechaP = fecha.toSecsSinceEpoch();
+
+    string verificacion = "";
+    hash.reset();
+    hash.addData(verificacion);
+
+    if (pass != hash.result().toStdString()) {
+        perfil->setNombre(nombre);
+        perfil->setApellido(apellido);
+        perfil->setPass(pass);
+        perfil->setFechaNac(fechaP);
+        mensajeIS->setText("Cambios realizados con exito");
+        mensajeIS->show();
+    }else{
+        mensajeIS->setText("Datos invalidos");
+        mensajeIS->show();
+    }
+    on_modificarPerfil_clicked();
+}
+
+void MainWindow::on_pp_clicked()
+{
+    this->cargarPerfil();
+    ui->ventanas->setCurrentIndex(3);
+}
+
+void MainWindow::on_pushButton_7_clicked()
+{
+    SuperVertice* amigos = amistades->amistedesEmisor(perfil);
+    amistades->generarSugerencias(amistades, amigos);
+}
+
+void MainWindow::on_pushButton_8_clicked()
+{
+    amistades->generarGrafo();
+}
+
+void MainWindow::on_pushButton_9_clicked()
+{
+    amistades->listaAdyacencia();
+}

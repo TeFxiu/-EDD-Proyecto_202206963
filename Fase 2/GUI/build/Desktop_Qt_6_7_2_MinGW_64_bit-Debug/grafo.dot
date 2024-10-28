@@ -1,0 +1,24 @@
+digraph G{
+3[label="Juan" ];
+11[label="Fase2"];
+11 -> 3[dir=none];
+11[label="Fase2" ];
+7[label="Jose"];
+7 -> 11[dir=none];
+9[label="Miguel"];
+9 -> 11[dir=none];
+10[label="Sofia"];
+10 -> 11[dir=none];
+5[label="Luis"];
+5 -> 11[dir=none];
+1[label="Carlos"];
+1 -> 11[dir=none];
+2[label="Maria"];
+2 -> 11[dir=none];
+7[label="Jose" ];
+9[label="Miguel" ];
+10[label="Sofia" ];
+5[label="Luis" ];
+1[label="Carlos" ];
+2[label="Maria" ];
+}

@@ -26,13 +26,14 @@ class Usuario {
         time_t fechaNacimiento;
         ABBtree* feed;
 
-        Pila* solicitudes;
-        SimpleAmistad* enviados;
     public:
         ListaABB* miFeed;
         Usuario();
         Usuario(string nombre, int id);
         Usuario(string nome, string apellido, time_t fechaNacimiento, string email, string pass);
+
+        Pila* solicitudes;
+        SimpleAmistad* enviados;
 
         void addSolicitud(Usuario* actual);
         void rechazarSolicitud(Usuario* actual);

@@ -23,6 +23,7 @@ public:
     NodoB* raiz;
 
     void insertar(Comentarios* dato);
+    string resumen(string refactor, NodoB* actual);
 };
 
 

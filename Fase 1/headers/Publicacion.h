@@ -2,6 +2,7 @@
 #define PUBLICACION_H
 
 #include <string>
+#include <sstream>
 #include <ctime>
 #include "C:/Users/TeFxiu/Documents/EDD/[EDD]Proyecto_202206963/Fase 2/Estructuras/ArbolB.h"
 
@@ -15,8 +16,10 @@ class Publicacion{
         string texto;
         string imagen;
         time_t fecha_hora;
-        ArbolB* comentario = new ArbolB();
     public:
+        ArbolB* comentario = new ArbolB();
+        string resumen;
+        string cripto;
         inline Publicacion():usuario(""), texto(""), fecha_hora(0){};
         inline Publicacion(string _usuario, string _texto ,time_t _fecha):usuario(_usuario),texto(_texto), fecha_hora(_fecha){superId++;}
 
