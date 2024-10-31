@@ -24,3 +24,6 @@ Aqui encontrara los usuarios de la aplicacion para poder recibir solicitudes
 
 ![alt text](image-4.png)
 En el administrador se podra hacer la carga masiva de los siguientes archivos
+
+![alt text](image-5.png)
+Tambien se agrega la tabla de recomendaciones

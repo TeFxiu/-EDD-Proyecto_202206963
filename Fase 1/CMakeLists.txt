@@ -59,4 +59,8 @@ add_executable(Proyecto1
         "../Fase 3/Estructuras/Merkle.cpp"
         "../Fase 3/Estructuras/Nodo.h"
         "../Fase 3/Estructuras/Nodo.cpp"
+        "../Fase 3/Estructuras/Huffman.h"
+        "../Fase 3/Estructuras/Huffman.cpp"
+        "../Fase 3/Estructuras/NodoH.h"
+        "../Fase 3/Estructuras/NodoH.cpp"
 )

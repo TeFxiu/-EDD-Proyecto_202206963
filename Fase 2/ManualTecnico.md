@@ -257,6 +257,27 @@ Cada una de estas clases está diseñada para manejar diferentes aspectos de la 
   - `Cantidad`: Número de publicaciones del usuario.
   - `Siguiente`: Puntero al siguiente nodo en la lista.
 
+  ### `Grafo`
+
+- **Descripción**: Representa vertices de amistad.
+- **Atributos**:
+  - SuperVertice* primero = nullptr;
+    SuperVertice* ultimo = nullptr;
+
+    Grafo();
+    ~Grafo();
+
+    void insertar(Usuario* emisor, Usuario* receptor);
+    void buscarRecomendaciones(SuperVertice* amigos, ListaUsuarios* usuarios);
+
+    SuperVertice* amistedesEmisor(Usuario* emisor);
+
+    bool buscarAmistad(Usuario* emisor, Usuario* receptor);
+
+    void generarSugerencias(Grafo* general, SuperVertice* amigos);
+    void generarGrafo();
+    void listaAdyacencia();
+
 # Árboles B, AVL y BST
 
 ## Árbol B

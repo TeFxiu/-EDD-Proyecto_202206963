@@ -849,6 +849,7 @@ void MainWindow::on_cargarPosts_clicked()
                     string contenido = obj.value("contenido").toString().toStdString();
                     string fecha = obj.value("fecha").toString().toStdString();
                     string hora = obj.value("hora").toString().toStdString();
+
                     int dia = std::stoi(fecha.substr(0, 2));
                     int mes = std::stoi(fecha.substr(3, 5));
                     int anio = std::stoi(fecha.substr(6));
@@ -869,6 +870,27 @@ void MainWindow::on_cargarPosts_clicked()
                     }
                     user->getFeed()->insertar(nuevo);
                     feedGeneral->append(nuevo);
+                    for (int i = 0 ; i < obj.value("comentarios").toArray().count(); i++) {
+                    auto subCorreo = obj.value("comentarios")[i]["correo"].toString().toStdString();
+                    auto comentario = obj.value("comentarios")[i]["comentario"].toString().toStdString();
+                    auto subFecha = obj.value("comentarios")[i]["fecha"].toString().toStdString();
+                    auto subHora = obj.value("comentarios")[i]["hora"].toString().toStdString();
+                    int subDia = std::stoi(subFecha.substr(0, 2));
+                    int subMes = std::stoi(subFecha.substr(3, 5));
+                    int subAnio = std::stoi(subFecha.substr(6));
+
+                    int subHoras = std::stoi(subHora.substr(0,2));
+                    int subMin = std::stoi(subHora.substr(3));
+
+                    QDate subDat(subAnio, subMes, subDia);
+                    QTime subHor(subHoras, subMin);
+
+                    QDateTime subNuev(subDat, subHor);
+
+                    time_t subfechaformat = subNuev.toSecsSinceEpoch();
+                    Comentarios* comenta = new Comentarios(subCorreo,comentario, subfechaformat);
+                    nuevo->agregarComentario(comenta);
+                    }
                 }
             }else{
                 QMessageBox::warning(this, "Error", "El archivo JSON no es un array.");
